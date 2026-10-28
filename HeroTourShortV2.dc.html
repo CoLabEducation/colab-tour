@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Homepage hero: short tour v2 (light)</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&amp;family=Caveat:wght@600;700&amp;display=swap">
+<style>
+body{margin:0;background:transparent;overflow:hidden}
+*{box-sizing:border-box}
+button,input{font-family:inherit;color:inherit}
+button{cursor:default}
+.go{cursor:pointer !important}
+img{display:block}
+.blk{font:inherit;color:inherit;text-align:left;border:none;padding:0;margin:0;background:none;width:100%}
+.card{background:#fff;border:1px solid #EFF1ED;border-radius:16px;box-shadow:0 1px 2px rgba(16,40,42,.03)}
+.hov{transition:box-shadow .15s ease,transform .15s ease,border-color .15s ease}
+.hov:hover{border-color:#BFDCD6;box-shadow:0 12px 28px rgba(16,40,42,.08);transform:translateY(-2px)}
+.row:hover{background:#F5F9F7}
+.card{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(16,40,42,.08)}
+.lift{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.lift:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(16,40,42,.12)}
+.pop{transition:transform .18s ease}
+.pop:hover{transform:scale(1.07)}
+.btnh{transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}
+.btnh:hover{transform:translateY(-1px);box-shadow:0 5px 12px rgba(16,40,42,.18);filter:brightness(1.05)}
+.zoomimg img{transition:transform .5s ease}
+.zoomimg:hover img{transform:scale(1.05)}
+.cloudimg{transition:scale .2s ease}
+.cloudimg:hover{scale:1.3;z-index:3}
+.book{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}
+.book:hover{transform:translateY(-14px) rotate(-4deg);box-shadow:0 10px 18px rgba(0,0,0,.2)}
+.mitem{transition:background .12s ease,transform .12s ease}
+.mitem:hover{background:#F5F9F7;transform:translateX(3px)}
+.fadein{animation:fadein .5s ease backwards}
+.fadeup{animation:fadeup .5s cubic-bezier(.2,.8,.2,1) backwards}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.slidein{animation:slidein .7s cubic-bezier(.2,.8,.2,1) backwards}
+@keyframes slidein{from{opacity:0;transform:translateX(70px)}to{opacity:1;transform:none}}
+.dropin{display:flex;animation:dropin .8s cubic-bezier(.2,.8,.2,1) backwards}
+@keyframes dropin{0%{opacity:0;transform:translateY(-60px) rotate(-12deg)}60%{opacity:1;transform:translateY(4px) rotate(2deg)}100%{opacity:1;transform:none}}
+.flowdash{stroke-dasharray:2 16;animation:flowdash 1.1s linear infinite}
+@keyframes flowdash{to{stroke-dashoffset:-18}}
+.braid{animation:braid 2.6s linear infinite}
+@keyframes braid{from{transform:translateX(0)}to{transform:translateX(130px)}}
+.glow{animation:glow 2.4s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 10px rgba(94,204,117,.22),0 12px 30px rgba(16,40,42,.08)}50%{box-shadow:0 0 0 18px rgba(94,204,117,.12),0 12px 30px rgba(16,40,42,.08)}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.caret{display:inline-block;width:2px;height:15px;background:#0F6B5F;margin-left:1px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.nav:hover{background:#F2F7F5}
+.hs{position:absolute;z-index:8;width:20px;height:20px;border-radius:50%;background:#9BE3AE;border:3px solid #fff;animation:hsPulse 1.5s ease-out infinite;pointer-events:none}
+@keyframes hsPulse{0%{box-shadow:0 0 0 0 rgba(150,190,30,.85)}100%{box-shadow:0 0 0 18px rgba(150,190,30,0)}}
+.zoom{transition:transform .7s cubic-bezier(.2,.8,.2,1),transform-origin 1.1s ease}
+.fan{position:relative}
+.fan .f{position:absolute;top:18px;width:124px;height:118px;border-radius:12px;padding:10px;font-size:12px;font-weight:700;line-height:1.3;box-shadow:0 6px 14px rgba(16,40,42,.14);transition:transform .7s cubic-bezier(.45,0,.2,1),box-shadow .7s ease,outline-color .4s ease}
+.fan .f1{right:-38px;transform:rotate(14deg)}
+.fan .f2{right:-14px;transform:rotate(7deg)}
+.fan .f3{right:10px;transform:rotate(0deg)}
+.fan:hover .f1{transform:translate(24px,-10px) rotate(22deg)}
+.fan:hover .f2{transform:translate(10px,-6px) rotate(12deg)}
+.fan:hover .f3{transform:translate(-4px,-2px) rotate(2deg)}
+.fan .f.up{transform:translate(-4px,-10px) rotate(-2deg) scale(1.04) !important;z-index:3;box-shadow:0 12px 24px rgba(16,40,42,.16)}
+.fan .f.picked{outline:3px solid #7FD893;outline-offset:2px}
+.float{animation:floaty 5s ease-in-out infinite}
+.float2{animation:floaty 6s ease-in-out infinite reverse}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.tipw{position:relative}
+.tipw .tipb{position:absolute;left:0;right:0;bottom:calc(100% + 6px);background:#1C2B2D;color:#fff;font-size:11.5px;line-height:1.4;padding:7px 9px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .15s ease;z-index:4}
+.tipw:hover .tipb{opacity:1}
+.scroll::-webkit-scrollbar{width:7px}.scroll::-webkit-scrollbar-thumb{background:#B7C3C3;border-radius:4px}
+.ap{transition:opacity .55s ease,transform .65s cubic-bezier(.2,.8,.2,1)}
+.pre{opacity:0;transform:translateY(16px) rotate(-2.5deg) scale(.94)}
+.pre2{opacity:0;transform:translateY(16px) rotate(2.5deg) scale(.94)}
+.preL{opacity:0;transform:translateX(-16px)}
+.preS{opacity:0;transform:scale(.4)}
+@media (prefers-reduced-motion: reduce){.hs,.float,.float2,.flowdash,.braid,.glow{animation:none}.hov,.fan .f,.zoom{transition:none}}
+</style>
+</helmet>
+<div style="transform: translate({{ fit.x }}, {{ fit.y }}) scale({{ fit.s }}); transform-origin: 0 0; position: relative; width: 1200px; height: 872px; display: flex; flex-direction: column; gap: 16px; font-family: 'DM Sans', system-ui, sans-serif; color: #1C2B2D; background: #FFFCF6">
+
+<div style="flex: none; height: 96px; background: #fff; border: 1px solid #F0ECE0; border-radius: 18px; box-shadow: 0 4px 16px rgba(16,40,42,.04); display: flex; flex-direction: column; overflow: hidden">
+<div style="flex: 1; display: flex; align-items: center; gap: 20px; padding: 0 26px">
+<span style="flex: none; width: 52px; height: 52px; border-radius: 50%; background: #E6F7EA; color: #1E7A3C; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1"><span style="font-size: 20px; font-weight: 800">{{ note.n }}</span><span style="font-size: 10px; font-weight: 700; margin-top: 2px">of {{ note.total }}</span></span>
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 10.5px; font-weight: 800; letter-spacing: 1.2px; color: #5E9A8F">{{ note.kicker }}</span><span style="display: block; font-size: 18px; font-weight: 700; color: #10474B; margin-top: 3px; letter-spacing: -.2px">{{ note.title }}</span><span style="display: block; font-size: 13.5px; line-height: 1.45; color: #5B6B6D; margin-top: 3px">{{ note.text }}</span></span>
+<sc-if value="{{ note.canBack }}" hint-placeholder-val="{{ false }}"><button class="go" onClick="{{ back }}" style="flex: none; height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid #E3E7E4; background: #fff; color: #3D4B4D; font-size: 13px; font-weight: 600">Back</button></sc-if>
+<sc-if value="{{ note.demo }}" hint-placeholder-val="{{ false }}"><a href="https://calendly.com/ariella-colabeducation/meeting" target="_blank" rel="noopener" style="flex: none; height: 40px; padding: 0 18px; border-radius: 999px; background: #9BE3AE; color: #04454D; font-size: 13px; font-weight: 800; text-decoration: none; display: flex; align-items: center">Book a demo</a></sc-if>
+<button class="go" onClick="{{ note.act }}" style="flex: none; height: 40px; padding: 0 22px; border-radius: 999px; border: none; background: #04454D; color: #fff; font-size: 13px; font-weight: 700">{{ note.btn }}</button>
+</div>
+</div>
+
+<div style="position: relative; width: 1200px; height: 760px; overflow: hidden; border-radius: 18px; border: 1px solid #EEF0EC; box-shadow: 0 16px 40px rgba(16,40,42,.07); background: #FCFCFA">
+<div class="zoom" style="position: absolute; inset: 0; display: flex; background: #FCFCFA; transform: scale({{ zoom.s }}); transform-origin: {{ zoom.o }}">
+
+<aside style="flex: none; width: 224px; background: #fff; color: #1B4A50; border-right: 1px solid #EFF1ED; padding: 20px 12px 14px; display: flex; flex-direction: column; gap: 3px">
+<div class="ap {{ ap.n0 }}" style="padding: 4px 6px 16px"><img src="./assets/1ccba17a3e66a002eebc61b2bf611f6d.png" alt="CoLab Education" style="width: 176px; height: auto"></div>
+<div class="nav ap {{ ap.n1 }}" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 9px; font-size: 14px; background: {{ nav.home }}; font-weight: {{ navW.home }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>Dashboard</div>
+<div class="ap {{ ap.n2 }}" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 9px; font-size: 14px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"></path></svg>My CoLab</div>
+<div class="ap {{ ap.n3 }}" style="font-size: 11px; font-weight: 700; letter-spacing: .6px; color: #94A3A4; padding: 16px 8px 6px">MY COMMUNITIES</div>
+<div class="ap {{ ap.n4 }}" style="display: flex; align-items: center; gap: 9px; padding: 6px 8px; font-size: 14px; font-weight: 700"><svg width="28" height="28" viewBox="0 0 40 40" aria-hidden="true" style="flex: none; border-radius: 50%"><circle cx="20" cy="20" r="20" fill="#1F3A5F"></circle><circle cx="27" cy="14" r="5" fill="#F5C451"></circle><path d="M8 26 L14 14 L20 26 Z" fill="#6FB58A"></path><path d="M14 26 L19.5 17 L25 26 Z" fill="#4E9A6E"></path><path d="M5 29 q4-3 8 0 t8 0 t8 0 t8 0" stroke="#8EC5E8" stroke-width="2.4" fill="none" stroke-linecap="round"></path><path d="M9 33.5 q4-3 8 0 t8 0 t8 0" stroke="#8EC5E8" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".7"></path></svg><span style="flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Lakeview School District</span></div>
+<div class="nav ap {{ ap.n5 }}" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; margin-left: 16px; border-radius: 9px; font-size: 14px; background: {{ nav.feed }}; font-weight: {{ navW.feed }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h12a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"></path><path d="M18 9h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-1v2l-3-2h-4"></path></svg>Community Feed</div>
+<button class="nav ap {{ ap.n6 }} {{ cls.res }}" onClick="{{ tap.res }}" style="position: relative; display: flex; align-items: center; gap: 10px; padding: 7px 10px; margin-left: 16px; border: none; border-radius: 9px; font-size: 14px; text-align: left; color: inherit; background: {{ nav.res }}; font-weight: {{ navW.res }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"></path></svg>Resources</button>
+<button class="nav ap {{ ap.n7 }} {{ cls.net }}" onClick="{{ tap.net }}" style="position: relative; display: flex; align-items: center; gap: 10px; padding: 7px 10px; margin-left: 16px; border: none; border-radius: 9px; font-size: 14px; text-align: left; color: inherit; background: {{ nav.net }}; font-weight: {{ navW.net }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="5"></circle><circle cx="15" cy="12" r="5"></circle></svg>Connect</button>
+<div class="ap {{ ap.n8 }}" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; margin-left: 16px; font-size: 14px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3"></circle><circle cx="5" cy="10" r="2"></circle><circle cx="19" cy="10" r="2"></circle><path d="M7 20a5 5 0 0 1 10 0M2 19a3 3 0 0 1 5-2M22 19a3 3 0 0 0-5-2"></path></svg>Spaces</div>
+<div style="border-left: 1.5px solid #E8EDEA; margin-left: 34px; display: flex; flex-direction: column; gap: 2px">
+<div class="nav ap {{ ap.n9 }}" style="display: flex; align-items: center; gap: 8px; padding: 6px 8px; margin-left: 8px; border-radius: 9px; font-size: 13px; color: #3D4B4D; background: {{ nav.math }}; font-weight: {{ navW.math }}"><img src="./assets/c1b4c2c9397304d019ea8225af3511bf.png" alt="" style="flex: none; width: 22px; height: 22px; border-radius: 6px; object-fit: cover"><span style="flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Grades 6–8 Math</span><span style="width: 7px; height: 7px; border-radius: 50%; background: #5ECC75"></span></div>
+<div class="nav ap {{ ap.n10 }}" style="display: flex; align-items: center; gap: 8px; padding: 6px 8px; margin-left: 8px; border-radius: 9px; font-size: 13px; color: #3D4B4D; background: {{ nav.cte }}; font-weight: {{ navW.cte }}"><img src="./assets/83e40964b46f00730b91af01a52a3b3d.png" alt="" style="flex: none; width: 22px; height: 22px; border-radius: 6px; object-fit: cover"><span style="flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Regional CTE Council</span><span style="width: 7px; height: 7px; border-radius: 50%; background: #5ECC75"></span></div>
+<div class="ap {{ ap.n11 }}" style="display: flex; align-items: center; gap: 8px; padding: 6px 8px; margin-left: 8px; border-radius: 9px; font-size: 13px; color: #3D4B4D"><img src="./assets/6d0259194b77048210e2378a1200bd9d.png" alt="" style="flex: none; width: 22px; height: 22px; border-radius: 6px; object-fit: cover"><span style="flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">AI Leadership Cohort</span></div>
+<div class="ap {{ ap.n12 }}" style="display: flex; align-items: center; gap: 8px; padding: 6px 8px; margin-left: 8px; border-radius: 9px; font-size: 13px; color: #3D4B4D"><img src="./assets/9d91753ed05797c7c3d500cba9740dd3.png" alt="" style="flex: none; width: 22px; height: 22px; border-radius: 6px; object-fit: cover"><span style="flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">New Teacher Circle</span></div>
+<div class="ap {{ ap.n13 }}" style="display: flex; align-items: center; gap: 8px; padding: 6px 8px; margin-left: 8px; border-radius: 9px; font-size: 13px; color: #3D4B4D"><img src="./assets/16a15e05cd2e9603dc81e7b93371d2c9.png" alt="" style="flex: none; width: 22px; height: 22px; border-radius: 6px; object-fit: cover"><span style="flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Multilingual Learners Network</span></div>
+</div>
+<button class="nav ap {{ ap.n14 }} {{ cls.ins }}" onClick="{{ tap.ins }}" style="position: relative; display: flex; align-items: center; gap: 10px; padding: 7px 10px; margin-left: 16px; border: none; border-radius: 9px; font-size: 14px; text-align: left; color: inherit; background: {{ nav.ins }}; font-weight: {{ navW.ins }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.5L12 15l-1.8-4.5L5.5 9l4.7-1.4z"></path><path d="M19 15l.8 2 2 .8-2 .7-.8 2-.7-2-2-.7 2-.8z"></path></svg>Insights</button>
+<div style="flex: 1"></div>
+<div class="ap {{ ap.n15 }}" style="display: flex; align-items: center; gap: 9px; padding: 10px 8px; border-top: 1px solid #EFF1ED"><img src="./assets/46be7b136788abe3da3421acd97bdcec.png" alt="" style="flex: none; width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 2px solid #fff"><span style="min-width: 0"><span style="display: block; font-size: 13px; font-weight: 700">Dana Ruiz</span><span style="display: block; font-size: 11px; color: #7A8A8C; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Director, Teaching and Learning</span></span></div>
+</aside>
+
+<div style="position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column">
+<div style="flex: none; height: 64px; display: flex; align-items: center; gap: 12px; padding: 0 30px">
+<div class="ap {{ ap.t0 }}" style="width: 340px; height: 38px; display: flex; align-items: center; gap: 8px; padding: 0 12px; background: #fff; border: 1px solid #ECEFEB; border-radius: 999px; font-size: 13px; color: #8A9899"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>Ask or search Lakeview…</div>
+<div style="flex: 1"></div>
+<span class="ap {{ ap.t1 }}" style="width: 34px; height: 34px; border-radius: 50%; background: #EEF5F3; color: #0F6B5F; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg></span>
+<span class="ap {{ ap.t2 }}" style="position: relative; width: 34px; height: 34px; border-radius: 50%; background: #EEF5F3; color: #0F6B5F; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg><span style="position: absolute; top: 2px; right: 2px; width: 9px; height: 9px; border-radius: 50%; background: #5ECC75; border: 2px solid #EEF5F3"></span></span>
+</div>
+
+<div style="position: relative; flex: 1; min-height: 0; overflow: hidden; padding: 4px 30px 22px">
+
+<sc-if value="{{ v.home }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div class="ap {{ ap.g }}"><div style="font-size: 26px; font-weight: 700; color: #1B4A50; letter-spacing: -.4px">Good afternoon, Dana.</div><div style="font-size: 13.5px; color: #7A8A8C; margin-top: 4px">Here's what's moving across Lakeview.</div></div>
+<div class="card ap {{ ap.cc }}" style="overflow: hidden">
+<div style="height: 56px; background: #F1F6FB; display: flex; align-items: center; gap: 12px; padding: 0 18px; color: #1F3A5F; position: relative; overflow: hidden"><span style="position: absolute; right: 120px; top: -50px; width: 140px; height: 140px; border-radius: 50%; background: rgba(142,197,232,.18)"></span><svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" style="flex: none; border-radius: 50%"><circle cx="20" cy="20" r="20" fill="#1F3A5F"></circle><circle cx="27" cy="14" r="5" fill="#F5C451"></circle><path d="M8 26 L14 14 L20 26 Z" fill="#6FB58A"></path><path d="M14 26 L19.5 17 L25 26 Z" fill="#4E9A6E"></path><path d="M5 29 q4-3 8 0 t8 0 t8 0 t8 0" stroke="#8EC5E8" stroke-width="2.4" fill="none" stroke-linecap="round"></path><path d="M9 33.5 q4-3 8 0 t8 0 t8 0" stroke="#8EC5E8" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".7"></path></svg><span style="flex: 1"><b style="display: block; font-size: 15px">Latest in Lakeview School District</b><span style="display: block; font-size: 11.5px; color: #6B7F92">1,240 members · 14 schools</span></span><span style="position: relative; background: #fff; color: #1F3A5F; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 999px">Open feed →</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding: 16px 18px 18px">
+<sc-for list="{{ dashPosts }}" as="p" hint-placeholder-count="3">
+<div class="hov ap {{ p.ap }}" style="display: flex; gap: 10px; background: #fff; border: 1px solid #EFF1ED; border-radius: 14px; padding: 12px; height: 108px">
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px"><span style="display: flex; align-items: center; gap: 7px"><img src="{{ p.img }}" alt="" style="flex: none; width: 26px; height: 26px; border-radius: 50%; object-fit: cover"><b style="font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ p.name }}</b></span><span style="align-self: flex-start; font-size: 10.5px; font-weight: 700; color: {{ p.tagFg }}; background: {{ p.tagBg }}; border-radius: 999px; padding: 1px 7px">{{ p.tag }}</span><span style="font-size: 12.5px; line-height: 1.35; color: #2C3A3C; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden">{{ p.short }}</span></span>
+<img src="{{ p.thumb }}" alt="" style="flex: none; width: 74px; height: 86px; border-radius: 9px; object-fit: cover">
+</div>
+</sc-for>
+</div>
+</div>
+<div>
+<div class="ap {{ ap.rh }}" style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px"><span style="font-size: 16px; font-weight: 700; color: #1B4A50">Recommended for you</span></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{ recs }}" as="r" hint-placeholder-count="5">
+<div class="card hov ap {{ r.ap }}" style="overflow: hidden; display: flex; flex-direction: column; height: 236px">
+<span style="position: relative; display: block; height: 116px; background: {{ r.bg }}; overflow: hidden">
+<sc-if value="{{ r.isCollection }}" hint-placeholder-val="{{ false }}"><span style="display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; height: 100%"><img src="{{ r.m1 }}" alt="" style="grid-row: span 2; width: 100%; height: 100%; object-fit: cover"><img src="{{ r.m2 }}" alt="" style="width: 100%; height: 100%; object-fit: cover"><img src="{{ r.m3 }}" alt="" style="width: 100%; height: 100%; object-fit: cover"></span></sc-if>
+<sc-if value="{{ r.isVideo }}" hint-placeholder-val="{{ false }}"><img src="{{ r.img }}" alt="" style="width: 100%; height: 100%; object-fit: cover"><span style="position: absolute; inset: 0; background: linear-gradient(transparent 45%, rgba(0,0,0,.5))"></span><span style="position: absolute; left: 50%; top: 50%; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; background: rgba(255,255,255,.92); display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z" fill="#04454D"></path></svg></span><span style="position: absolute; right: 7px; bottom: 6px; background: rgba(0,0,0,.65); color: #fff; font-size: 10.5px; font-weight: 700; padding: 1px 6px; border-radius: 5px">4:12</span></sc-if>
+<sc-if value="{{ r.isDoc }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 24%; right: 24%; top: 12px; bottom: -6px; background: #fff; border-radius: 4px; box-shadow: 0 4px 12px rgba(16,40,42,.18); padding: 10px 9px; display: flex; flex-direction: column; gap: 5px"><span style="height: 6px; width: 70%; border-radius: 3px; background: #1F3A5F"></span><span style="height: 4px; width: 100%; border-radius: 2px; background: #DDE2E2"></span><span style="height: 4px; width: 90%; border-radius: 2px; background: #DDE2E2"></span><span style="height: 22px; border-radius: 3px; background: #EAF2FA; border: 1px solid #C9DBEE"></span><span style="height: 4px; width: 95%; border-radius: 2px; background: #DDE2E2"></span></span><span style="position: absolute; right: 10px; bottom: 8px; background: {{ r.badgeBg }}; color: #fff; font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px">{{ r.badge }}</span></sc-if>
+<sc-if value="{{ r.isSpace }}" hint-placeholder-val="{{ false }}"><img src="{{ r.img }}" alt="" style="width: 100%; height: 100%; object-fit: cover"><span style="position: absolute; left: 8px; bottom: 8px; background: #fff; color: #8A5A12; font-size: 10.5px; font-weight: 800; padding: 2px 7px; border-radius: 999px">SPACE</span></sc-if>
+<sc-if value="{{ r.isPerson }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center"><img src="{{ r.img }}" alt="" style="width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 4px 12px rgba(16,40,42,.15)"></span></sc-if>
+</span>
+<span style="padding: 12px 13px; display: flex; flex-direction: column; gap: 5px; flex: 1"><span style="font-size: 10.5px; font-weight: 800; letter-spacing: .5px; color: {{ r.labelFg }}">{{ r.label }}</span><span style="font-size: 13px; font-weight: 700; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden">{{ r.title }}</span><span style="font-size: 11.5px; color: #4A5A5C; margin-top: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ r.sub }}</span></span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ v.feed }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div style="height: 78px; border-radius: 16px; background: #F1F6FB; display: flex; align-items: center; gap: 14px; padding: 0 22px; color: #1F3A5F; overflow: hidden; position: relative">
+<span style="position: absolute; right: 300px; top: -70px; width: 180px; height: 180px; border-radius: 50%; background: rgba(142,197,232,.2)"></span>
+<svg width="54" height="54" viewBox="0 0 40 40" aria-hidden="true" style="flex: none; border-radius: 50%; position: relative"><circle cx="20" cy="20" r="20" fill="#1F3A5F"></circle><circle cx="27" cy="14" r="5" fill="#F5C451"></circle><path d="M8 26 L14 14 L20 26 Z" fill="#6FB58A"></path><path d="M14 26 L19.5 17 L25 26 Z" fill="#4E9A6E"></path><path d="M5 29 q4-3 8 0 t8 0 t8 0 t8 0" stroke="#8EC5E8" stroke-width="2.4" fill="none" stroke-linecap="round"></path><path d="M9 33.5 q4-3 8 0 t8 0 t8 0" stroke="#8EC5E8" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".7"></path></svg>
+<span style="position: relative; flex: 1"><span style="display: block; font-size: 22px; font-weight: 800; letter-spacing: -.3px">Lakeview School District</span><span style="display: block; font-size: 12.5px; color: #6B7F92; margin-top: 2px">Community Feed</span></span>
+<span style="position: relative; display: flex"><img src="./assets/c1b4c2c9397304d019ea8225af3511bf.png" alt="" style="width: 92px; height: 58px; border-radius: 8px; object-fit: cover; border: 2px solid #fff; transform: rotate(-4deg)"><img src="./assets/0e02f87c6eb7a9b0301d0abefcb24627.png" alt="" style="width: 92px; height: 58px; border-radius: 8px; object-fit: cover; border: 2px solid #fff; transform: rotate(3deg); margin-left: -14px"><img src="./assets/6d0259194b77048210e2378a1200bd9d.png" alt="" style="width: 92px; height: 58px; border-radius: 8px; object-fit: cover; border: 2px solid #fff; transform: rotate(-2deg); margin-left: -14px"></span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: start">
+<sc-for list="{{ feedCols }}" as="col" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<sc-if value="{{ col.share }}" hint-placeholder-val="{{ false }}">
+<div class="card fan" style="height: 176px; padding: 14px; overflow: hidden">
+<span class="f f1 {{ fan.c1 }}" style="background: #FFF1CC; color: #8A5A12">What I'm noticing</span>
+<span class="f f2 {{ fan.c2 }}" style="background: #DDF0EC; color: #0F6B5F">What I'm trying</span>
+<span class="f f3 {{ fan.c3 }}" style="background: #EDDFF6; color: #4B1B6A">What I'm celebrating</span>
+<div style="position: relative; z-index: 2; width: 150px; display: flex; flex-direction: column; gap: 8px">
+<img src="./assets/46be7b136788abe3da3421acd97bdcec.png" alt="" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover">
+<b style="font-size: 17px; line-height: 1.2; color: #1B4A50">Share something with Lakeview</b>
+<span style="align-self: flex-start; height: 32px; padding: 0 14px; border-radius: 999px; background: #04454D; color: #fff; font-size: 12.5px; font-weight: 700; display: flex; align-items: center; transform: scale({{ fan.press }}); box-shadow: {{ fan.ring }}; transition: transform .15s ease, box-shadow .2s ease">Pick a prompt</span>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ col.compose }}" hint-placeholder-val="{{ false }}">
+<div class="card" style="padding: 14px 16px; display: flex; gap: 10px; align-items: flex-start; border-color: {{ col.comp.border }}">
+<img src="./assets/46be7b136788abe3da3421acd97bdcec.png" alt="" style="flex: none; width: 32px; height: 32px; border-radius: 50%; object-fit: cover">
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<div style="min-height: 39px; font-size: 13px; line-height: 1.5; color: #2C3A3C"><sc-if value="{{ col.comp.empty }}" hint-placeholder-val="{{ true }}"><span style="color: #94A3A4">{{ col.comp.ph }}</span></sc-if>{{ col.comp.text }}<sc-if value="{{ col.comp.typing }}" hint-placeholder-val="{{ false }}"><span class="caret"></span></sc-if></div>
+<div style="display: flex; align-items: center; gap: 8px; min-height: 30px"><sc-if value="{{ col.comp.tag }}" hint-placeholder-val="{{ true }}"><span class="fadein" style="font-size: 10.5px; font-weight: 700; color: #0F6B5F; background: #DDF0EC; border-radius: 999px; padding: 2px 8px">What I'm trying</span></sc-if><span class="btnh" style="margin-left: auto; height: 30px; padding: 0 16px; border-radius: 999px; background: {{ col.comp.postBg }}; color: {{ col.comp.postFg }}; font-size: 12px; font-weight: 700; display: flex; align-items: center; transition: background .3s ease, color .3s ease">Post</span></div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ col.newPost }}" hint-placeholder-val="{{ false }}">
+<div class="card hov fadeup" style="display: flex; flex-direction: column; gap: 10px; padding: 16px; border-color: #7FD893">
+<span style="display: flex; align-items: center; gap: 8px; width: 100%"><img src="./assets/46be7b136788abe3da3421acd97bdcec.png" alt="" style="flex: none; width: 32px; height: 32px; border-radius: 50%; object-fit: cover"><span style="min-width: 0; flex: 1"><b style="display: block; font-size: 13px">Dana Ruiz</b><span style="display: block; font-size: 11px; color: #8A9899">Just now</span></span></span>
+<span style="align-self: flex-start; font-size: 10.5px; font-weight: 700; color: #0F6B5F; background: #DDF0EC; border-radius: 999px; padding: 2px 8px">What I'm trying</span>
+<span style="font-size: 13px; line-height: 1.5; color: #2C3A3C">{{ col.comp.full }}</span>
+</div>
+</sc-if>
+<sc-for list="{{ col.posts }}" as="p" hint-placeholder-count="2">
+<div class="card hov" style="display: flex; flex-direction: column; gap: 10px; padding: 16px">
+<span style="display: flex; align-items: center; gap: 8px; width: 100%"><img src="{{ p.img }}" alt="" style="flex: none; width: 32px; height: 32px; border-radius: 50%; object-fit: cover"><span style="min-width: 0; flex: 1"><b style="display: block; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ p.name }}</b><span style="display: block; font-size: 11px; color: #8A9899; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ p.time }}</span></span></span>
+<span style="align-self: flex-start; font-size: 10.5px; font-weight: 700; color: {{ p.tagFg }}; background: {{ p.tagBg }}; border-radius: 999px; padding: 2px 8px">{{ p.tag }}</span>
+<span style="font-size: 13px; line-height: 1.5; color: #2C3A3C">{{ p.text }}</span>
+<sc-if value="{{ p.hasPhoto }}" hint-placeholder-val="{{ false }}"><img src="{{ p.photo }}" alt="" style="width: 100%; height: 128px; border-radius: 10px; object-fit: cover"></sc-if>
+<sc-if value="{{ p.hasRes }}" hint-placeholder-val="{{ false }}"><span style="display: flex; gap: 10px; align-items: center; width: 100%; border: 1px solid #E1E5DF; border-radius: 10px; padding: 7px"><span style="position: relative; flex: none; width: 86px; height: 54px; border-radius: 7px; overflow: hidden"><img src="./assets/ce37c38bbbc60815cacd7f3a18f7dae1.png" alt="" style="width: 100%; height: 100%; object-fit: cover"><span style="position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: rgba(255,255,255,.92); display: flex; align-items: center; justify-content: center"><svg width="9" height="9" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z" fill="#04454D"></path></svg></span></span><span style="min-width: 0"><b style="display: block; font-size: 12px; line-height: 1.3">AI prompt pack for Unit 2</b><span style="display: block; font-size: 10.5px; color: #8A9899; margin-top: 2px">Saved by 26</span></span></span></sc-if>
+<sc-if value="{{ p.hasEvent }}" hint-placeholder-val="{{ false }}"><span style="display: block; width: 100%; border: 1px solid #E1E5DF; border-radius: 10px; overflow: hidden"><span style="position: relative; display: block; height: 88px"><img src="./assets/6d0259194b77048210e2378a1200bd9d.png" alt="" style="width: 100%; height: 100%; object-fit: cover"><span style="position: absolute; left: 8px; top: 8px; width: 40px; height: 44px; border-radius: 8px; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1"><span style="font-size: 9px; font-weight: 800; color: #B42318">NOV</span><span style="font-size: 17px; font-weight: 800; margin-top: 2px">10</span></span></span><span style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 9px"><span><b style="display: block; font-size: 12px">District math PD day</b><span style="display: block; font-size: 10.5px; color: #8A9899">Lakeview HS</span></span><span style="flex: none; font-size: 11px; font-weight: 700; color: #0F6B5F; background: #EEF6F3; border-radius: 999px; padding: 4px 10px">Add</span></span></span></sc-if>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 11.5px; color: #4A5A5C; width: 100%"><span style="display: flex"><sc-for list="{{ p.reactors }}" as="f" hint-placeholder-count="3"><img src="{{ f }}" alt="" style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; margin-right: -6px"></sc-for></span><span style="margin-left: 6px">{{ p.reacts }}</span><span style="margin-left: auto">{{ p.replies }}</span></span>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ v.res }}" hint-placeholder-val="{{ false }}">
+<div style="height: 100%; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: flex-end; justify-content: space-between"><div><div style="font-size: 24px; font-weight: 700; color: #1B4A50">Resources</div><div style="font-size: 13px; color: #7A8A8C; margin-top: 3px">1,860 shared by Lakeview educators</div></div><span style="display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 16px; border-radius: 999px; background: #04454D; color: #fff; font-size: 12.5px; font-weight: 700"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Share a resource</span></div>
+<div style="display: flex; align-items: center; gap: 10px; height: 52px; background: #fff; border: 1.5px solid #9FD1C4; border-radius: 999px; padding: 0 18px 0 12px; box-shadow: 0 4px 14px rgba(15,107,95,.06)"><span style="flex: none; width: 28px; height: 28px; border-radius: 8px; background: #E6F2F0; color: #04454D; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.5L12 15l-1.8-4.5L5.5 9l4.7-1.4z"></path></svg></span><span style="flex: 1; font-size: 14.5px; font-weight: 500"><sc-if value="{{ q.empty }}" hint-placeholder-val="{{ false }}"><span style="color: #94A3A4">Ask in your own words…</span></sc-if>{{ q.text }}<sc-if value="{{ q.typing }}" hint-placeholder-val="{{ false }}"><span class="caret"></span></sc-if></span><span style="font-size: 11.5px; font-weight: 600; color: #5E9A8F">{{ q.count }}</span></div>
+<div class="scroll" style="position: relative; flex: 1; min-height: 0; overflow-y: auto; padding-right: 4px">
+<div style="background: #F0FAF2; border: 1px solid #CFEFD7; border-radius: 16px; padding: 14px 16px; margin-bottom: 18px">
+<div style="display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: #1E6B35; margin-bottom: 10px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.5L12 15l-1.8-4.5L5.5 9l4.7-1.4z"></path></svg>Recommended for you</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px">
+<sc-for list="{{ resRecs }}" as="r" hint-placeholder-count="3">
+<div class="hov" style="display: flex; gap: 10px; align-items: center; background: #fff; border: 1px solid #EFF1ED; border-radius: 12px; padding: 8px">
+<img src="{{ r.img }}" alt="" style="flex: none; width: 64px; height: 46px; border-radius: 7px; object-fit: cover">
+<span style="min-width: 0"><b style="display: block; font-size: 12px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ r.title }}</b><span style="display: block; font-size: 11px; color: #4A5A5C; margin-top: 2px">{{ r.why }}</span></span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; padding-bottom: 8px">
+<sc-for list="{{ library }}" as="r" hint-placeholder-count="12">
+<button class="blk card hov fadeup {{ r.cls }}" onClick="{{ r.tap }}" style="position: relative; overflow: hidden; display: flex; flex-direction: column">
+<span style="position: relative; display: block; height: 104px; background: {{ r.bg }}; overflow: hidden">
+<sc-if value="{{ r.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ r.img }}" alt="" style="width: 100%; height: 100%; object-fit: cover"></sc-if>
+<sc-if value="{{ r.isVideo }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; inset: 0; background: linear-gradient(transparent 45%, rgba(0,0,0,.5))"></span><span style="position: absolute; left: 50%; top: 50%; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; background: rgba(255,255,255,.92); display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z" fill="#04454D"></path></svg></span><span style="position: absolute; right: 7px; bottom: 6px; background: rgba(0,0,0,.65); color: #fff; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 4px">{{ r.len }}</span></sc-if>
+<sc-if value="{{ r.isDoc }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 26%; right: 26%; top: 12px; bottom: -6px; background: #fff; border-radius: 3px; box-shadow: 0 4px 12px rgba(16,40,42,.18); padding: 9px 8px; display: flex; flex-direction: column; gap: 5px"><span style="height: 5px; width: 70%; border-radius: 3px; background: #1F3A5F"></span><span style="height: 3px; border-radius: 2px; background: #DDE2E2"></span><span style="height: 3px; width: 85%; border-radius: 2px; background: #DDE2E2"></span><span style="height: 18px; border-radius: 3px; background: {{ r.band }}"></span><span style="height: 3px; border-radius: 2px; background: #DDE2E2"></span></span></sc-if>
+<span style="position: absolute; left: 7px; top: 7px; background: {{ r.badgeBg }}; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 6px; border-radius: 4px">{{ r.badge }}</span>
+<sc-if value="{{ r.hasVer }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; right: 7px; top: 7px; background: #9BE3AE; color: #04454D; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 999px; display: flex; align-items: center; gap: 4px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v12M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 9a9 9 0 0 1-9 9"></path></svg>{{ r.ver }}</span></sc-if>
+</span>
+<span style="padding: 12px 13px; display: flex; flex-direction: column; gap: 7px"><b style="font-size: 12.5px; line-height: 1.3; height: 32px; overflow: hidden">{{ r.title }}</b><span style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: #3D4B4D"><img src="{{ r.who }}" alt="" style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover">{{ r.by }}</span><span style="display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #4A5A5C"><span style="display: inline-flex; align-items: center; gap: 4px; background: #F4F7F3; border-radius: 999px; padding: 1px 7px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3"></circle><path d="M6 20a6 6 0 0 1 12 0"></path></svg>In {{ r.spaces }}</span><span style="margin-left: auto">Saved {{ r.saves }}</span></span></span>
+
+</button>
+</sc-for>
+</div>
+</div>
+<div style="position: absolute; left: 30px; right: 30px; bottom: 22px; height: 44px; background: linear-gradient(rgba(252,252,250,0), #FCFCFA); pointer-events: none; display: flex; align-items: flex-end; justify-content: center"><span style="font-size: 11.5px; font-weight: 700; color: #0F6B5F; background: #fff; border: 1px solid #DCEEE9; border-radius: 999px; padding: 3px 12px">More ↓</span></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ v.space }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div class="card" style="overflow: hidden">
+<div style="position: relative; height: 92px; background: {{ sp.bannerBg }}; display: flex; align-items: center; padding: 0 22px; overflow: hidden">
+<span style="position: absolute; left: -40px; bottom: -70px; width: 200px; height: 200px; border-radius: 50%; background: {{ sp.blob }}"></span>
+<span style="position: relative; flex: 1"><span style="display: block; font-size: 26px; font-weight: 800; letter-spacing: -.5px; color: #22303A; line-height: 1">{{ sp.bannerWord }}</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 30px; color: {{ sp.bannerInk }}; line-height: 1">{{ sp.bannerScript }}</span></span>
+<span style="position: relative; display: flex; align-items: center"><sc-for list="{{ sp.collage }}" as="c" hint-placeholder-count="3"><img src="{{ c.src }}" alt="" style="width: 118px; height: 70px; border-radius: 9px; object-fit: cover; border: 3px solid #fff; box-shadow: 0 4px 12px rgba(16,40,42,.15); transform: rotate({{ c.rot }}); margin-left: -16px"></sc-for></span>
+</div>
+<div style="padding: 12px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px">
+<div style="min-width: 0"><h1 style="margin: 0; font-size: 19px; font-weight: 700; letter-spacing: -.3px">{{ sp.title }}</h1><div style="font-size: 12px; color: #7A8A8C; margin-top: 3px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap"><svg width="15" height="15" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#1F3A5F"></circle><circle cx="27" cy="14" r="5" fill="#F5C451"></circle><path d="M8 26 L14 14 L20 26 Z" fill="#6FB58A"></path><path d="M14 26 L19.5 17 L25 26 Z" fill="#4E9A6E"></path></svg>Lakeview School District<span style="color: #9AA6A7">·</span>{{ sp.members }} members<sc-if value="{{ isCte }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-items: center; gap: 5px; background: #FFF4E0; color: #6B4E00; border: 1px solid #F0D9A8; border-radius: 999px; padding: 2px 9px; font-size: 11.5px; font-weight: 700"><img src="./assets/0d3423aee90062035bb5c9c74149a117.png" alt="" style="width: 16px; height: 16px; border-radius: 50%; object-fit: cover"><img src="./assets/49396a7546fc9e7f8bb0fa4b2d038691.png" alt="" style="width: 16px; height: 16px; border-radius: 50%; object-fit: cover; margin-left: -8px; border: 1.5px solid #FFF4E0"><span>Includes leaders from Cedar Valley USD and Northfield SD</span></span></sc-if></div></div>
+<div style="display: flex; gap: 8px; flex: none"><span class="btnh" style="height: 34px; padding: 0 14px; border-radius: 999px; border: 1px solid #E8ECE9; font-size: 12.5px; font-weight: 600; display: flex; align-items: center">About</span><span class="btnh" style="height: 34px; padding: 0 16px; border-radius: 999px; background: #04454D; color: #fff; font-size: 12.5px; font-weight: 600; display: flex; align-items: center">Share</span></div>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 0.9fr; gap: 16px">
+<section class="card" style="padding: 16px 16px 8px; display: flex; flex-direction: column; height: 364px">
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px"><span style="display: inline-flex; align-items: center; gap: 7px; font-size: 15px; font-weight: 700; color: #10474B"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h12a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"></path></svg>Discussions</span><span style="background: #E6F7EA; color: #1E7A3C; font-weight: 700; font-size: 11px; padding: 2px 8px; border-radius: 999px">{{ sp.discNew }} new</span></div>
+<sc-for list="{{ sp.discussions }}" as="d" hint-placeholder-count="3">
+<button class="blk row ap {{ d.ap }} {{ d.cls }}" onClick="{{ d.tap }}" style="position: relative; display: flex; gap: 9px; align-items: flex-start; border-top: 1px solid #F4F6F3; padding: 11px 6px; border-radius: 10px">
+<img src="{{ d.img }}" alt="" style="flex: none; width: 30px; height: 30px; border-radius: 50%; object-fit: cover">
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 13px; font-weight: 600; line-height: 1.3">{{ d.title }}</span><span style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: #4A5A5C; margin-top: 4px"><span style="display: flex"><sc-for list="{{ d.faces }}" as="f" hint-placeholder-count="3"><img src="{{ f }}" alt="" style="width: 16px; height: 16px; border-radius: 50%; object-fit: cover; border: 1.5px solid #fff; margin-right: -5px"></sc-for></span><span style="margin-left: 4px">{{ d.sub }}</span></span></span>
+
+</button>
+</sc-for>
+</section>
+
+<section class="card" style="padding: 16px 16px 8px; display: flex; flex-direction: column; height: 364px">
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px"><span style="display: inline-flex; align-items: center; gap: 7px; font-size: 15px; font-weight: 700; color: #10474B"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"></path></svg>Resources</span><span style="background: #E6F7EA; color: #1E7A3C; font-weight: 700; font-size: 11px; padding: 2px 8px; border-radius: 999px">{{ sp.resNew }} new</span></div>
+<sc-for list="{{ sp.resources }}" as="r" hint-placeholder-count="3">
+<div class="row ap {{ r.ap }}" style="display: flex; gap: 10px; align-items: center; border-top: 1px solid #F4F6F3; padding: 10px 6px; border-radius: 10px">
+<span style="position: relative; flex: none; width: 82px; height: 56px; border-radius: 8px; overflow: hidden; background: {{ r.bg }}">
+<sc-if value="{{ r.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ r.img }}" alt="" style="width: 100%; height: 100%; object-fit: cover"></sc-if>
+<sc-if value="{{ r.isVideo }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; inset: 0; background: rgba(0,0,0,.18)"></span><span style="position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; background: rgba(255,255,255,.92); display: flex; align-items: center; justify-content: center"><svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z" fill="#04454D"></path></svg></span></sc-if>
+<sc-if value="{{ r.isDoc }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 20px; right: 20px; top: 7px; bottom: -4px; background: #fff; border-radius: 2px; box-shadow: 0 2px 6px rgba(16,40,42,.18); padding: 5px 4px; display: flex; flex-direction: column; gap: 3px"><span style="height: 3px; width: 70%; background: #1F3A5F; border-radius: 2px"></span><span style="height: 2px; background: #DDE2E2"></span><span style="height: 2px; width: 85%; background: #DDE2E2"></span><span style="height: 8px; background: {{ r.band }}; border-radius: 1px"></span><span style="height: 2px; background: #DDE2E2"></span></span><span style="position: absolute; right: 4px; bottom: 4px; background: {{ r.badgeBg }}; color: #fff; font-size: 8.5px; font-weight: 800; padding: 1px 4px; border-radius: 3px">{{ r.badge }}</span></sc-if>
+</span>
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 13px; font-weight: 600; line-height: 1.3">{{ r.title }}</span><span style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: #4A5A5C; margin-top: 3px"><sc-if value="{{ r.hasVer }}" hint-placeholder-val="{{ false }}"><span style="background: #9BE3AE; color: #04454D; font-size: 10px; font-weight: 800; padding: 0 6px; border-radius: 999px">{{ r.ver }}</span></sc-if>{{ r.sub }}</span></span>
+</div>
+</sc-for>
+</section>
+
+<div style="display: flex; flex-direction: column; gap: 16px; height: 364px">
+<section class="card" style="padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; outline: {{ sp.calRing }}; outline-offset: 2px">
+<span style="display: inline-flex; align-items: center; gap: 7px; font-size: 15px; font-weight: 700; color: #10474B"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg>Calendar</span>
+<sc-for list="{{ sp.events }}" as="e" hint-placeholder-count="2">
+<div class="ap {{ e.ap }}" style="display: flex; gap: 9px; align-items: center; padding: 5px; border-radius: 9px; background: {{ e.rowBg }}">
+<span style="flex: none; width: 36px; height: 38px; border-radius: 8px; background: {{ e.dateBg }}; color: {{ e.dateFg }}; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1"><span style="font-size: 8.5px; font-weight: 800">{{ e.mon }}</span><span style="font-size: 15px; font-weight: 800; margin-top: 2px">{{ e.day }}</span></span>
+<span style="min-width: 0; flex: 1"><span style="display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700"><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ e.title }}</span><sc-if value="{{ e.isNew }}" hint-placeholder-val="{{ false }}"><span style="flex: none; background: #9BE3AE; color: #04454D; font-size: 9.5px; font-weight: 800; padding: 0 5px; border-radius: 999px">New</span></sc-if></span><span style="display: block; font-size: 10.5px; color: #4A5A5C; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ e.when }}</span></span>
+</div>
+</sc-for>
+</section>
+<section class="card" style="flex: 1; padding: 14px 16px; display: flex; flex-direction: column; overflow: hidden">
+<span style="display: flex; align-items: center; justify-content: space-between"><span style="display: inline-flex; align-items: center; gap: 7px; font-size: 15px; font-weight: 700; color: #10474B"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"></path></svg>Members</span><span style="font-size: 11.5px; color: #4A5A5C">{{ sp.members }}</span></span>
+<div style="position: relative; flex: 1; margin-top: 4px">
+<sc-for list="{{ sp.cloud }}" as="m" hint-placeholder-count="10">
+<img class="cloudimg ap {{ m.ap }} {{ m.cls }}" src="{{ m.src }}" alt="" style="position: absolute; left: {{ m.x }}; top: {{ m.y }}; width: {{ m.s }}; height: {{ m.s }}; border-radius: 50%; object-fit: cover; box-shadow: {{ m.ring }}">
+</sc-for>
+</div>
+</section>
+</div>
+</div>
+
+<section class="card" style="padding: 14px 16px">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px"><span style="display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 700; color: #10474B"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"></path></svg>Latest activity</span></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; min-height: 48px">
+<sc-for list="{{ sp.activity }}" as="a" hint-placeholder-count="4">
+<div class="lift fadeup" style="display: flex; gap: 8px; align-items: center; background: {{ a.bg }}; border-radius: 12px; padding: 9px 10px">
+<img src="{{ a.img }}" alt="" style="flex: none; width: 30px; height: 30px; border-radius: 50%; object-fit: cover">
+<span style="min-width: 0"><span style="display: block; font-size: 11.5px; line-height: 1.3; color: #2C3A3C; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden"><b>{{ a.who }}</b> {{ a.what }}</span><span style="display: block; font-size: 10.5px; color: #5B6B6D; margin-top: 1px">{{ a.when }}</span></span>
+</div>
+</sc-for>
+</div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{ v.net }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div><div style="font-size: 24px; font-weight: 700; color: #1B4A50">Connect</div><div style="font-size: 13px; color: #7A8A8C; margin-top: 3px">People working on what you're working on.</div></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px">
+<sc-for list="{{ requests }}" as="q" hint-placeholder-count="2">
+<div class="card" style="padding: 20px 26px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 9px; background: {{ q.bg }}; border-color: {{ q.border }}">
+<span style="width: 50px; height: 50px; border-radius: 16px; background: {{ q.iconBg }}; color: {{ q.iconFg }}; display: flex; align-items: center; justify-content: center"><sc-if value="{{ q.isCo }}" hint-placeholder-val="{{ true }}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h4v3a2 2 0 1 0 4 0V3h3a2 2 0 0 1 2 2v4h-3a2 2 0 1 0 0 4h3v6a2 2 0 0 1-2 2h-5v-3a2 2 0 1 0-4 0v3H5a2 2 0 0 1-2-2v-5h3a2 2 0 1 0 0-4H3V5a2 2 0 0 1 2-2z"></path></svg></sc-if><sc-if value="{{ q.isFb }}" hint-placeholder-val="{{ false }}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path><path d="M12 8.5l1.1 2.2 2.4.3-1.8 1.7.5 2.4-2.2-1.2-2.2 1.2.5-2.4-1.8-1.7 2.4-.3z"></path></svg></sc-if></span>
+<span style="font-size: 10.5px; font-weight: 800; letter-spacing: .7px; color: {{ q.labelFg }}">{{ q.label }}</span>
+<span style="font-size: 14.5px; font-weight: 700; line-height: 1.35; max-width: 380px">{{ q.title }}</span>
+<span style="display: flex; align-items: center; gap: 7px; font-size: 12px; color: #3D4B4D"><img src="{{ q.img }}" alt="" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover">{{ q.who }}</span>
+<span style="margin-top: 2px; height: 34px; padding: 0 18px; border-radius: 999px; background: #04454D; color: #fff; font-size: 12.5px; font-weight: 700; display: flex; align-items: center">{{ q.btn }}</span>
+</div>
+</sc-for>
+</div>
+<div>
+<div style="font-size: 15px; font-weight: 700; margin-bottom: 12px">Suggested for you</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{ people }}" as="p" hint-placeholder-count="6">
+<button class="blk card hov {{ p.cls }}" onClick="{{ p.tap }}" style="position: relative; display: flex; gap: 14px; align-items: center; padding: 12px; border-color: {{ p.ring }}">
+<img src="{{ p.img }}" alt="" style="flex: none; width: 60px; height: 60px; border-radius: 16px; object-fit: cover">
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="display: flex; align-items: center; gap: 6px"><b style="font-size: 13.5px">{{ p.name }}</b><span style="font-size: 10px; font-weight: 700; color: {{ p.orgFg }}; background: {{ p.orgBg }}; border-radius: 999px; padding: 1px 7px; white-space: nowrap">{{ p.org }}</span></span><span style="font-size: 11.5px; color: #3D4B4D; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ p.role }}</span><span style="display: flex; gap: 5px; align-items: flex-start; font-size: 11.5px; font-weight: 600; color: #0F6B5F; line-height: 1.3"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.5L12 15l-1.8-4.5L5.5 9l4.7-1.4z"></path></svg>{{ p.why }}</span></span>
+
+</button>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ v.ins }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px"><div><div style="font-size: 24px; font-weight: 700; color: #1B4A50">Insights</div><div style="font-size: 13px; color: #7A8A8C; margin-top: 3px">This term</div></div>
+<span style="flex: none; display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: #3D4B4D"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Leaders only</span></div>
+
+<div style="display: grid; grid-template-columns: 5fr 2fr; gap: 16px">
+<section class="card" style="padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; height: 204px">
+<div style="display: flex; align-items: center; gap: 12px"><img src="./assets/c1b4c2c9397304d019ea8225af3511bf.png" alt="" style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover"><div style="flex: 1"><div style="font-size: 10.5px; font-weight: 800; letter-spacing: .6px; color: #1E4E9A">INITIATIVE</div><div style="font-size: 16px; font-weight: 700">Year 1 of the new math curriculum</div></div><div style="width: 190px"><div style="display: flex; justify-content: space-between; font-size: 11.5px; color: #3D4B4D; margin-bottom: 5px"><span>Schools sharing practice</span><b style="color: #1C2B2D">5 of 7</b></div><div style="display: flex; gap: 3px"><sc-for list="{{ schools }}" as="s" hint-placeholder-count="7"><span title="{{ s.name }}" style="flex: 1; height: 8px; border-radius: 4px; background: {{ s.c }}"></span></sc-for></div></div></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; flex: 1">
+<div style="opacity: {{ insA.o1 }}; transform: translateY({{ insA.y1 }}); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1)"><div style="display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; letter-spacing: .5px; color: #1F6B45"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E8B57"></span>MOVING</div><div style="font-size: 13px; line-height: 1.5; margin-top: 5px">Talk-before-writing spread to 5 schools.</div></div>
+<div style="opacity: {{ insA.o2 }}; transform: translateY({{ insA.y2 }}); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1)"><div style="display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; letter-spacing: .5px; color: #8A5A12"><span style="width: 8px; height: 8px; border-radius: 50%; background: #D98E04"></span>STUCK</div><div style="font-size: 13px; line-height: 1.5; margin-top: 5px">Two schools are stuck on pacing in Lesson 2.6.</div></div>
+<div style="background: #F0FAF2; border-radius: 14px; padding: 10px 14px; opacity: {{ insA.o3 }}; transform: translateY({{ insA.y3 }}) scale({{ insA.s3 }}); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1)"><div style="font-size: 11px; font-weight: 800; letter-spacing: .5px; color: #1E7A3C">NEXT STEP</div><div style="font-size: 12.5px; line-height: 1.45; font-weight: 600; margin-top: 4px">Connect them with Tomás from Northfield.</div><div style="display: flex; margin-top: 6px"><img src="./assets/49396a7546fc9e7f8bb0fa4b2d038691.png" alt="" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover"><img src="./assets/3f037c428eab62703ac3084e8b27d94d.png" alt="" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; margin-left: -8px; border: 2px solid #F0FAF2"></div></div>
+</div>
+</section>
+<section class="card" style="padding: 18px 20px; display: flex; flex-direction: column; justify-content: space-between; height: 204px">
+<div><b style="display: block; font-size: 30px; color: #0F6B5F; line-height: 1">{{ insA.c1 }}</b><span style="font-size: 12px; color: #3D4B4D">educators contributing</span></div>
+<div><b style="display: block; font-size: 30px; color: #0F6B5F; line-height: 1">{{ insA.c2 }}</b><span style="font-size: 12px; color: #3D4B4D">resources and posts added</span></div>
+<div><b style="display: block; font-size: 30px; color: #0F6B5F; line-height: 1">{{ insA.c3 }}<span style="font-size: 16px; color: #3D4B4D"> / 14</span></b><span style="font-size: 12px; color: #3D4B4D">schools taking part</span></div>
+</section>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<section class="card" style="padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; height: 178px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><b style="font-size: 14.5px">Where knowledge is growing</b></div>
+<sc-for list="{{ growth }}" as="g" hint-placeholder-count="5">
+<div class="tipw" style="display: grid; grid-template-columns: 140px 1fr 28px; gap: 10px; align-items: center; font-size: 12px">
+<span class="tipb">{{ g.tip }}</span>
+<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ g.topic }}</span>
+<span style="height: 12px; border-radius: 0 6px 6px 0; background: #9FD1C4; width: {{ g.w }}; transition: width .15s linear"></span>
+<b style="text-align: right">{{ g.nn }}</b>
+</div>
+</sc-for>
+</section>
+<section class="card" style="padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; height: 178px">
+<b style="font-size: 14.5px">What educators are talking about</b>
+<div style="flex: 1; display: flex; flex-wrap: wrap; align-content: center; justify-content: center; gap: 4px 14px; line-height: 1.1">
+<sc-for list="{{ words }}" as="w" hint-placeholder-count="12"><span style="font-size: {{ w.s }}; font-weight: {{ w.fw }}; color: {{ w.c }}">{{ w.t }}</span></sc-for>
+</div>
+</section>
+</div>
+
+<div>
+<div style="font-size: 14.5px; font-weight: 700; margin-bottom: 10px">Top insights shared</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{ topIns }}" as="t" hint-placeholder-count="3">
+<div class="tipw card ap {{ t.ap }}" style="padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; height: 112px">
+<span class="tipb">{{ t.src }}</span>
+<span style="font-size: 12.5px; line-height: 1.4; font-weight: 600; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden">{{ t.text }}</span>
+<span style="display: flex; align-items: center; gap: 7px; font-size: 11px; color: #4A5A5C; margin-top: auto"><img src="{{ t.img }}" alt="" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover">{{ t.who }}<span style="margin-left: auto; color: #0F6B5F; font-weight: 700">{{ t.reach }}</span></span>
+</div>
+</sc-for>
+<div class="lift ap {{ insA.top4 }}" style="display: flex; flex-direction: column; gap: 6px; background: #FFF9EE; border: 1px solid #F5E6C6; border-radius: 16px; padding: 12px 14px; height: 112px">
+<span style="font-size: 10.5px; font-weight: 800; letter-spacing: .5px; color: #6B4E00">ALSO MOVING · LEADERS</span>
+<span style="font-size: 12.5px; font-weight: 600; line-height: 1.4">3 districts align on AI in CTE labs</span>
+<span style="display: flex; align-items: center; gap: 7px; margin-top: auto"><img src="./assets/83e40964b46f00730b91af01a52a3b3d.png" alt="" style="width: 34px; height: 24px; border-radius: 5px; object-fit: cover"><span style="font-size: 11px; color: #4A5A5C">Regional CTE Council</span></span>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div class="fadeup" style="position: absolute; right: 30px; bottom: 26px; z-index: 4; display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #EFF1ED; border-radius: 14px; box-shadow: 0 14px 34px rgba(16,40,42,.12); padding: 10px 14px 10px 10px"><img src="./assets/5eef2de79fa85774df52519d32d879db.png" alt="" style="width: 34px; height: 34px; border-radius: 50%; object-fit: cover"><span style="font-size: 12.5px; line-height: 1.4"><b>Priya Shah</b> added v3 to <b>Ratio talk routine</b><span style="display: block; font-size: 11px; color: #8A9899">Just now · Grades 6–8 Math</span></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #5ECC75; margin-left: 4px"></span></div>
+</sc-if>
+<sc-if value="{{ anyPanel }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 5; background: rgba(240,244,242,.55); backdrop-filter: blur(1.5px)"></div>
+</sc-if>
+
+<sc-if value="{{ v.thread }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-label="Discussion" style="position: absolute; top: 0; right: 0; bottom: 0; width: 520px; z-index: 6; background: #fff; box-shadow: -16px 0 40px rgba(16,40,42,.08); border-left: 1px solid #EFF1ED; border-radius: 0; overflow: hidden; padding: 26px 28px; display: flex; flex-direction: column; gap: 16px">
+<div style="font-size: 12px; font-weight: 700; color: #94A3A4">Grades 6–8 Math</div>
+<div class="lift" style="display: flex; gap: 12px; border-radius: 12px; padding: 8px; margin: 0 -8px"><img src="./assets/406d0485abc69f931d90e471e7b2fae4.png" alt="" style="flex: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover"><div><div style="font-size: 12.5px; color: #8A9899"><b style="color: #1C2B2D">Jordan Kim</b> · 2d</div><div style="font-size: 16px; font-weight: 700; margin-top: 2px; line-height: 1.3">Students get the ratio right but can't explain why</div><div style="font-size: 13px; line-height: 1.5; color: #2C3A3C; margin-top: 3px">They set up the table correctly, then just restate the numbers. What's helping your students explain?</div></div></div>
+<div style="display: flex; flex-direction: column; gap: 10px; margin-left: 20px; padding-left: 16px; border-left: 2px solid #F0F3F1">
+<div class="lift" style="display: flex; gap: 10px; border-radius: 10px; padding: 8px"><img src="./assets/e249274ca93a35bea0de465ad8ca8643.png" alt="" style="flex: none; width: 30px; height: 30px; border-radius: 50%; object-fit: cover"><div style="font-size: 12.5px; line-height: 1.45"><b>Elena Ortiz</b><div style="color: #2C3A3C; margin-top: 2px">Turn-and-talk before writing. Explanations doubled in a week.</div></div></div>
+<div class="lift" style="display: flex; gap: 10px; border-radius: 10px; padding: 8px"><img src="./assets/5eef2de79fa85774df52519d32d879db.png" alt="" style="flex: none; width: 30px; height: 30px; border-radius: 50%; object-fit: cover"><div style="font-size: 12.5px; line-height: 1.45"><b>Priya Shah</b><div style="color: #2C3A3C; margin-top: 2px">Sentence frames helped my multilingual learners:</div><span class="pop" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; background: #EEF6F3; color: #0F6B5F; font-weight: 700; font-size: 11.5px; border-radius: 8px; padding: 4px 8px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"></path></svg>Sentence frames for ratios</span></div></div>
+</div>
+<div style="flex: 1"></div>
+<div style="position: relative; display: flex; gap: 10px">
+<sc-if value="{{ pick.menu }}" hint-placeholder-val="{{ true }}">
+<div class="fadeup" style="position: absolute; left: 50px; bottom: calc(100% + 8px); width: 250px; background: #fff; border: 1px solid #EBEFEC; border-radius: 14px; box-shadow: 0 16px 40px rgba(16,40,42,.12); padding: 8px; z-index: 3; outline: {{ ring.tools }}; outline-offset: 3px">
+<div style="font-size: 10.5px; font-weight: 800; letter-spacing: .8px; color: #94A3A4; padding: 5px 8px 4px">ADD TO YOUR POST</div>
+<sc-for list="{{ addMenu }}" as="t" hint-placeholder-count="7"><div class="mitem" style="display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 8px; font-size: 13px; font-weight: 600; background: {{ t.hl }}; transition: background .25s ease"><span style="width: 28px; height: 28px; border-radius: 8px; background: {{ t.bg }}; color: {{ t.fg }}; display: flex; align-items: center; justify-content: center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ t.d }}"></path></svg></span>{{ t.label }}</div></sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ pick.open }}" hint-placeholder-val="{{ false }}">
+<div class="fadeup" style="position: absolute; left: 50px; bottom: calc(100% + 8px); width: 340px; background: #fff; border: 1px solid #EBEFEC; border-radius: 16px; box-shadow: 0 16px 40px rgba(16,40,42,.12); padding: 14px 16px; z-index: 3; outline: {{ ring.tools }}; outline-offset: 3px">
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 32px; height: 32px; border-radius: 9px; background: #E6F2F0; color: #04454D; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v16H3zM16 3v4M8 3v4M3 10h18"></path></svg></span><span><b style="display: block; font-size: 13.5px">Find a time</b><span style="display: block; font-size: 11.5px; color: #8A9899">Pick a few options for the group</span></span></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 12px">
+<sc-for list="{{ pick.days }}" as="d" hint-placeholder-count="4"><div style="text-align: center; font-size: 11.5px; font-weight: 700; color: #3D4B4D; padding-bottom: 2px">{{ d.dow }}<span style="display: block; font-size: 10.5px; font-weight: 500; color: #94A3A4">{{ d.date }}</span></div></sc-for>
+<sc-for list="{{ pick.slots }}" as="sl" hint-placeholder-count="8"><div style="height: 34px; border-radius: 9px; border: 1px solid {{ sl.border }}; background: {{ sl.bg }}; color: {{ sl.fg }}; font-size: 11.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; transform: scale({{ sl.sc }}); transition: background .25s ease, color .25s ease, transform .25s ease">{{ sl.time }}</div></sc-for>
+</div>
+<div style="display: flex; align-items: center; margin-top: 12px"><span style="font-size: 11.5px; color: #5B6B6D">{{ pick.count }} selected</span><span style="margin-left: auto; height: 30px; padding: 0 14px; border-radius: 999px; background: {{ pick.btnBg }}; color: {{ pick.btnFg }}; font-size: 12px; font-weight: 700; display: flex; align-items: center; transition: background .3s ease, color .3s ease">Add to post</span></div>
+</div>
+</sc-if>
+<sc-if value="{{ cmp.mPop }}" hint-placeholder-val="{{ false }}">
+<div class="fadeup" style="position: absolute; left: 50px; bottom: calc(100% + 8px); width: 270px; background: #fff; border: 1px solid #EBEFEC; border-radius: 14px; box-shadow: 0 16px 40px rgba(16,40,42,.12); padding: 8px; z-index: 3">
+<div style="font-size: 10.5px; font-weight: 800; letter-spacing: .8px; color: #94A3A4; padding: 5px 8px 4px">TAG A PERSON</div>
+<sc-for list="{{ cmp.people }}" as="pp" hint-placeholder-count="3"><div style="display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 9px; background: {{ pp.bg }}; transition: background .25s ease"><img src="{{ pp.img }}" alt="" style="width: 28px; height: 28px; border-radius: 50%; object-fit: cover"><span style="font-size: 12.5px; line-height: 1.3"><b style="display: block">{{ pp.name }}</b><span style="color: #8A9899; font-size: 11px">{{ pp.role }}</span></span></div></sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ cmp.rPop }}" hint-placeholder-val="{{ false }}">
+<div class="fadeup" style="position: absolute; left: 50px; bottom: calc(100% + 8px); width: 300px; background: #fff; border: 1px solid #EBEFEC; border-radius: 14px; box-shadow: 0 16px 40px rgba(16,40,42,.12); padding: 8px; z-index: 3">
+<div style="font-size: 10.5px; font-weight: 800; letter-spacing: .8px; color: #94A3A4; padding: 5px 8px 4px">TAG A RESOURCE</div>
+<sc-for list="{{ cmp.res }}" as="rr" hint-placeholder-count="3"><div style="display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 9px; background: {{ rr.bg }}; transition: background .25s ease"><img src="{{ rr.img }}" alt="" style="width: 40px; height: 28px; border-radius: 6px; object-fit: cover"><span style="font-size: 12.5px; line-height: 1.3"><b style="display: block">{{ rr.name }}</b><span style="color: #8A9899; font-size: 11px">{{ rr.sub }}</span></span></div></sc-for>
+</div>
+</sc-if>
+<img src="./assets/46be7b136788abe3da3421acd97bdcec.png" alt="" style="flex: none; width: 36px; height: 36px; border-radius: 50%; object-fit: cover">
+<div style="flex: 1; border: 1.5px solid #9FD1C4; border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 13px; line-height: 1.75; min-height: 22px">{{ cmp.a }}{{ cmp.mTyping }}<sc-if value="{{ cmp.mChip }}" hint-placeholder-val="{{ false }}"><span class="fadein" style="background: #E3ECF7; color: #1E4E9A; font-weight: 700; border-radius: 6px; padding: 1px 6px">@Priya Shah</span></sc-if>{{ cmp.b }}{{ cmp.rTyping }}<sc-if value="{{ cmp.rChip }}" hint-placeholder-val="{{ false }}"><span class="fadein" style="display: inline-flex; align-items: center; gap: 4px; background: #DDF0EC; color: #0F6B5F; font-weight: 700; border-radius: 6px; padding: 1px 7px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"></path></svg>Sentence frames for ratios</span></sc-if>{{ cmp.c }}<span class="caret"></span></div>
+<sc-if value="{{ pick.chip }}" hint-placeholder-val="{{ false }}"><div class="fadeup" style="align-self: flex-start; display: flex; align-items: center; gap: 8px; background: #F2F8F6; border: 1px solid #D5EAE4; border-radius: 12px; padding: 7px 12px 7px 8px"><span style="width: 26px; height: 26px; border-radius: 8px; background: #04454D; color: #fff; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v16H3zM16 3v4M8 3v4M3 10h18"></path></svg></span><span><b style="display: block; font-size: 12px">Find a time</b><span style="display: block; font-size: 11px; color: #5B6B6D">3 options · Nov 3 to 5</span></span></div></sc-if>
+<div style="display: flex; align-items: center; gap: 6px"><span class="pop" style="box-shadow: {{ cmp.plusRing }}; transition: box-shadow .2s ease; width: 30px; height: 30px; border-radius: 50%; background: #04454D; color: #fff; display: flex; align-items: center; justify-content: center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span><span class="pop" style="width: 30px; height: 30px; border-radius: 8px; color: #3D4B4D; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center">B</span><span class="pop" style="width: 30px; height: 30px; border-radius: 8px; color: #3D4B4D; font-style: italic; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center">I</span><span class="btnh" style="margin-left: auto; height: 32px; padding: 0 16px; border-radius: 999px; background: #04454D; color: #fff; font-size: 12.5px; font-weight: 700; display: flex; align-items: center">Reply</span></div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ v.resPanel }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-label="Resource" class="scroll" style="position: absolute; top: 0; right: 0; bottom: 0; width: 560px; z-index: 6; background: #fff; box-shadow: -16px 0 40px rgba(16,40,42,.08); border-left: 1px solid #EFF1ED; border-radius: 0; overflow-y: auto; padding: 22px 26px 22px; display: flex; flex-direction: column; gap: 14px">
+<div style="font-size: 12px; font-weight: 700; color: #94A3A4">Resources</div>
+<div class="zoomimg" style="position: relative; height: 180px; border-radius: 16px; overflow: hidden; background: #1C2B2D; flex: none">
+<img src="./assets/ce37c38bbbc60815cacd7f3a18f7dae1.png" alt="Ratio table on a whiteboard" style="width: 100%; height: 100%; object-fit: cover">
+<span style="position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0) 55%, rgba(0,0,0,.6))"></span>
+<span style="position: absolute; left: 50%; top: 44%; width: 54px; height: 54px; margin: -27px 0 0 -27px; border-radius: 50%; background: rgba(255,255,255,.94); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.25)"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z" fill="#04454D"></path></svg></span>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 10px; display: flex; align-items: center; gap: 10px; color: #fff; font-size: 11px; font-weight: 600"><span>1:36</span><span style="flex: 1; height: 4px; border-radius: 2px; background: rgba(255,255,255,.35); position: relative"><span style="position: absolute; left: 0; top: 0; bottom: 0; width: 38%; border-radius: 2px; background: #9BE3AE"></span></span><span>4:12</span></span>
+</div>
+<div><div style="font-size: 18px; font-weight: 700">Ratio talk routine: convince a skeptic</div><div style="font-size: 12.5px; color: #7A8A8C; margin-top: 3px">Video, slides and sentence frames</div></div>
+<div style="position: relative; display: flex; align-items: center; gap: 10px">
+<button class="pop {{ cls.save }}" onClick="{{ tap.save }}" style="position: relative; height: 38px; padding: 0 12px; border-radius: 8px; border: 1px solid {{ save.border }}; background: {{ save.bg }}; color: {{ save.fg }}; font-size: 13.5px; font-weight: 700; display: flex; align-items: center; gap: 6px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"></path></svg>{{ save.label }}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+<span style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #3D4B4D"><span style="display: flex"><img src="./assets/263ac6dc49847b0eb7ab6fa0b295fe0a.png" alt="" style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover; border: 1.5px solid #fff"><img src="./assets/37f4df86b20bc4de46446e8fa970f5fe.png" alt="" style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover; border: 1.5px solid #fff; margin-left: -6px"><img src="./assets/8a049709ae66815c8cfcaddc00b1499f.png" alt="" style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover; border: 1.5px solid #fff; margin-left: -6px"></span>Saved by {{ save.count }}</span>
+<sc-if value="{{ save.added }}" hint-placeholder-val="{{ false }}"><span style="margin-left: auto; font-size: 11.5px; font-weight: 700; color: #1E6B35; background: #F0FAF2; border: 1px solid #CFEFD7; border-radius: 999px; padding: 3px 9px">Added to Discourse routines</span></sc-if>
+<sc-if value="{{ save.open }}" hint-placeholder-val="{{ false }}">
+<div role="menu" style="position: absolute; top: 44px; left: 0; width: 310px; background: #fff; border: 1px solid #DDE2E2; border-radius: 12px; box-shadow: 0 14px 36px rgba(16,40,42,.2); padding: 8px; z-index: 3">
+<div style="display: flex; align-items: center; gap: 8px; padding: 6px 8px 8px; font-size: 13px"><span style="width: 20px; height: 20px; border-radius: 50%; background: #9BE3AE; display: flex; align-items: center; justify-content: center; color: #04454D"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg></span><b>Saved</b><span style="color: #4A5A5C">to My CoLab</span></div>
+<div style="font-size: 11px; font-weight: 700; letter-spacing: .6px; color: #4A5A5C; padding: 4px 8px">ADD TO COLLECTION</div>
+<sc-for list="{{ colls }}" as="c" hint-placeholder-count="3">
+<button class="blk {{ c.cls }}" onClick="{{ c.tap }}" role="menuitemcheckbox" aria-checked="{{ c.on }}" style="position: relative; display: flex; align-items: center; gap: 10px; padding: 7px 8px; background: {{ c.rowBg }}; border-radius: 8px; font-size: 13px">
+<img src="{{ c.cover }}" alt="" style="flex: none; width: 34px; height: 34px; border-radius: 7px; object-fit: cover">
+<span style="flex: 1; min-width: 0"><span style="display: block; font-weight: 600">{{ c.name }}</span><span style="display: block; font-size: 11px; color: #4A5A5C">{{ c.sub }}</span></span>
+<span style="flex: none; width: 18px; height: 18px; border-radius: 5px; border: 2px solid {{ c.box }}; background: {{ c.fill }}; color: #fff; display: flex; align-items: center; justify-content: center"><sc-if value="{{ c.on }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg></sc-if></span>
+
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+<div style="border-radius: 12px; padding: 8px 10px; margin: 0 -10px; outline: {{ ring.iter }}; background: {{ ring.iterBg }}">
+<div style="font-size: 13.5px; font-weight: 700">Iterations</div><div style="font-size: 12px; color: #8A9899; margin: 1px 0 4px">How it got better or adapted</div>
+<sc-for list="{{ versions }}" as="vv" hint-placeholder-count="3">
+<div class="lift ap {{ vv.ap }}" style="display: flex; gap: 10px; align-items: flex-start; padding: 7px 8px; margin: 0 -8px; border-radius: 10px; border-top: 1px solid #F4F6F3">
+<span style="flex: none; width: 30px; height: 20px; border-radius: 6px; background: {{ vv.tagBg }}; color: {{ vv.tagFg }}; font-size: 10.5px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 3px">{{ vv.v }}</span>
+<img src="{{ vv.img }}" alt="" style="flex: none; width: 26px; height: 26px; border-radius: 50%; object-fit: cover">
+<span style="min-width: 0; font-size: 12.5px; line-height: 1.4"><b>{{ vv.name }}</b> <span style="color: #94A3A4">· {{ vv.where }}</span><span style="display: block; color: #2C3A3C">{{ vv.what }}</span></span>
+</div>
+</sc-for>
+</div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 8px; border-radius: 12px; padding: 8px 10px; margin: 0 -10px; outline: {{ ring.shared }}; background: {{ ring.sharedBg }}; transition: background .4s ease">
+<div style="display: flex; align-items: center; justify-content: space-between"><span style="font-size: 13.5px; font-weight: 700">Shared in</span><span style="height: 30px; padding: 0 12px; border-radius: 999px; border: 1px solid {{ share.btnBorder }}; background: {{ share.btnBg }}; font-size: 12px; font-weight: 700; color: #04454D; display: flex; align-items: center; gap: 6px; transition: background .25s ease"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Share to a Space<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></span></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><button class="blk lift {{ cls.space }}" onClick="{{ tap.space }}" style="width: auto; position: relative; display: flex; align-items: center; gap: 8px; border: 1px solid #C9DBEE; background: #F1F6FC; border-radius: 10px; padding: 6px 10px 6px 6px"><img src="./assets/c1b4c2c9397304d019ea8225af3511bf.png" alt="" style="width: 28px; height: 28px; border-radius: 7px; object-fit: cover"><span style="font-size: 12.5px; font-weight: 700">Grades 6–8 Math</span><span style="font-size: 11px; color: #4A5A5C">38 members</span></button>
+<div class="lift" style="display: flex; align-items: center; gap: 8px; border: 1px solid #E1E5DF; border-radius: 10px; padding: 6px 10px 6px 6px"><img src="./assets/9d91753ed05797c7c3d500cba9740dd3.png" alt="" style="width: 28px; height: 28px; border-radius: 7px; object-fit: cover"><span style="font-size: 12.5px; font-weight: 700">New Teacher Circle</span><span style="font-size: 11px; color: #4A5A5C">22 members</span></div>
+<sc-if value="{{ share.added }}" hint-placeholder-val="{{ false }}"><div class="lift fadeup" style="display: flex; align-items: center; gap: 8px; border: 1px solid #7FD893; background: #F0FAF2; border-radius: 10px; padding: 6px 10px 6px 6px"><img src="./assets/16a15e05cd2e9603dc81e7b93371d2c9.png" alt="" style="width: 28px; height: 28px; border-radius: 7px; object-fit: cover"><span style="font-size: 12.5px; font-weight: 700">Multilingual Learners Network</span><span style="font-size: 11px; color: #4A5A5C">31 members</span></div></sc-if>
+</div>
+<sc-if value="{{ share.open }}" hint-placeholder-val="{{ false }}">
+<div class="fadeup" style="position: absolute; right: 10px; bottom: calc(100% - 40px); width: 300px; background: #fff; border: 1px solid #EBEFEC; border-radius: 14px; box-shadow: 0 16px 40px rgba(16,40,42,.14); padding: 8px; z-index: 4">
+<div style="font-size: 10.5px; font-weight: 800; letter-spacing: .8px; color: #94A3A4; padding: 5px 8px 4px">YOUR SPACES</div>
+<sc-for list="{{ share.rows }}" as="sr" hint-placeholder-count="4"><div style="display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 9px; background: {{ sr.bg }}; transition: background .25s ease"><img src="{{ sr.img }}" alt="" style="flex: none; width: 28px; height: 28px; border-radius: 7px; object-fit: cover"><span style="flex: 1; min-width: 0; font-size: 12.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ sr.name }}</span><span style="flex: none; width: 18px; height: 18px; border-radius: 5px; border: 2px solid {{ sr.box }}; background: {{ sr.fill }}; color: #fff; display: flex; align-items: center; justify-content: center; transition: background .2s ease"><sc-if value="{{ sr.on }}" hint-placeholder-val="{{ false }}"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg></sc-if></span></div></sc-for>
+</div>
+</sc-if>
+</div>
+<div>
+<div style="font-size: 13.5px; font-weight: 700; margin-bottom: 6px">Feedback</div>
+<div class="lift" style="display: flex; gap: 10px; background: #F8FAF8; border-radius: 12px; padding: 10px 12px"><img src="./assets/263ac6dc49847b0eb7ab6fa0b295fe0a.png" alt="" style="flex: none; width: 26px; height: 26px; border-radius: 50%; object-fit: cover"><span style="font-size: 12.5px; line-height: 1.45"><b>Sam Lee</b><span style="display: block; color: #2C3A3C">Level 2 frames worked for my newcomers. Adding visuals as v4.</span></span></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ v.person }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-label="Portfolio" class="slidein" style="position: absolute; top: 0; right: 0; bottom: 0; width: 640px; z-index: 6; background: #FCFCFA; box-shadow: -16px 0 40px rgba(16,40,42,.08); border-left: 1px solid #EFF1ED; border-radius: 0; overflow-y: auto">
+<div style="position: relative; height: 78px; background: #FBEAEE; overflow: hidden"><img src="./assets/6d0259194b77048210e2378a1200bd9d.png" alt="" style="width: 100%; height: 100%; object-fit: cover; opacity: .4"></div>
+<div style="padding: 0 24px 22px">
+<div style="display: flex; gap: 14px; align-items: flex-end">
+<img src="./assets/49396a7546fc9e7f8bb0fa4b2d038691.png" alt="" style="position: relative; z-index: 2; flex: none; width: 96px; height: 96px; margin-top: -44px; border-radius: 24px; object-fit: cover; border: 4px solid #FCFCFA">
+<div style="flex: 1; min-width: 0; padding-bottom: 2px"><div style="font-size: 20px; font-weight: 700">Tomás Rivera</div><div style="font-size: 12.5px; color: #3D4B4D">Instructional coach · Northfield SD</div></div>
+<div style="display: flex; gap: 6px; padding-bottom: 4px"><sc-if value="{{ conn.notSent }}" hint-placeholder-val="{{ true }}"><span class="btnh" style="height: 34px; padding: 0 16px; border-radius: 999px; background: #04454D; color: #fff; font-size: 12.5px; font-weight: 700; display: flex; align-items: center; transform: scale({{ conn.press }}); transition: transform .15s ease">Collaborate</span></sc-if><sc-if value="{{ conn.sent }}" hint-placeholder-val="{{ false }}"><span class="fadein" style="height: 34px; padding: 0 14px; border-radius: 999px; background: #E6F7EA; color: #1E6B35; font-size: 12.5px; font-weight: 700; display: flex; align-items: center; gap: 6px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg>Invite sent</span></sc-if><span style="height: 34px; padding: 0 14px; border: 1px solid #E8ECE9; background: #fff; border-radius: 999px; font-size: 12.5px; font-weight: 600; display: flex; align-items: center">Message</span></div>
+</div>
+<div style="font-size: 14px; font-weight: 600; line-height: 1.45; color: #1B4A50; margin-top: 10px">Coaching through big curriculum shifts.</div>
+<div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px"><span style="font-size: 11px; font-weight: 600; color: #1B4A50; background: #fff; border: 1px solid #DDE2E2; border-radius: 999px; padding: 2px 9px">Coaching</span><span style="font-size: 11px; font-weight: 600; color: #1B4A50; background: #fff; border: 1px solid #DDE2E2; border-radius: 999px; padding: 2px 9px">Math</span><span style="font-size: 11px; font-weight: 600; color: #1B4A50; background: #fff; border: 1px solid #DDE2E2; border-radius: 999px; padding: 2px 9px">Curriculum implementation</span><span style="font-size: 11px; font-weight: 700; color: #6B4E00; background: #FFF4E0; border: 1px solid #F0D9A8; border-radius: 999px; padding: 2px 9px">Northfield SD</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px">
+<div class="card" style="grid-column: span 2; padding: 12px; background: {{ conn.workBg }}; border-color: #F5E8C8; outline: {{ conn.work }}; outline-offset: 2px; transition: background .5s ease; display: flex; gap: 12px; align-items: center"><img src="./assets/6d0259194b77048210e2378a1200bd9d.png" alt="" style="flex: none; width: 76px; height: 50px; border-radius: 9px; object-fit: cover"><span><b style="display: block; font-size: 10.5px; letter-spacing: .6px; color: #6B4E00">WORKING ON NOW</b><span style="display: block; font-size: 13px; font-weight: 600; line-height: 1.4; margin-top: 3px">A Year 2 pacing guide educators actually use.</span></span></div>
+<div class="card" style="padding: 12px"><b style="display: block; font-size: 13px; margin-bottom: 8px">I can help with</b>
+<span class="fadeup" style="animation-delay: 3.2s; display: flex; gap: 8px; align-items: flex-start; margin-bottom: 7px"><span style="flex: none; width: 26px; height: 26px; border-radius: 8px; background: #E6F2F0; display: flex; align-items: center; justify-content: center"><span style="width: 9px; height: 9px; border-radius: 3px; background: #04454D"></span></span><span style="font-size: 12px; line-height: 1.35"><b style="display: block">Year 1 lessons</b><span style="color: #8A9899">What we'd change</span></span></span>
+<span class="fadeup" style="animation-delay: 3.6s; display: flex; gap: 8px; align-items: flex-start; margin-bottom: 7px"><span style="flex: none; width: 26px; height: 26px; border-radius: 8px; background: #FFF1CC; display: flex; align-items: center; justify-content: center"><span style="width: 9px; height: 9px; border-radius: 3px; background: #8A5A12"></span></span><span style="font-size: 12px; line-height: 1.35"><b style="display: block">Coaching cycles</b><span style="color: #8A9899">Short and focused</span></span></span>
+<span class="fadeup" style="animation-delay: 4s; display: flex; gap: 8px; align-items: flex-start"><span style="flex: none; width: 26px; height: 26px; border-radius: 8px; background: #EDDFF6; display: flex; align-items: center; justify-content: center"><span style="width: 9px; height: 9px; border-radius: 3px; background: #4B1B6A"></span></span><span style="font-size: 12px; line-height: 1.35"><b style="display: block">Pacing</b><span style="color: #8A9899">Where to slow down</span></span></span>
+</div>
+<div class="card" style="padding: 12px"><b style="display: block; font-size: 13px; margin-bottom: 8px">On my shelf</b><div style="display: flex; gap: 8px; align-items: flex-end; height: 96px; border-bottom: 4px solid #C9A97A; padding: 0 4px">
+<span class="book" style="width: 54px; height: 92px; border-radius: 4px 6px 2px 2px; background: #2E5E9A; color: #fff; padding: 6px 5px; font-size: 9.5px; font-weight: 800; line-height: 1.15; display: flex; flex-direction: column; justify-content: space-between; box-shadow: inset -4px 0 0 rgba(0,0,0,.12)"><span>Building Thinking Classrooms</span><span style="font-size: 8.5px; opacity: .85">Book</span></span>
+<span class="book" style="width: 54px; height: 80px; border-radius: 4px 6px 2px 2px; background: #04454D; color: #fff; padding: 6px 5px; font-size: 9.5px; font-weight: 800; line-height: 1.15; display: flex; flex-direction: column; justify-content: space-between; box-shadow: inset -4px 0 0 rgba(0,0,0,.12)"><span>The Art of Coaching</span><span style="font-size: 8.5px; opacity: .85">Book</span></span>
+<sc-if value="{{ books.b3 }}" hint-placeholder-val="{{ true }}"><span class="dropin"><span class="book" style="width: 54px; height: 86px; border-radius: 4px 6px 2px 2px; background: #4B1B6A; color: #fff; padding: 6px 5px; font-size: 9.5px; font-weight: 800; line-height: 1.15; display: flex; flex-direction: column; justify-content: space-between; box-shadow: inset -4px 0 0 rgba(0,0,0,.12)"><span>Cult of Pedagogy</span><span style="font-size: 8.5px; opacity: .85">Podcast</span></span></span></sc-if>
+<sc-if value="{{ books.b4 }}" hint-placeholder-val="{{ true }}"><span class="dropin"><span class="book" style="width: 54px; height: 88px; border-radius: 4px 6px 2px 2px; background: #C8642D; color: #fff; padding: 6px 5px; font-size: 9.5px; font-weight: 800; line-height: 1.15; display: flex; flex-direction: column; justify-content: space-between; box-shadow: inset -4px 0 0 rgba(0,0,0,.12)"><span>Mindset Mathematics</span><span style="font-size: 8.5px; opacity: .85">Book</span></span></span></sc-if>
+</div></div>
+<div class="card" style="grid-column: span 2; padding: 12px"><b style="display: block; font-size: 13px; margin-bottom: 8px">Shared resources</b><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<span class="lift zoomimg fadeup" style="animation-delay: 6.4s; display: block; border: 1px solid #E8EBE5; border-radius: 10px; overflow: hidden"><span style="position: relative; display: block; height: 54px"><img src="./assets/6d0259194b77048210e2378a1200bd9d.png" alt="" style="width: 100%; height: 100%; object-fit: cover"><span style="position: absolute; left: 6px; bottom: 6px; background: #C8372D; color: #fff; font-size: 9px; font-weight: 800; padding: 1px 5px; border-radius: 3px">PDF</span></span><span style="display: block; padding: 6px 8px; font-size: 11.5px; font-weight: 700; line-height: 1.3">Year 1 pacing guide, annotated</span></span>
+<span class="lift zoomimg fadeup" style="animation-delay: 6.8s; display: block; border: 1px solid #E8EBE5; border-radius: 10px; overflow: hidden"><span style="position: relative; display: block; height: 54px"><img src="./assets/c1b4c2c9397304d019ea8225af3511bf.png" alt="" style="width: 100%; height: 100%; object-fit: cover"><span style="position: absolute; left: 6px; bottom: 6px; background: #2B63C6; color: #fff; font-size: 9px; font-weight: 800; padding: 1px 5px; border-radius: 3px">DOC</span></span><span style="display: block; padding: 6px 8px; font-size: 11.5px; font-weight: 700; line-height: 1.3">Coaching cycle planner</span></span>
+<span class="lift zoomimg fadeup" style="animation-delay: 7.2s; display: block; border: 1px solid #E8EBE5; border-radius: 10px; overflow: hidden"><span style="position: relative; display: block; height: 54px"><img src="./assets/ce37c38bbbc60815cacd7f3a18f7dae1.png" alt="" style="width: 100%; height: 100%; object-fit: cover"><span style="position: absolute; left: 6px; bottom: 6px; background: #04454D; color: #fff; font-size: 9px; font-weight: 800; padding: 1px 5px; border-radius: 3px">VIDEO</span></span><span style="display: block; padding: 6px 8px; font-size: 11.5px; font-weight: 700; line-height: 1.3">Lesson 2.6 model</span></span>
+</div></div>
+<div class="card" style="grid-column: span 2; padding: 12px"><b style="display: block; font-size: 13px; margin-bottom: 8px">CoLab-orations</b><div style="display: flex; gap: 8px">
+<span class="lift" style="flex: 1; display: flex; gap: 8px; align-items: center; background: #F5FAF8; border-radius: 12px; padding: 9px"><img src="./assets/0d3423aee90062035bb5c9c74149a117.png" alt="" style="flex: none; width: 30px; height: 30px; border-radius: 50%; object-fit: cover"><span style="font-size: 11.5px; line-height: 1.35"><b style="display: block">Shared pathways map</b><span style="color: #8A9899">With Nadia Okafor</span></span></span>
+<span class="lift" style="flex: 1; display: flex; gap: 8px; align-items: center; background: #F5FAF8; border-radius: 12px; padding: 9px"><img src="./assets/3f037c428eab62703ac3084e8b27d94d.png" alt="" style="flex: none; width: 30px; height: 30px; border-radius: 50%; object-fit: cover"><span style="font-size: 11.5px; line-height: 1.35"><b style="display: block">Pacing support</b><span style="color: #8A9899">With Grace Chen</span></span></span>
+<sc-if value="{{ conn.newCollab }}" hint-placeholder-val="{{ false }}"><span class="lift fadeup" style="flex: 1; display: flex; gap: 8px; align-items: center; background: #EEF9F1; border: 1px solid #BDEBC8; border-radius: 12px; padding: 9px"><img src="./assets/46be7b136788abe3da3421acd97bdcec.png" alt="" style="flex: none; width: 30px; height: 30px; border-radius: 50%; object-fit: cover"><span style="font-size: 11.5px; line-height: 1.35"><b style="display: block">Unit 3 planning</b><span style="color: #5B6B6D">With Dana Ruiz</span></span></span></sc-if>
+</div></div>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</div>
+</div>
+<sc-if value="{{ isFinal }}" hint-placeholder-val="{{ false }}">
+<div class="fadein" style="position: absolute; inset: 0; z-index: 20; border-radius: 18px; background: rgba(255,252,246,.9); backdrop-filter: blur(6px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #10474B; padding: 30px 40px">
+<div style="font-size: 12px; font-weight: 800; letter-spacing: 1.6px; color: #5E9A8F">WHY IT WORKS</div>
+<div style="font-size: 34px; font-weight: 700; letter-spacing: -.5px; line-height: 1.15; margin-top: 10px">Support in the moment.<br>Capacity that compounds.</div>
+<div style="font-size: 15px; line-height: 1.5; color: #6B7B7D; max-width: 560px; margin-top: 12px">Every answer, resource and connection adds to what your district knows.</div>
+<div style="position: relative; width: 1060px; height: 420px; margin-top: 26px; text-align: left; color: #1C2B2D">
+<svg width="1060" height="420" viewBox="0 0 1060 420" aria-hidden="true" style="position: absolute; inset: 0">
+<path d="M210 40 C 290 40, 290 200, 350 200" stroke="#A6E3B4" stroke-width="7" fill="none" stroke-linecap="round"></path>
+<path class="flowdash" d="M210 40 C 290 40, 290 200, 350 200" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"></path>
+<path d="M210 120 C 280 120, 290 200, 350 200" stroke="#9CC9CB" stroke-width="7" fill="none" stroke-linecap="round"></path>
+<path class="flowdash" d="M210 120 C 280 120, 290 200, 350 200" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"></path>
+<path d="M210 200 L 350 200" stroke="#A6E3B4" stroke-width="7" fill="none" stroke-linecap="round"></path>
+<path class="flowdash" d="M210 200 L 350 200" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"></path>
+<path d="M210 280 C 280 280, 290 200, 350 200" stroke="#9CC9CB" stroke-width="7" fill="none" stroke-linecap="round"></path>
+<path class="flowdash" d="M210 280 C 280 280, 290 200, 350 200" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"></path>
+<path d="M210 360 C 290 360, 290 200, 350 200" stroke="#A6E3B4" stroke-width="7" fill="none" stroke-linecap="round"></path>
+<path class="flowdash" d="M210 360 C 290 360, 290 200, 350 200" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"></path>
+<defs><linearGradient id="braidfadeg" gradientUnits="userSpaceOnUse" x1="440" y1="0" x2="560" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"></stop><stop offset="1" stop-color="#fff" stop-opacity="1"></stop></linearGradient><mask id="braidfade" maskUnits="userSpaceOnUse" x="400" y="140" width="370" height="120"><rect x="400" y="140" width="362" height="120" fill="url(#braidfadeg)"></rect></mask></defs>
+<g mask="url(#braidfade)"><g class="braid">
+<path d="M240.00 229.78 L243.00 229.99 L246.00 229.57 L249.00 228.53 L252.00 226.89 L255.00 224.69 L258.00 221.97 L261.00 218.79 L264.00 215.21 L267.00 211.31 L270.00 207.18 L273.00 202.90 L276.00 198.55 L279.00 194.24 L282.00 190.04 L285.00 186.06 L288.00 182.37 L291.00 179.04 L294.00 176.16 L297.00 173.78 L300.00 171.95 L303.00 170.71 L306.00 170.08 L309.00 170.08 L312.00 170.71 L315.00 171.95 L318.00 173.78 L321.00 176.16 L324.00 179.04 L327.00 182.37 L330.00 186.06 L333.00 190.04 L336.00 194.24 L339.00 198.55 L342.00 202.90 L345.00 207.18 L348.00 211.31 L351.00 215.21 L354.00 218.79 L357.00 221.97 L360.00 224.69 L363.00 226.89 L366.00 228.53 L369.00 229.57 L372.00 229.99 L375.00 229.78 L378.00 228.95 L381.00 227.50 L384.00 225.48 L387.00 222.93 L390.00 219.89 L393.00 216.44 L396.00 212.64 L399.00 208.58 L402.00 204.33 L405.00 200.00 L408.00 195.67 L411.00 191.42 L414.00 187.36 L417.00 183.56 L420.00 180.11 L423.00 177.07 L426.00 174.52 L429.00 172.50 L432.00 171.05 L435.00 170.22 L438.00 170.01 L441.00 170.43 L444.00 171.47 L447.00 173.11 L450.00 175.31 L453.00 178.03 L456.00 181.21 L459.00 184.79 L462.00 188.69 L465.00 192.82 L468.00 197.10 L471.00 201.45 L474.00 205.76 L477.00 209.96 L480.00 213.94 L483.00 217.63 L486.00 220.96 L489.00 223.84 L492.00 226.22 L495.00 228.05 L498.00 229.29 L501.00 229.92 L504.00 229.92 L507.00 229.29 L510.00 228.05 L513.00 226.22 L516.00 223.84 L519.00 220.96 L522.00 217.63 L525.00 213.94 L528.00 209.96 L531.00 205.76 L534.00 201.45 L537.00 197.10 L540.00 192.82 L543.00 188.69 L546.00 184.79 L549.00 181.21 L552.00 178.03 L555.00 175.31 L558.00 173.11 L561.00 171.47 L564.00 170.43 L567.00 170.01 L570.00 170.22 L573.00 171.05 L576.00 172.50 L579.00 174.52 L582.00 177.07 L585.00 180.11 L588.00 183.56 L591.00 187.36 L594.00 191.42 L597.00 195.67 L600.00 200.00 L603.00 204.33 L606.00 208.58 L609.00 212.64 L612.00 216.44 L615.00 219.89 L618.00 222.93 L621.00 225.48 L624.00 227.50 L627.00 228.95 L630.00 229.78 L633.00 229.99 L636.00 229.57 L639.00 228.53 L642.00 226.89 L645.00 224.69 L648.00 221.97 L651.00 218.79 L654.00 215.21 L657.00 211.31 L660.00 207.18 L663.00 202.90 L666.00 198.55 L669.00 194.24 L672.00 190.04 L675.00 186.06 L678.00 182.37 L681.00 179.04 L684.00 176.16 L687.00 173.78 L690.00 171.95 L693.00 170.71 L696.00 170.08 L699.00 170.08 L702.00 170.71 L705.00 171.95 L708.00 173.78 L711.00 176.16 L714.00 179.04 L717.00 182.37 L720.00 186.06 L723.00 190.04 L726.00 194.24 L729.00 198.55 L732.00 202.90 L735.00 207.18 L738.00 211.31 L741.00 215.21 L744.00 218.79 L747.00 221.97 L750.00 224.69 L753.00 226.89 L756.00 228.53 L759.00 229.57 L762.00 229.99 L765.00 229.78 L768.00 228.95 L771.00 227.50 L774.00 225.48 L777.00 222.93 L780.00 219.89" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="round"></path>
+<path d="M240.00 229.78 L243.00 229.99 L246.00 229.57 L249.00 228.53 L252.00 226.89 L255.00 224.69 L258.00 221.97 L261.00 218.79 L264.00 215.21 L267.00 211.31 L270.00 207.18 L273.00 202.90 L276.00 198.55 L279.00 194.24 L282.00 190.04 L285.00 186.06 L288.00 182.37 L291.00 179.04 L294.00 176.16 L297.00 173.78 L300.00 171.95 L303.00 170.71 L306.00 170.08 L309.00 170.08 L312.00 170.71 L315.00 171.95 L318.00 173.78 L321.00 176.16 L324.00 179.04 L327.00 182.37 L330.00 186.06 L333.00 190.04 L336.00 194.24 L339.00 198.55 L342.00 202.90 L345.00 207.18 L348.00 211.31 L351.00 215.21 L354.00 218.79 L357.00 221.97 L360.00 224.69 L363.00 226.89 L366.00 228.53 L369.00 229.57 L372.00 229.99 L375.00 229.78 L378.00 228.95 L381.00 227.50 L384.00 225.48 L387.00 222.93 L390.00 219.89 L393.00 216.44 L396.00 212.64 L399.00 208.58 L402.00 204.33 L405.00 200.00 L408.00 195.67 L411.00 191.42 L414.00 187.36 L417.00 183.56 L420.00 180.11 L423.00 177.07 L426.00 174.52 L429.00 172.50 L432.00 171.05 L435.00 170.22 L438.00 170.01 L441.00 170.43 L444.00 171.47 L447.00 173.11 L450.00 175.31 L453.00 178.03 L456.00 181.21 L459.00 184.79 L462.00 188.69 L465.00 192.82 L468.00 197.10 L471.00 201.45 L474.00 205.76 L477.00 209.96 L480.00 213.94 L483.00 217.63 L486.00 220.96 L489.00 223.84 L492.00 226.22 L495.00 228.05 L498.00 229.29 L501.00 229.92 L504.00 229.92 L507.00 229.29 L510.00 228.05 L513.00 226.22 L516.00 223.84 L519.00 220.96 L522.00 217.63 L525.00 213.94 L528.00 209.96 L531.00 205.76 L534.00 201.45 L537.00 197.10 L540.00 192.82 L543.00 188.69 L546.00 184.79 L549.00 181.21 L552.00 178.03 L555.00 175.31 L558.00 173.11 L561.00 171.47 L564.00 170.43 L567.00 170.01 L570.00 170.22 L573.00 171.05 L576.00 172.50 L579.00 174.52 L582.00 177.07 L585.00 180.11 L588.00 183.56 L591.00 187.36 L594.00 191.42 L597.00 195.67 L600.00 200.00 L603.00 204.33 L606.00 208.58 L609.00 212.64 L612.00 216.44 L615.00 219.89 L618.00 222.93 L621.00 225.48 L624.00 227.50 L627.00 228.95 L630.00 229.78 L633.00 229.99 L636.00 229.57 L639.00 228.53 L642.00 226.89 L645.00 224.69 L648.00 221.97 L651.00 218.79 L654.00 215.21 L657.00 211.31 L660.00 207.18 L663.00 202.90 L666.00 198.55 L669.00 194.24 L672.00 190.04 L675.00 186.06 L678.00 182.37 L681.00 179.04 L684.00 176.16 L687.00 173.78 L690.00 171.95 L693.00 170.71 L696.00 170.08 L699.00 170.08 L702.00 170.71 L705.00 171.95 L708.00 173.78 L711.00 176.16 L714.00 179.04 L717.00 182.37 L720.00 186.06 L723.00 190.04 L726.00 194.24 L729.00 198.55 L732.00 202.90 L735.00 207.18 L738.00 211.31 L741.00 215.21 L744.00 218.79 L747.00 221.97 L750.00 224.69 L753.00 226.89 L756.00 228.53 L759.00 229.57 L762.00 229.99 L765.00 229.78 L768.00 228.95 L771.00 227.50 L774.00 225.48 L777.00 222.93 L780.00 219.89" stroke="#5ECC75" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M240.00 188.24 L243.00 184.38 L246.00 180.84 L249.00 177.71 L252.00 175.04 L255.00 172.90 L258.00 171.32 L261.00 170.35 L264.00 170.00 L267.00 170.28 L270.00 171.18 L273.00 172.69 L276.00 174.77 L279.00 177.39 L282.00 180.47 L285.00 183.97 L288.00 187.80 L291.00 191.89 L294.00 196.14 L297.00 200.48 L300.00 204.81 L303.00 209.04 L306.00 213.08 L309.00 216.84 L312.00 220.25 L315.00 223.24 L318.00 225.74 L321.00 227.69 L324.00 229.07 L327.00 229.84 L330.00 229.98 L333.00 229.49 L336.00 228.38 L339.00 226.68 L342.00 224.41 L345.00 221.64 L348.00 218.41 L351.00 214.79 L354.00 210.86 L357.00 206.71 L360.00 202.41 L363.00 198.07 L366.00 193.76 L369.00 189.59 L372.00 185.63 L375.00 181.98 L378.00 178.70 L381.00 175.87 L384.00 173.55 L387.00 171.78 L390.00 170.61 L393.00 170.05 L396.00 170.12 L399.00 170.81 L402.00 172.12 L405.00 174.02 L408.00 176.46 L411.00 179.39 L414.00 182.76 L417.00 186.49 L420.00 190.50 L423.00 194.71 L426.00 199.03 L429.00 203.38 L432.00 207.65 L435.00 211.76 L438.00 215.62 L441.00 219.16 L444.00 222.29 L447.00 224.96 L450.00 227.10 L453.00 228.68 L456.00 229.65 L459.00 230.00 L462.00 229.72 L465.00 228.82 L468.00 227.31 L471.00 225.23 L474.00 222.61 L477.00 219.53 L480.00 216.03 L483.00 212.20 L486.00 208.11 L489.00 203.86 L492.00 199.52 L495.00 195.19 L498.00 190.96 L501.00 186.92 L504.00 183.16 L507.00 179.75 L510.00 176.76 L513.00 174.26 L516.00 172.31 L519.00 170.93 L522.00 170.16 L525.00 170.02 L528.00 170.51 L531.00 171.62 L534.00 173.32 L537.00 175.59 L540.00 178.36 L543.00 181.59 L546.00 185.21 L549.00 189.14 L552.00 193.29 L555.00 197.59 L558.00 201.93 L561.00 206.24 L564.00 210.41 L567.00 214.37 L570.00 218.02 L573.00 221.30 L576.00 224.13 L579.00 226.45 L582.00 228.22 L585.00 229.39 L588.00 229.95 L591.00 229.88 L594.00 229.19 L597.00 227.88 L600.00 225.98 L603.00 223.54 L606.00 220.61 L609.00 217.24 L612.00 213.51 L615.00 209.50 L618.00 205.29 L621.00 200.97 L624.00 196.62 L627.00 192.35 L630.00 188.24 L633.00 184.38 L636.00 180.84 L639.00 177.71 L642.00 175.04 L645.00 172.90 L648.00 171.32 L651.00 170.35 L654.00 170.00 L657.00 170.28 L660.00 171.18 L663.00 172.69 L666.00 174.77 L669.00 177.39 L672.00 180.47 L675.00 183.97 L678.00 187.80 L681.00 191.89 L684.00 196.14 L687.00 200.48 L690.00 204.81 L693.00 209.04 L696.00 213.08 L699.00 216.84 L702.00 220.25 L705.00 223.24 L708.00 225.74 L711.00 227.69 L714.00 229.07 L717.00 229.84 L720.00 229.98 L723.00 229.49 L726.00 228.38 L729.00 226.68 L732.00 224.41 L735.00 221.64 L738.00 218.41 L741.00 214.79 L744.00 210.86 L747.00 206.71 L750.00 202.41 L753.00 198.07 L756.00 193.76 L759.00 189.59 L762.00 185.63 L765.00 181.98 L768.00 178.70 L771.00 175.87 L774.00 173.55 L777.00 171.78 L780.00 170.61" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="round"></path>
+<path d="M240.00 188.24 L243.00 184.38 L246.00 180.84 L249.00 177.71 L252.00 175.04 L255.00 172.90 L258.00 171.32 L261.00 170.35 L264.00 170.00 L267.00 170.28 L270.00 171.18 L273.00 172.69 L276.00 174.77 L279.00 177.39 L282.00 180.47 L285.00 183.97 L288.00 187.80 L291.00 191.89 L294.00 196.14 L297.00 200.48 L300.00 204.81 L303.00 209.04 L306.00 213.08 L309.00 216.84 L312.00 220.25 L315.00 223.24 L318.00 225.74 L321.00 227.69 L324.00 229.07 L327.00 229.84 L330.00 229.98 L333.00 229.49 L336.00 228.38 L339.00 226.68 L342.00 224.41 L345.00 221.64 L348.00 218.41 L351.00 214.79 L354.00 210.86 L357.00 206.71 L360.00 202.41 L363.00 198.07 L366.00 193.76 L369.00 189.59 L372.00 185.63 L375.00 181.98 L378.00 178.70 L381.00 175.87 L384.00 173.55 L387.00 171.78 L390.00 170.61 L393.00 170.05 L396.00 170.12 L399.00 170.81 L402.00 172.12 L405.00 174.02 L408.00 176.46 L411.00 179.39 L414.00 182.76 L417.00 186.49 L420.00 190.50 L423.00 194.71 L426.00 199.03 L429.00 203.38 L432.00 207.65 L435.00 211.76 L438.00 215.62 L441.00 219.16 L444.00 222.29 L447.00 224.96 L450.00 227.10 L453.00 228.68 L456.00 229.65 L459.00 230.00 L462.00 229.72 L465.00 228.82 L468.00 227.31 L471.00 225.23 L474.00 222.61 L477.00 219.53 L480.00 216.03 L483.00 212.20 L486.00 208.11 L489.00 203.86 L492.00 199.52 L495.00 195.19 L498.00 190.96 L501.00 186.92 L504.00 183.16 L507.00 179.75 L510.00 176.76 L513.00 174.26 L516.00 172.31 L519.00 170.93 L522.00 170.16 L525.00 170.02 L528.00 170.51 L531.00 171.62 L534.00 173.32 L537.00 175.59 L540.00 178.36 L543.00 181.59 L546.00 185.21 L549.00 189.14 L552.00 193.29 L555.00 197.59 L558.00 201.93 L561.00 206.24 L564.00 210.41 L567.00 214.37 L570.00 218.02 L573.00 221.30 L576.00 224.13 L579.00 226.45 L582.00 228.22 L585.00 229.39 L588.00 229.95 L591.00 229.88 L594.00 229.19 L597.00 227.88 L600.00 225.98 L603.00 223.54 L606.00 220.61 L609.00 217.24 L612.00 213.51 L615.00 209.50 L618.00 205.29 L621.00 200.97 L624.00 196.62 L627.00 192.35 L630.00 188.24 L633.00 184.38 L636.00 180.84 L639.00 177.71 L642.00 175.04 L645.00 172.90 L648.00 171.32 L651.00 170.35 L654.00 170.00 L657.00 170.28 L660.00 171.18 L663.00 172.69 L666.00 174.77 L669.00 177.39 L672.00 180.47 L675.00 183.97 L678.00 187.80 L681.00 191.89 L684.00 196.14 L687.00 200.48 L690.00 204.81 L693.00 209.04 L696.00 213.08 L699.00 216.84 L702.00 220.25 L705.00 223.24 L708.00 225.74 L711.00 227.69 L714.00 229.07 L717.00 229.84 L720.00 229.98 L723.00 229.49 L726.00 228.38 L729.00 226.68 L732.00 224.41 L735.00 221.64 L738.00 218.41 L741.00 214.79 L744.00 210.86 L747.00 206.71 L750.00 202.41 L753.00 198.07 L756.00 193.76 L759.00 189.59 L762.00 185.63 L765.00 181.98 L768.00 178.70 L771.00 175.87 L774.00 173.55 L777.00 171.78 L780.00 170.61" stroke="#04454D" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M240.00 181.98 L243.00 185.63 L246.00 189.59 L249.00 193.76 L252.00 198.07 L255.00 202.41 L258.00 206.71 L261.00 210.86 L264.00 214.79 L267.00 218.41 L270.00 221.64 L273.00 224.41 L276.00 226.68 L279.00 228.38 L282.00 229.49 L285.00 229.98 L288.00 229.84 L291.00 229.07 L294.00 227.69 L297.00 225.74 L300.00 223.24 L303.00 220.25 L306.00 216.84 L309.00 213.08 L312.00 209.04 L315.00 204.81 L318.00 200.48 L321.00 196.14 L324.00 191.89 L327.00 187.80 L330.00 183.97 L333.00 180.47 L336.00 177.39 L339.00 174.77 L342.00 172.69 L345.00 171.18 L348.00 170.28 L351.00 170.00 L354.00 170.35 L357.00 171.32 L360.00 172.90 L363.00 175.04 L366.00 177.71 L369.00 180.84 L372.00 184.38 L375.00 188.24 L378.00 192.35 L381.00 196.62 L384.00 200.97 L387.00 205.29 L390.00 209.50 L393.00 213.51 L396.00 217.24 L399.00 220.61 L402.00 223.54 L405.00 225.98 L408.00 227.88 L411.00 229.19 L414.00 229.88 L417.00 229.95 L420.00 229.39 L423.00 228.22 L426.00 226.45 L429.00 224.13 L432.00 221.30 L435.00 218.02 L438.00 214.37 L441.00 210.41 L444.00 206.24 L447.00 201.93 L450.00 197.59 L453.00 193.29 L456.00 189.14 L459.00 185.21 L462.00 181.59 L465.00 178.36 L468.00 175.59 L471.00 173.32 L474.00 171.62 L477.00 170.51 L480.00 170.02 L483.00 170.16 L486.00 170.93 L489.00 172.31 L492.00 174.26 L495.00 176.76 L498.00 179.75 L501.00 183.16 L504.00 186.92 L507.00 190.96 L510.00 195.19 L513.00 199.52 L516.00 203.86 L519.00 208.11 L522.00 212.20 L525.00 216.03 L528.00 219.53 L531.00 222.61 L534.00 225.23 L537.00 227.31 L540.00 228.82 L543.00 229.72 L546.00 230.00 L549.00 229.65 L552.00 228.68 L555.00 227.10 L558.00 224.96 L561.00 222.29 L564.00 219.16 L567.00 215.62 L570.00 211.76 L573.00 207.65 L576.00 203.38 L579.00 199.03 L582.00 194.71 L585.00 190.50 L588.00 186.49 L591.00 182.76 L594.00 179.39 L597.00 176.46 L600.00 174.02 L603.00 172.12 L606.00 170.81 L609.00 170.12 L612.00 170.05 L615.00 170.61 L618.00 171.78 L621.00 173.55 L624.00 175.87 L627.00 178.70 L630.00 181.98 L633.00 185.63 L636.00 189.59 L639.00 193.76 L642.00 198.07 L645.00 202.41 L648.00 206.71 L651.00 210.86 L654.00 214.79 L657.00 218.41 L660.00 221.64 L663.00 224.41 L666.00 226.68 L669.00 228.38 L672.00 229.49 L675.00 229.98 L678.00 229.84 L681.00 229.07 L684.00 227.69 L687.00 225.74 L690.00 223.24 L693.00 220.25 L696.00 216.84 L699.00 213.08 L702.00 209.04 L705.00 204.81 L708.00 200.48 L711.00 196.14 L714.00 191.89 L717.00 187.80 L720.00 183.97 L723.00 180.47 L726.00 177.39 L729.00 174.77 L732.00 172.69 L735.00 171.18 L738.00 170.28 L741.00 170.00 L744.00 170.35 L747.00 171.32 L750.00 172.90 L753.00 175.04 L756.00 177.71 L759.00 180.84 L762.00 184.38 L765.00 188.24 L768.00 192.35 L771.00 196.62 L774.00 200.97 L777.00 205.29 L780.00 209.50" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="round"></path>
+<path d="M240.00 181.98 L243.00 185.63 L246.00 189.59 L249.00 193.76 L252.00 198.07 L255.00 202.41 L258.00 206.71 L261.00 210.86 L264.00 214.79 L267.00 218.41 L270.00 221.64 L273.00 224.41 L276.00 226.68 L279.00 228.38 L282.00 229.49 L285.00 229.98 L288.00 229.84 L291.00 229.07 L294.00 227.69 L297.00 225.74 L300.00 223.24 L303.00 220.25 L306.00 216.84 L309.00 213.08 L312.00 209.04 L315.00 204.81 L318.00 200.48 L321.00 196.14 L324.00 191.89 L327.00 187.80 L330.00 183.97 L333.00 180.47 L336.00 177.39 L339.00 174.77 L342.00 172.69 L345.00 171.18 L348.00 170.28 L351.00 170.00 L354.00 170.35 L357.00 171.32 L360.00 172.90 L363.00 175.04 L366.00 177.71 L369.00 180.84 L372.00 184.38 L375.00 188.24 L378.00 192.35 L381.00 196.62 L384.00 200.97 L387.00 205.29 L390.00 209.50 L393.00 213.51 L396.00 217.24 L399.00 220.61 L402.00 223.54 L405.00 225.98 L408.00 227.88 L411.00 229.19 L414.00 229.88 L417.00 229.95 L420.00 229.39 L423.00 228.22 L426.00 226.45 L429.00 224.13 L432.00 221.30 L435.00 218.02 L438.00 214.37 L441.00 210.41 L444.00 206.24 L447.00 201.93 L450.00 197.59 L453.00 193.29 L456.00 189.14 L459.00 185.21 L462.00 181.59 L465.00 178.36 L468.00 175.59 L471.00 173.32 L474.00 171.62 L477.00 170.51 L480.00 170.02 L483.00 170.16 L486.00 170.93 L489.00 172.31 L492.00 174.26 L495.00 176.76 L498.00 179.75 L501.00 183.16 L504.00 186.92 L507.00 190.96 L510.00 195.19 L513.00 199.52 L516.00 203.86 L519.00 208.11 L522.00 212.20 L525.00 216.03 L528.00 219.53 L531.00 222.61 L534.00 225.23 L537.00 227.31 L540.00 228.82 L543.00 229.72 L546.00 230.00 L549.00 229.65 L552.00 228.68 L555.00 227.10 L558.00 224.96 L561.00 222.29 L564.00 219.16 L567.00 215.62 L570.00 211.76 L573.00 207.65 L576.00 203.38 L579.00 199.03 L582.00 194.71 L585.00 190.50 L588.00 186.49 L591.00 182.76 L594.00 179.39 L597.00 176.46 L600.00 174.02 L603.00 172.12 L606.00 170.81 L609.00 170.12 L612.00 170.05 L615.00 170.61 L618.00 171.78 L621.00 173.55 L624.00 175.87 L627.00 178.70 L630.00 181.98 L633.00 185.63 L636.00 189.59 L639.00 193.76 L642.00 198.07 L645.00 202.41 L648.00 206.71 L651.00 210.86 L654.00 214.79 L657.00 218.41 L660.00 221.64 L663.00 224.41 L666.00 226.68 L669.00 228.38 L672.00 229.49 L675.00 229.98 L678.00 229.84 L681.00 229.07 L684.00 227.69 L687.00 225.74 L690.00 223.24 L693.00 220.25 L696.00 216.84 L699.00 213.08 L702.00 209.04 L705.00 204.81 L708.00 200.48 L711.00 196.14 L714.00 191.89 L717.00 187.80 L720.00 183.97 L723.00 180.47 L726.00 177.39 L729.00 174.77 L732.00 172.69 L735.00 171.18 L738.00 170.28 L741.00 170.00 L744.00 170.35 L747.00 171.32 L750.00 172.90 L753.00 175.04 L756.00 177.71 L759.00 180.84 L762.00 184.38 L765.00 188.24 L768.00 192.35 L771.00 196.62 L774.00 200.97 L777.00 205.29 L780.00 209.50" stroke="#9ED9D4" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M232.50 174.64 L233.50 175.45 L234.50 176.31 L235.50 177.23 L236.50 178.20 L237.50 179.22 L238.50 180.29 L239.50 181.40 L240.50 182.56 L241.50 183.76 L242.50 185.00 L243.50 186.27 L244.50 187.58 L245.50 188.91 L246.50 190.27 L247.50 191.65 L248.50 193.06 L249.50 194.47 L250.50 195.90 L251.50 197.35 L252.50 198.79" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M232.50 174.64 L233.50 175.45 L234.50 176.31 L235.50 177.23 L236.50 178.20 L237.50 179.22 L238.50 180.29 L239.50 181.40 L240.50 182.56 L241.50 183.76 L242.50 185.00 L243.50 186.27 L244.50 187.58 L245.50 188.91 L246.50 190.27 L247.50 191.65 L248.50 193.06 L249.50 194.47 L250.50 195.90 L251.50 197.35 L252.50 198.79" stroke="#9ED9D4" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M254.20 225.33 L255.20 224.52 L256.20 223.66 L257.20 222.74 L258.20 221.77 L259.20 220.75 L260.20 219.68 L261.20 218.56 L262.20 217.40 L263.20 216.20 L264.20 214.96 L265.20 213.68 L266.20 212.38 L267.20 211.04 L268.20 209.68 L269.20 208.30 L270.20 206.90 L271.20 205.48 L272.20 204.05 L273.20 202.61 L274.20 201.16" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M254.20 225.33 L255.20 224.52 L256.20 223.66 L257.20 222.74 L258.20 221.77 L259.20 220.75 L260.20 219.68 L261.20 218.56 L262.20 217.40 L263.20 216.20 L264.20 214.96 L265.20 213.68 L266.20 212.38 L267.20 211.04 L268.20 209.68 L269.20 208.30 L270.20 206.90 L271.20 205.48 L272.20 204.05 L273.20 202.61 L274.20 201.16" stroke="#5ECC75" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M275.85 174.66 L276.85 175.46 L277.85 176.33 L278.85 177.24 L279.85 178.21 L280.85 179.24 L281.85 180.31 L282.85 181.42 L283.85 182.58 L284.85 183.78 L285.85 185.02 L286.85 186.29 L287.85 187.60 L288.85 188.93 L289.85 190.29 L290.85 191.68 L291.85 193.08 L292.85 194.50 L293.85 195.93 L294.85 197.37 L295.85 198.82" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M275.85 174.66 L276.85 175.46 L277.85 176.33 L278.85 177.24 L279.85 178.21 L280.85 179.24 L281.85 180.31 L282.85 181.42 L283.85 182.58 L284.85 183.78 L285.85 185.02 L286.85 186.29 L287.85 187.60 L288.85 188.93 L289.85 190.29 L290.85 191.68 L291.85 193.08 L292.85 194.50 L293.85 195.93 L294.85 197.37 L295.85 198.82" stroke="#04454D" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M297.50 225.36 L298.50 224.55 L299.50 223.69 L300.50 222.77 L301.50 221.80 L302.50 220.78 L303.50 219.71 L304.50 218.60 L305.50 217.44 L306.50 216.24 L307.50 215.00 L308.50 213.73 L309.50 212.42 L310.50 211.09 L311.50 209.73 L312.50 208.35 L313.50 206.94 L314.50 205.53 L315.50 204.10 L316.50 202.65 L317.50 201.21" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M297.50 225.36 L298.50 224.55 L299.50 223.69 L300.50 222.77 L301.50 221.80 L302.50 220.78 L303.50 219.71 L304.50 218.60 L305.50 217.44 L306.50 216.24 L307.50 215.00 L308.50 213.73 L309.50 212.42 L310.50 211.09 L311.50 209.73 L312.50 208.35 L313.50 206.94 L314.50 205.53 L315.50 204.10 L316.50 202.65 L317.50 201.21" stroke="#9ED9D4" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M319.20 174.67 L320.20 175.48 L321.20 176.34 L322.20 177.26 L323.20 178.23 L324.20 179.25 L325.20 180.32 L326.20 181.44 L327.20 182.60 L328.20 183.80 L329.20 185.04 L330.20 186.32 L331.20 187.62 L332.20 188.96 L333.20 190.32 L334.20 191.70 L335.20 193.10 L336.20 194.52 L337.20 195.95 L338.20 197.39 L339.20 198.84" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M319.20 174.67 L320.20 175.48 L321.20 176.34 L322.20 177.26 L323.20 178.23 L324.20 179.25 L325.20 180.32 L326.20 181.44 L327.20 182.60 L328.20 183.80 L329.20 185.04 L330.20 186.32 L331.20 187.62 L332.20 188.96 L333.20 190.32 L334.20 191.70 L335.20 193.10 L336.20 194.52 L337.20 195.95 L338.20 197.39 L339.20 198.84" stroke="#5ECC75" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M340.85 225.34 L341.85 224.54 L342.85 223.67 L343.85 222.76 L344.85 221.79 L345.85 220.76 L346.85 219.69 L347.85 218.58 L348.85 217.42 L349.85 216.22 L350.85 214.98 L351.85 213.71 L352.85 212.40 L353.85 211.07 L354.85 209.71 L355.85 208.32 L356.85 206.92 L357.85 205.50 L358.85 204.07 L359.85 202.63 L360.85 201.18" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M340.85 225.34 L341.85 224.54 L342.85 223.67 L343.85 222.76 L344.85 221.79 L345.85 220.76 L346.85 219.69 L347.85 218.58 L348.85 217.42 L349.85 216.22 L350.85 214.98 L351.85 213.71 L352.85 212.40 L353.85 211.07 L354.85 209.71 L355.85 208.32 L356.85 206.92 L357.85 205.50 L358.85 204.07 L359.85 202.63 L360.85 201.18" stroke="#04454D" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M362.50 174.64 L363.50 175.45 L364.50 176.31 L365.50 177.23 L366.50 178.20 L367.50 179.22 L368.50 180.29 L369.50 181.40 L370.50 182.56 L371.50 183.76 L372.50 185.00 L373.50 186.27 L374.50 187.58 L375.50 188.91 L376.50 190.27 L377.50 191.65 L378.50 193.06 L379.50 194.47 L380.50 195.90 L381.50 197.35 L382.50 198.79" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M362.50 174.64 L363.50 175.45 L364.50 176.31 L365.50 177.23 L366.50 178.20 L367.50 179.22 L368.50 180.29 L369.50 181.40 L370.50 182.56 L371.50 183.76 L372.50 185.00 L373.50 186.27 L374.50 187.58 L375.50 188.91 L376.50 190.27 L377.50 191.65 L378.50 193.06 L379.50 194.47 L380.50 195.90 L381.50 197.35 L382.50 198.79" stroke="#9ED9D4" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M384.20 225.33 L385.20 224.52 L386.20 223.66 L387.20 222.74 L388.20 221.77 L389.20 220.75 L390.20 219.68 L391.20 218.56 L392.20 217.40 L393.20 216.20 L394.20 214.96 L395.20 213.68 L396.20 212.38 L397.20 211.04 L398.20 209.68 L399.20 208.30 L400.20 206.90 L401.20 205.48 L402.20 204.05 L403.20 202.61 L404.20 201.16" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M384.20 225.33 L385.20 224.52 L386.20 223.66 L387.20 222.74 L388.20 221.77 L389.20 220.75 L390.20 219.68 L391.20 218.56 L392.20 217.40 L393.20 216.20 L394.20 214.96 L395.20 213.68 L396.20 212.38 L397.20 211.04 L398.20 209.68 L399.20 208.30 L400.20 206.90 L401.20 205.48 L402.20 204.05 L403.20 202.61 L404.20 201.16" stroke="#5ECC75" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M405.85 174.66 L406.85 175.46 L407.85 176.33 L408.85 177.24 L409.85 178.21 L410.85 179.24 L411.85 180.31 L412.85 181.42 L413.85 182.58 L414.85 183.78 L415.85 185.02 L416.85 186.29 L417.85 187.60 L418.85 188.93 L419.85 190.29 L420.85 191.68 L421.85 193.08 L422.85 194.50 L423.85 195.93 L424.85 197.37 L425.85 198.82" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M405.85 174.66 L406.85 175.46 L407.85 176.33 L408.85 177.24 L409.85 178.21 L410.85 179.24 L411.85 180.31 L412.85 181.42 L413.85 182.58 L414.85 183.78 L415.85 185.02 L416.85 186.29 L417.85 187.60 L418.85 188.93 L419.85 190.29 L420.85 191.68 L421.85 193.08 L422.85 194.50 L423.85 195.93 L424.85 197.37 L425.85 198.82" stroke="#04454D" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M427.50 225.36 L428.50 224.55 L429.50 223.69 L430.50 222.77 L431.50 221.80 L432.50 220.78 L433.50 219.71 L434.50 218.60 L435.50 217.44 L436.50 216.24 L437.50 215.00 L438.50 213.73 L439.50 212.42 L440.50 211.09 L441.50 209.73 L442.50 208.35 L443.50 206.94 L444.50 205.53 L445.50 204.10 L446.50 202.65 L447.50 201.21" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M427.50 225.36 L428.50 224.55 L429.50 223.69 L430.50 222.77 L431.50 221.80 L432.50 220.78 L433.50 219.71 L434.50 218.60 L435.50 217.44 L436.50 216.24 L437.50 215.00 L438.50 213.73 L439.50 212.42 L440.50 211.09 L441.50 209.73 L442.50 208.35 L443.50 206.94 L444.50 205.53 L445.50 204.10 L446.50 202.65 L447.50 201.21" stroke="#9ED9D4" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M449.20 174.67 L450.20 175.48 L451.20 176.34 L452.20 177.26 L453.20 178.23 L454.20 179.25 L455.20 180.32 L456.20 181.44 L457.20 182.60 L458.20 183.80 L459.20 185.04 L460.20 186.32 L461.20 187.62 L462.20 188.96 L463.20 190.32 L464.20 191.70 L465.20 193.10 L466.20 194.52 L467.20 195.95 L468.20 197.39 L469.20 198.84" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M449.20 174.67 L450.20 175.48 L451.20 176.34 L452.20 177.26 L453.20 178.23 L454.20 179.25 L455.20 180.32 L456.20 181.44 L457.20 182.60 L458.20 183.80 L459.20 185.04 L460.20 186.32 L461.20 187.62 L462.20 188.96 L463.20 190.32 L464.20 191.70 L465.20 193.10 L466.20 194.52 L467.20 195.95 L468.20 197.39 L469.20 198.84" stroke="#5ECC75" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M470.85 225.34 L471.85 224.54 L472.85 223.67 L473.85 222.76 L474.85 221.79 L475.85 220.76 L476.85 219.69 L477.85 218.58 L478.85 217.42 L479.85 216.22 L480.85 214.98 L481.85 213.71 L482.85 212.40 L483.85 211.07 L484.85 209.71 L485.85 208.32 L486.85 206.92 L487.85 205.50 L488.85 204.07 L489.85 202.63 L490.85 201.18" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M470.85 225.34 L471.85 224.54 L472.85 223.67 L473.85 222.76 L474.85 221.79 L475.85 220.76 L476.85 219.69 L477.85 218.58 L478.85 217.42 L479.85 216.22 L480.85 214.98 L481.85 213.71 L482.85 212.40 L483.85 211.07 L484.85 209.71 L485.85 208.32 L486.85 206.92 L487.85 205.50 L488.85 204.07 L489.85 202.63 L490.85 201.18" stroke="#04454D" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M492.50 174.64 L493.50 175.45 L494.50 176.31 L495.50 177.23 L496.50 178.20 L497.50 179.22 L498.50 180.29 L499.50 181.40 L500.50 182.56 L501.50 183.76 L502.50 185.00 L503.50 186.27 L504.50 187.58 L505.50 188.91 L506.50 190.27 L507.50 191.65 L508.50 193.06 L509.50 194.47 L510.50 195.90 L511.50 197.35 L512.50 198.79" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M492.50 174.64 L493.50 175.45 L494.50 176.31 L495.50 177.23 L496.50 178.20 L497.50 179.22 L498.50 180.29 L499.50 181.40 L500.50 182.56 L501.50 183.76 L502.50 185.00 L503.50 186.27 L504.50 187.58 L505.50 188.91 L506.50 190.27 L507.50 191.65 L508.50 193.06 L509.50 194.47 L510.50 195.90 L511.50 197.35 L512.50 198.79" stroke="#9ED9D4" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M514.20 225.33 L515.20 224.52 L516.20 223.66 L517.20 222.74 L518.20 221.77 L519.20 220.75 L520.20 219.68 L521.20 218.56 L522.20 217.40 L523.20 216.20 L524.20 214.96 L525.20 213.68 L526.20 212.38 L527.20 211.04 L528.20 209.68 L529.20 208.30 L530.20 206.90 L531.20 205.48 L532.20 204.05 L533.20 202.61 L534.20 201.16" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M514.20 225.33 L515.20 224.52 L516.20 223.66 L517.20 222.74 L518.20 221.77 L519.20 220.75 L520.20 219.68 L521.20 218.56 L522.20 217.40 L523.20 216.20 L524.20 214.96 L525.20 213.68 L526.20 212.38 L527.20 211.04 L528.20 209.68 L529.20 208.30 L530.20 206.90 L531.20 205.48 L532.20 204.05 L533.20 202.61 L534.20 201.16" stroke="#5ECC75" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M535.85 174.66 L536.85 175.46 L537.85 176.33 L538.85 177.24 L539.85 178.21 L540.85 179.24 L541.85 180.31 L542.85 181.42 L543.85 182.58 L544.85 183.78 L545.85 185.02 L546.85 186.29 L547.85 187.60 L548.85 188.93 L549.85 190.29 L550.85 191.68 L551.85 193.08 L552.85 194.50 L553.85 195.93 L554.85 197.37 L555.85 198.82" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M535.85 174.66 L536.85 175.46 L537.85 176.33 L538.85 177.24 L539.85 178.21 L540.85 179.24 L541.85 180.31 L542.85 181.42 L543.85 182.58 L544.85 183.78 L545.85 185.02 L546.85 186.29 L547.85 187.60 L548.85 188.93 L549.85 190.29 L550.85 191.68 L551.85 193.08 L552.85 194.50 L553.85 195.93 L554.85 197.37 L555.85 198.82" stroke="#04454D" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M557.50 225.36 L558.50 224.55 L559.50 223.69 L560.50 222.77 L561.50 221.80 L562.50 220.78 L563.50 219.71 L564.50 218.60 L565.50 217.44 L566.50 216.24 L567.50 215.00 L568.50 213.73 L569.50 212.42 L570.50 211.09 L571.50 209.73 L572.50 208.35 L573.50 206.94 L574.50 205.53 L575.50 204.10 L576.50 202.65 L577.50 201.21" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M557.50 225.36 L558.50 224.55 L559.50 223.69 L560.50 222.77 L561.50 221.80 L562.50 220.78 L563.50 219.71 L564.50 218.60 L565.50 217.44 L566.50 216.24 L567.50 215.00 L568.50 213.73 L569.50 212.42 L570.50 211.09 L571.50 209.73 L572.50 208.35 L573.50 206.94 L574.50 205.53 L575.50 204.10 L576.50 202.65 L577.50 201.21" stroke="#9ED9D4" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M579.20 174.67 L580.20 175.48 L581.20 176.34 L582.20 177.26 L583.20 178.23 L584.20 179.25 L585.20 180.32 L586.20 181.44 L587.20 182.60 L588.20 183.80 L589.20 185.04 L590.20 186.32 L591.20 187.62 L592.20 188.96 L593.20 190.32 L594.20 191.70 L595.20 193.10 L596.20 194.52 L597.20 195.95 L598.20 197.39 L599.20 198.84" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M579.20 174.67 L580.20 175.48 L581.20 176.34 L582.20 177.26 L583.20 178.23 L584.20 179.25 L585.20 180.32 L586.20 181.44 L587.20 182.60 L588.20 183.80 L589.20 185.04 L590.20 186.32 L591.20 187.62 L592.20 188.96 L593.20 190.32 L594.20 191.70 L595.20 193.10 L596.20 194.52 L597.20 195.95 L598.20 197.39 L599.20 198.84" stroke="#5ECC75" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M600.85 225.34 L601.85 224.54 L602.85 223.67 L603.85 222.76 L604.85 221.79 L605.85 220.76 L606.85 219.69 L607.85 218.58 L608.85 217.42 L609.85 216.22 L610.85 214.98 L611.85 213.71 L612.85 212.40 L613.85 211.07 L614.85 209.71 L615.85 208.32 L616.85 206.92 L617.85 205.50 L618.85 204.07 L619.85 202.63 L620.85 201.18" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M600.85 225.34 L601.85 224.54 L602.85 223.67 L603.85 222.76 L604.85 221.79 L605.85 220.76 L606.85 219.69 L607.85 218.58 L608.85 217.42 L609.85 216.22 L610.85 214.98 L611.85 213.71 L612.85 212.40 L613.85 211.07 L614.85 209.71 L615.85 208.32 L616.85 206.92 L617.85 205.50 L618.85 204.07 L619.85 202.63 L620.85 201.18" stroke="#04454D" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M622.55 174.68 L623.55 175.49 L624.55 176.35 L625.55 177.27 L626.55 178.25 L627.55 179.27 L628.55 180.34 L629.55 181.46 L630.55 182.62 L631.55 183.82 L632.55 185.06 L633.55 186.34 L634.55 187.64 L635.55 188.98 L636.55 190.34 L637.55 191.72 L638.55 193.13 L639.55 194.54 L640.55 195.98 L641.55 197.42 L642.55 198.86" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M622.55 174.68 L623.55 175.49 L624.55 176.35 L625.55 177.27 L626.55 178.25 L627.55 179.27 L628.55 180.34 L629.55 181.46 L630.55 182.62 L631.55 183.82 L632.55 185.06 L633.55 186.34 L634.55 187.64 L635.55 188.98 L636.55 190.34 L637.55 191.72 L638.55 193.13 L639.55 194.54 L640.55 195.98 L641.55 197.42 L642.55 198.86" stroke="#9ED9D4" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M644.20 225.33 L645.20 224.52 L646.20 223.66 L647.20 222.74 L648.20 221.77 L649.20 220.75 L650.20 219.68 L651.20 218.56 L652.20 217.40 L653.20 216.20 L654.20 214.96 L655.20 213.68 L656.20 212.38 L657.20 211.04 L658.20 209.68 L659.20 208.30 L660.20 206.90 L661.20 205.48 L662.20 204.05 L663.20 202.61 L664.20 201.16" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M644.20 225.33 L645.20 224.52 L646.20 223.66 L647.20 222.74 L648.20 221.77 L649.20 220.75 L650.20 219.68 L651.20 218.56 L652.20 217.40 L653.20 216.20 L654.20 214.96 L655.20 213.68 L656.20 212.38 L657.20 211.04 L658.20 209.68 L659.20 208.30 L660.20 206.90 L661.20 205.48 L662.20 204.05 L663.20 202.61 L664.20 201.16" stroke="#5ECC75" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M665.85 174.66 L666.85 175.46 L667.85 176.33 L668.85 177.24 L669.85 178.21 L670.85 179.24 L671.85 180.31 L672.85 181.42 L673.85 182.58 L674.85 183.78 L675.85 185.02 L676.85 186.29 L677.85 187.60 L678.85 188.93 L679.85 190.29 L680.85 191.68 L681.85 193.08 L682.85 194.50 L683.85 195.93 L684.85 197.37 L685.85 198.82" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M665.85 174.66 L666.85 175.46 L667.85 176.33 L668.85 177.24 L669.85 178.21 L670.85 179.24 L671.85 180.31 L672.85 181.42 L673.85 182.58 L674.85 183.78 L675.85 185.02 L676.85 186.29 L677.85 187.60 L678.85 188.93 L679.85 190.29 L680.85 191.68 L681.85 193.08 L682.85 194.50 L683.85 195.93 L684.85 197.37 L685.85 198.82" stroke="#04454D" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M687.55 225.32 L688.55 224.51 L689.55 223.65 L690.55 222.73 L691.55 221.75 L692.55 220.73 L693.55 219.66 L694.55 218.54 L695.55 217.38 L696.55 216.18 L697.55 214.94 L698.55 213.66 L699.55 212.36 L700.55 211.02 L701.55 209.66 L702.55 208.28 L703.55 206.87 L704.55 205.46 L705.55 204.02 L706.55 202.58 L707.55 201.14" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M687.55 225.32 L688.55 224.51 L689.55 223.65 L690.55 222.73 L691.55 221.75 L692.55 220.73 L693.55 219.66 L694.55 218.54 L695.55 217.38 L696.55 216.18 L697.55 214.94 L698.55 213.66 L699.55 212.36 L700.55 211.02 L701.55 209.66 L702.55 208.28 L703.55 206.87 L704.55 205.46 L705.55 204.02 L706.55 202.58 L707.55 201.14" stroke="#9ED9D4" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M709.20 174.67 L710.20 175.48 L711.20 176.34 L712.20 177.26 L713.20 178.23 L714.20 179.25 L715.20 180.32 L716.20 181.44 L717.20 182.60 L718.20 183.80 L719.20 185.04 L720.20 186.32 L721.20 187.62 L722.20 188.96 L723.20 190.32 L724.20 191.70 L725.20 193.10 L726.20 194.52 L727.20 195.95 L728.20 197.39 L729.20 198.84" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M709.20 174.67 L710.20 175.48 L711.20 176.34 L712.20 177.26 L713.20 178.23 L714.20 179.25 L715.20 180.32 L716.20 181.44 L717.20 182.60 L718.20 183.80 L719.20 185.04 L720.20 186.32 L721.20 187.62 L722.20 188.96 L723.20 190.32 L724.20 191.70 L725.20 193.10 L726.20 194.52 L727.20 195.95 L728.20 197.39 L729.20 198.84" stroke="#5ECC75" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M730.85 225.34 L731.85 224.54 L732.85 223.67 L733.85 222.76 L734.85 221.79 L735.85 220.76 L736.85 219.69 L737.85 218.58 L738.85 217.42 L739.85 216.22 L740.85 214.98 L741.85 213.71 L742.85 212.40 L743.85 211.07 L744.85 209.71 L745.85 208.32 L746.85 206.92 L747.85 205.50 L748.85 204.07 L749.85 202.63 L750.85 201.18" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M730.85 225.34 L731.85 224.54 L732.85 223.67 L733.85 222.76 L734.85 221.79 L735.85 220.76 L736.85 219.69 L737.85 218.58 L738.85 217.42 L739.85 216.22 L740.85 214.98 L741.85 213.71 L742.85 212.40 L743.85 211.07 L744.85 209.71 L745.85 208.32 L746.85 206.92 L747.85 205.50 L748.85 204.07 L749.85 202.63 L750.85 201.18" stroke="#04454D" stroke-width="12" fill="none" stroke-linecap="round"></path>
+<path d="M752.55 174.68 L753.55 175.49 L754.55 176.35 L755.55 177.27 L756.55 178.25 L757.55 179.27 L758.55 180.34 L759.55 181.46 L760.55 182.62 L761.55 183.82 L762.55 185.06 L763.55 186.34 L764.55 187.64 L765.55 188.98 L766.55 190.34 L767.55 191.72 L768.55 193.13 L769.55 194.54 L770.55 195.98 L771.55 197.42 L772.55 198.86" stroke="#FDFBF6" stroke-width="19" fill="none" stroke-linecap="butt"></path>
+<path d="M752.55 174.68 L753.55 175.49 L754.55 176.35 L755.55 177.27 L756.55 178.25 L757.55 179.27 L758.55 180.34 L759.55 181.46 L760.55 182.62 L761.55 183.82 L762.55 185.06 L763.55 186.34 L764.55 187.64 L765.55 188.98 L766.55 190.34 L767.55 191.72 L768.55 193.13 L769.55 194.54 L770.55 195.98 L771.55 197.42 L772.55 198.86" stroke="#9ED9D4" stroke-width="12" fill="none" stroke-linecap="round"></path>
+</g></g>
+</svg>
+<sc-for list="{{ inputs }}" as="c" hint-placeholder-count="5">
+<div class="lift" style="position: absolute; left: 0; top: {{ c.y }}; width: 210px; height: 50px; display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 999px; padding: 0 14px 0 6px; border: 1px solid #EFF1ED; box-shadow: 0 6px 18px rgba(16,40,42,.06)"><span style="width: 38px; height: 38px; border-radius: 50%; background: {{ c.bg }}; color: {{ c.fg }}; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ c.d }}"></path></svg></span><span style="font-size: 14px; font-weight: 700">{{ c.label }}</span></div>
+</sc-for>
+<div class="pop glow" style="position: absolute; left: 350px; top: 140px; width: 120px; height: 120px; border-radius: 50%; background: #C2F0CE; color: #1E6B35; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 0 0 10px rgba(94,204,117,.22), 0 12px 30px rgba(16,40,42,.08); padding: 10px; z-index: 2"><span style="display: flex; margin-bottom: 6px"><img src="./assets/406d0485abc69f931d90e471e7b2fae4.png" alt="" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid #C2F0CE"><img src="./assets/46be7b136788abe3da3421acd97bdcec.png" alt="" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid #C2F0CE; margin-left: -8px"></span><b style="font-size: 13px; line-height: 1.2">Just-in-time support</b></div>
+<div style="position: absolute; left: 760px; top: 40px; width: 300px; background: #fff; border: 1px solid #EFF1ED; border-radius: 20px; box-shadow: 0 16px 40px rgba(16,40,42,.08); padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{ outcomes }}" as="o" hint-placeholder-count="3">
+<div class="lift" style="display: flex; gap: 12px; align-items: center; border-radius: 12px; padding: 10px; background: {{ o.bg }}"><span style="flex: none; width: 36px; height: 36px; border-radius: 10px; background: {{ o.fg }}; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800">{{ o.n }}</span><span><b style="display: block; font-size: 14px; line-height: 1.25">{{ o.t }}</b><span style="display: block; font-size: 12px; color: #3D4B4D; margin-top: 2px; line-height: 1.35">{{ o.d }}</span></span></div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; gap: 12px; justify-content: center; margin-top: 26px">
+<button class="go btnh" onClick="{{ back }}" style="height: 46px; padding: 0 22px; border-radius: 999px; border: 1px solid #E3E7E4; background: #fff; color: #3D4B4D; font-size: 14px; font-weight: 600">Back</button>
+<button class="go btnh" onClick="{{ restart }}" style="height: 46px; padding: 0 22px; border-radius: 999px; border: none; background: #E9F4F1; color: #0F6B5F; font-size: 14px; font-weight: 700">Replay tour</button>
+<a class="btnh" href="https://calendly.com/ariella-colabeducation/meeting" target="_blank" rel="noopener" style="height: 46px; padding: 0 26px; border-radius: 999px; background: #04454D; color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center">Book a demo</a>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"zoom":{"editor":"boolean","default":true},"autoplay":{"editor":"boolean","default":true},"$preview":{"width":1200,"height":872}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { step: 0, t: 0, done: false }; this._dur = [9500, 13000, 9500, 12000, 11000, 16000, 11000, 10500]; }
+  componentDidMount() {
+    this._iv = setInterval(() => this._tick(), 100);
+    this._vis = true;
+    this._fit = () => {
+      const w = window.innerWidth || 1200, h = window.innerHeight || 872;
+      const sc = Math.min(w / 1200, h / 872);
+      this.setState({ fs: sc, fx: (w - 1200 * sc) / 2, fy: (h - 872 * sc) / 2 });
+    };
+    this._fit();
+    window.addEventListener('resize', this._fit);
+    if (typeof IntersectionObserver !== 'undefined') {
+      this._io = new IntersectionObserver((es) => { this._vis = es[0].intersectionRatio > 0.35; }, { threshold: [0, 0.35, 0.7] });
+      this._io.observe(document.documentElement);
+    }
+  }
+  componentWillUnmount() { clearInterval(this._iv); window.removeEventListener('resize', this._fit); if (this._io) this._io.disconnect(); }
+  _tick() {
+    if ((this.props.autoplay ?? true) === false) return;
+    if (this._vis === false || (typeof document !== 'undefined' && document.hidden)) return;
+    const st = this.state;
+    if (st.step >= 8) { if (!st.done) this.setState({ done: true }); return; }
+    const dur = this._dur[st.step];
+    const nt = (st.t || 0) + 100;
+    if (st.done) { if ((st.t || 0) < dur) this.setState({ t: nt }); return; }
+    if (nt >= dur) this.setState({ step: st.step + 1, t: 0, done: st.step + 1 >= 8 });
+    else this.setState({ t: nt });
+  }
+  renderVals() {
+    const step = this.state.step;
+    const LAST = 8;
+    const auto = (this.props.autoplay ?? true) !== false;
+    const t = auto ? (this.state.t || 0) : 1e9;
+    const dur = this._dur[step] || 1;
+    const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+    const go = (n) => () => { const k = Math.max(0, Math.min(LAST, n)); this.setState({ step: k, t: 0, done: this.state.done || k === LAST }); };
+    const next = go(step + 1);
+    const at = (n) => step === n;
+    const tapIf = (n) => () => {};
+    const clsIf = (n) => '';
+    const P = {
+      dana: './assets/46be7b136788abe3da3421acd97bdcec.png', jordan: './assets/406d0485abc69f931d90e471e7b2fae4.png', elena: './assets/e249274ca93a35bea0de465ad8ca8643.png',
+      priya: './assets/5eef2de79fa85774df52519d32d879db.png', marcus: './assets/fd916284edead50b84407fb251cf8d1a.png', sam: './assets/263ac6dc49847b0eb7ab6fa0b295fe0a.png',
+      alan: './assets/992dc6315b75bbcc40c8312e867c2143.png', grace: './assets/3f037c428eab62703ac3084e8b27d94d.png', nadia: './assets/0d3423aee90062035bb5c9c74149a117.png',
+      tomas: './assets/49396a7546fc9e7f8bb0fa4b2d038691.png', layla: './assets/37f4df86b20bc4de46446e8fa970f5fe.png', devon: './assets/ed2d7db9912eb82f774e683d3a281b1f.png',
+      ruth: './assets/7751af72dfc90e3961f9e4f4055bb633.png', katie: './assets/8a049709ae66815c8cfcaddc00b1499f.png'
+    };
+    const I = {
+      boards: './assets/c1b4c2c9397304d019ea8225af3511bf.png', shop: './assets/83e40964b46f00730b91af01a52a3b3d.png', video: './assets/ce37c38bbbc60815cacd7f3a18f7dae1.png',
+      models: './assets/0e02f87c6eb7a9b0301d0abefcb24627.png', pd: './assets/6d0259194b77048210e2378a1200bd9d.png', lab: './assets/16a15e05cd2e9603dc81e7b93371d2c9.png', stickies: './assets/9d91753ed05797c7c3d500cba9740dd3.png'
+    };
+
+    const notes = [
+      ['WELCOME TO LAKEVIEW', "Your district's professional learning, connected", 'See what educators across 14 schools are trying, sharing and asking.'],
+      ['COMMUNITY', 'What works travels between schools', 'Educators share what they tried and what changed for students.'],
+      ['RESOURCES', "Ask once, find your colleagues' best work", 'Search in your own words. Get practice matched to your grade and goals.'],
+      ['ITERATIONS', 'Practice that improves with every use', 'Every adaptation is kept and credited.'],
+      ['SPACES', "A home for every team's work", 'Curriculum teams, PLCs, leadership programs and councils on CTE, AI and more.'],
+      ['DISCUSSIONS', 'From question to next step, in one post', 'Tag people and resources, or find a time to meet, right in a reply.'],
+      ['CONNECT', 'The right colleague, even in another district', 'Find educators facing the same challenge, and see who can help.'],
+      ['INSIGHTS', "Support where it's needed, while it still helps", "See what's taking hold, where people are stuck and what to do next."],
+      ['WHY IT WORKS', 'Support in the moment, capacity that compounds', 'Every answer, resource and connection adds to what your district knows.']
+    ];
+    const nt = notes[step];
+    const note = {
+      n: Math.min(step + 1, LAST), total: LAST, kicker: nt[0], title: nt[1], text: nt[2], pct: (step < LAST && auto ? clamp(100 - (t / dur) * 100, 0, 100) : 0) + '%', ease: t < 150 ? '0s' : '.1s linear',
+      canBack: step > 0, demo: step === LAST, btn: step === LAST ? 'Replay tour' : 'Next', act: step === LAST ? go(0) : next
+    };
+
+    const F = [1, '50% 50%'];
+    const zooms = [F, F, F, [1.12, '100% 78%'], F, [1.08, '100% 60%'], F, F, F];
+    const useZoom = this.props.zoom ?? true;
+    if (step === 3) zooms[3] = t < 5800 ? [1.12, '100% 62%'] : [1.12, '100% 100%'];
+    const z = useZoom ? zooms[step] : [1, '50% 50%'];
+
+    const view = ['home', 'feed', 'res', 'res', 'space', 'space', 'net', 'ins', 'space'][step];
+    const space = 'math';
+    const sel = { home: view === 'home', feed: view === 'feed', res: view === 'res', net: view === 'net', ins: view === 'ins', math: view === 'space' && space === 'math', cte: view === 'space' && space === 'cte' };
+    const nav = {}; const navW = {};
+    Object.keys(sel).forEach((k) => { nav[k] = sel[k] ? '#EAF4F1' : 'transparent'; navW[k] = sel[k] ? 700 : 500; });
+    const locked = false;
+
+    const tags = {
+      celebrate: ["What I'm celebrating", '#4B1B6A', '#EDDFF6'], trying: ["What I'm trying", '#0F6B5F', '#DDF0EC'],
+      noticing: ["What I'm noticing", '#8A5A12', '#FFF1CC'], news: ["What's new", '#1E4E9A', '#E3ECF7'], resource: ['Shared a resource', '#04454D', '#E6F2F0']
+    };
+    const mk = (img, name, role, t, time, text, extra) => Object.assign({ img, name, role, tag: tags[t][0], tagFg: tags[t][1], tagBg: tags[t][2], time, text, hasPhoto: false, hasRes: false, hasEvent: false }, extra);
+    const pElena = mk(P.elena, 'Elena Ortiz', 'Grade 8 Math, Westbrook MS', 'trying', '2h', "Exit tickets on the door: got it, almost, help. Tomorrow's groups, sorted.", { hasPhoto: true, photo: I.stickies, reactors: [P.jordan, P.ruth, P.katie], reacts: 21, replies: '6 replies' });
+    const pMarcus = mk(P.marcus, 'Marcus Bell', 'Construction Trades, Lakeview HS', 'celebrate', '4h', 'Students presented scale models to city planners. Two got summer placements!', { hasPhoto: true, photo: I.models, reactors: [P.alan, P.nadia, P.grace], reacts: 34, replies: '9 replies' });
+    const pPriya = mk(P.priya, 'Priya Shah', 'Grade 6 Math, Oak Ridge MS', 'resource', '5h', 'My prompt for leveled sentence frames.', { hasRes: true, reactors: [P.sam, P.layla, P.devon], reacts: 18, replies: '4 replies' });
+    const pAlan = mk(P.alan, 'Dr. Alan Brooks', 'Superintendent', 'news', '1d', 'Save the date: Nov 10 math PD day.', { hasEvent: true, reactors: [P.dana, P.grace, P.tomas], reacts: 27, replies: '5 replies' });
+    const pJordan = mk(P.jordan, 'Jordan Kim', 'Grade 7 Math, Westbrook MS', 'noticing', '1d', 'Two minutes of talk before writing changes everything. Anyone else?', { reactors: [P.elena, P.priya, P.sam], reacts: 15, replies: '11 replies' });
+
+    const doc = (o) => Object.assign({ hasImg: false, isVideo: false, isDoc: true, hasVer: false, ver: '', bg: '#EAF2FA', band: '#EAF2FA', badge: 'PDF', badgeBg: '#C8372D', len: '', dot: false, cls: '', tap: () => {} }, o);
+    const vid = (o) => Object.assign({ hasImg: true, isVideo: true, isDoc: false, hasVer: false, ver: '', bg: '#1C2B2D', band: '', badge: 'VIDEO', badgeBg: '#04454D', len: '3:20', dot: false, cls: '', tap: () => {} }, o);
+    const pho = (o) => Object.assign({ hasImg: true, isVideo: false, isDoc: false, hasVer: false, ver: '', bg: '#EEE', band: '', badge: 'PHOTOS', badgeBg: '#1E7A45', len: '', dot: false, cls: '', tap: () => {} }, o);
+    const library = [
+      doc({ title: 'Sentence frames for explaining ratios', who: P.priya, by: 'Priya Shah', spaces: '3 Spaces', saves: 34, hasVer: true, ver: 'v4', band: '#CBE7DF', badge: 'DOC', badgeBg: '#2B63C6' }),
+      vid({ img: I.boards, title: 'Vertical whiteboards: the first two weeks', who: P.elena, by: 'Elena Ortiz', spaces: '2 Spaces', saves: 29, len: '6:45' }),
+      doc({ title: 'Talk-before-writing protocol', who: P.ruth, by: 'Ruth Miller', spaces: '1 Space', saves: 18, hasVer: true, ver: 'v2', band: '#FBE3A0' }),
+      pho({ img: I.stickies, title: 'Exit ticket door: got it, almost, help', who: P.elena, by: 'Elena Ortiz', spaces: '4 Spaces', saves: 41 }),
+      doc({ title: 'Strong student explanations, Unit 2', who: P.elena, by: 'Elena Ortiz', spaces: '2 Spaces', saves: 26, band: '#F7DCE4' }),
+      vid({ img: I.video, title: 'Ratio talk routine: convince a skeptic', who: P.jordan, by: 'Jordan Kim', spaces: '2 Spaces', saves: 21, hasVer: true, ver: 'v3', len: '4:12', dot: at(2), cls: clsIf(2), tap: tapIf(2) }),
+      doc({ title: 'AI prompt pack: MLL scaffolds for Unit 2', who: P.priya, by: 'Priya Shah', spaces: '3 Spaces', saves: 26, hasVer: true, ver: 'v3', band: '#E3ECF7', badge: 'DOC', badgeBg: '#2B63C6' }),
+      doc({ title: 'Number talk slides: equivalent ratios', who: P.katie, by: 'Katie Walsh', spaces: '1 Space', saves: 12, band: '#FBE3A0', badge: 'SLIDES', badgeBg: '#D9822B' }),
+      pho({ img: I.pd, title: 'Lesson study notes from Hillcrest', who: P.layla, by: 'Layla Haddad', spaces: '1 Space', saves: 9 }),
+      doc({ title: 'Convince a skeptic: student checklist', who: P.sam, by: 'Sam Lee', spaces: '2 Spaces', saves: 15, hasVer: true, ver: 'v2', band: '#CBE7DF' }),
+      vid({ img: I.boards, title: 'Gallery walk for ratio reasoning', who: P.devon, by: 'Devon Price', spaces: '1 Space', saves: 7, len: '2:58' }),
+      doc({ title: 'Pacing guide for Units 2 and 3', who: P.tomas, by: 'Tomás Rivera', spaces: '2 Spaces', saves: 38, hasVer: true, ver: 'v5', band: '#F7DCE4' })
+    ];
+    const resRecs = [
+      { img: I.video, title: 'Ratio talk routine: convince a skeptic', why: 'Used at 5 schools' },
+      { img: I.pd, title: 'Pacing guide for Units 2 and 3', why: 'From Northfield' },
+      { img: I.stickies, title: 'Exit ticket door', why: 'Saved by 4 you follow' }
+    ];
+
+    const discussionsMath = [
+      { img: P.jordan, title: "Students get the ratio right but can't explain why", faces: [P.elena, P.priya, P.ruth], sub: '11 replies', dot: at(6), cls: clsIf(6), tap: tapIf(6) },
+      { img: P.priya, title: 'AI for Unit 2 language scaffolds', faces: [P.sam, P.layla, P.katie], sub: '8 replies', dot: false, cls: '', tap: () => {} },
+      { img: P.elena, title: 'Vertical whiteboards and pacing', faces: [P.devon, P.jordan, P.grace], sub: '14 replies', dot: false, cls: '', tap: () => {} },
+      { img: P.ruth, title: 'Lesson 2.6: where are you slowing down?', faces: [P.layla, P.grace, P.devon], sub: '6 replies', dot: false, cls: '', tap: () => {} }
+    ];
+    const discussionsCte = [
+      { img: P.alan, title: 'AI guidance for CTE labs: draft v2, feedback by Nov 6', faces: [P.nadia, P.tomas, P.dana], sub: '7 replies · 3 districts', dot: false, cls: '', tap: () => {} },
+      { img: P.nadia, title: 'Mapping shared pathways across our three districts', faces: [P.alan, P.marcus, P.grace], sub: '12 replies', dot: false, cls: '', tap: () => {} },
+      { img: P.marcus, title: 'Employer partners: who is working with whom?', faces: [P.tomas, P.dana, P.nadia], sub: '5 replies', dot: false, cls: '', tap: () => {} }
+    ];
+    const rv = (o) => Object.assign({ hasImg: false, isVideo: false, isDoc: false, hasVer: false, ver: '', bg: '#EAF2FA', band: '#EAF2FA', badge: 'PDF', badgeBg: '#C8372D' }, o);
+    const mathRes = [
+      rv({ hasImg: true, isVideo: true, img: I.video, title: 'Ratio talk routine: convince a skeptic', hasVer: true, ver: 'v3', sub: 'Saved by 22' }),
+      rv({ isDoc: true, bg: '#E6F2F0', band: '#CBE7DF', badge: 'DOC', badgeBg: '#2B63C6', title: 'AI prompt pack: MLL scaffolds', sub: 'Saved by 26' }),
+      rv({ isDoc: true, bg: '#FFF4CC', band: '#FBE3A0', title: 'Strong student explanations', sub: '12 samples' }),
+      rv({ isDoc: true, bg: '#FDEBD9', band: '#FBE3A0', badge: 'SLIDES', badgeBg: '#D9822B', title: 'Number talk slides: equivalent ratios', sub: 'Katie Walsh · saved by 12' })
+    ];
+    const cteRes = [
+      rv({ isDoc: true, bg: '#F3EBDD', band: '#EAD7B5', badge: 'DOC', badgeBg: '#2B63C6', title: 'AI in CTE labs: shared guidance', hasVer: true, ver: 'v2', sub: 'Brooks, Okafor' }),
+      rv({ hasImg: true, img: I.lab, title: 'Health sciences lab tour (Cedar Valley)', sub: 'Photo set · 18 photos' }),
+      rv({ isDoc: true, bg: '#E6F2E2', band: '#BFE0B8', badge: 'XLS', badgeBg: '#1E7A45', title: 'Employer partner tracker', sub: 'Marcus Bell · 42 employers' })
+    ];
+    const evStyle = (list) => list.slice(0, 2).map((e) => Object.assign({}, e, { rowBg: e.isNew ? '#F0FAF2' : '#F8FAF8', dateBg: e.isNew ? '#9BE3AE' : '#EEF6F3', dateFg: e.isNew ? '#04454D' : '#0F6B5F' }));
+    const mathEvents = [
+      { mon: 'OCT', day: '29', title: 'Lesson study: Lesson 2.8', when: 'Thu · 3:45 pm', isNew: false },
+      { mon: 'NOV', day: '10', title: 'District math PD day', when: 'Tue · 8:30 am', isNew: false }
+    ];
+    if (locked) mathEvents.unshift({ mon: 'NOV', day: '5', title: 'Unit 3 planning session', when: 'Thu · 3:45 pm · Westbrook MS', isNew: true });
+    const cteEvents = [
+      { mon: 'NOV', day: '12', title: 'Regional council meeting', when: 'Thu · 9:00 am · Cedar Valley HS', isNew: false },
+      { mon: 'NOV', day: '19', title: 'Employer roundtable', when: 'Thu · 4:00 pm · Zoom', isNew: false }
+    ];
+    const cloudPos = [[4, 4, 46], [52, 0, 36], [92, 8, 52], [148, 2, 34], [186, 12, 44], [10, 54, 34], [48, 42, 50], [102, 62, 36], [142, 44, 48], [194, 60, 34], [26, 92, 30]];
+    const cloud = (list, fresh) => list.map((src, n) => ({ src, x: cloudPos[n][0] + 'px', y: cloudPos[n][1] + 'px', s: cloudPos[n][2] + 'px', cls: n % 2 ? 'float' : 'float2', ring: fresh.indexOf(n) >= 0 ? '0 0 0 2px #fff, 0 0 0 4px #2E8B57' : '0 0 0 2px #fff' }));
+    const mathActivity = [
+      { img: P.priya, who: 'Priya Shah', what: 'added v3 to Ratio talk', when: '3h', bg: '#F8FAF8' },
+      { img: P.devon, who: 'Devon Price', what: 'joined the Space', when: '5h', bg: '#F8FAF8' },
+      { img: P.ruth, who: 'Ruth Miller', what: 'replied to a discussion', when: '6h', bg: '#F8FAF8' },
+      { img: P.grace, who: 'Grace Chen', what: 'saved a resource', when: '1d', bg: '#F8FAF8' }
+    ];
+    if (locked) mathActivity.unshift({ img: P.dana, who: 'You', what: 'added Unit 3 planning session to the calendar', when: 'now', bg: '#F0FAF2' });
+    const cteActivity = [
+      { img: P.nadia, who: 'Nadia Okafor', what: 'approved AI guidance v2 for Cedar Valley', when: '2h', bg: '#F0FAF2' },
+      { img: P.tomas, who: 'Tomás Rivera', what: 'shared a pathways map from Northfield', when: '1d', bg: '#F8FAF8' },
+      { img: P.marcus, who: 'Marcus Bell', what: 'updated the employer tracker', when: '1d', bg: '#F8FAF8' },
+      { img: P.grace, who: 'Grace Chen', what: 'joined the council', when: '2d', bg: '#F8FAF8' }
+    ];
+    const spaces = {
+      math: { bannerBg: '#E5EEF7', blob: 'rgba(46,94,154,.12)', bannerInk: '#2E5E9A', bannerWord: 'GRADES 6–8 MATH', bannerScript: 'Year 1, together', collage: [{ src: I.boards, rot: '-4deg' }, { src: I.video, rot: '3deg' }, { src: I.stickies, rot: '-2deg' }], title: 'Grades 6–8 Math: Year 1 of Our New Curriculum', members: 38, discNew: 4, resNew: 3, discussions: discussionsMath, resources: mathRes, events: evStyle(mathEvents), calRing: false ? '3px solid #7FD893' : '0px solid transparent', cloud: cloud([P.jordan, P.elena, P.priya, P.sam, P.ruth, P.layla, P.devon, P.katie, P.grace, P.dana, P.tomas], [6]), activity: mathActivity.slice(0, step === 4 ? clamp(Math.floor((t - 6600) / 800) + 1, 0, 4) : 4) },
+      cte: { bannerBg: '#F3EBDD', blob: 'rgba(138,90,18,.12)', bannerInk: '#8A5A12', bannerWord: 'CTE PATHWAYS', bannerScript: 'Regional Council', collage: [{ src: I.shop, rot: '-4deg' }, { src: I.models, rot: '3deg' }, { src: I.lab, rot: '-2deg' }], title: 'Regional CTE Pathways Council', members: 16, discNew: 2, resNew: 1, discussions: discussionsCte, resources: cteRes, events: evStyle(cteEvents), calRing: '0px solid transparent', cloud: cloud([P.alan, P.nadia, P.marcus, P.dana, P.tomas, P.grace, P.layla, P.devon, P.ruth], [5]), activity: cteActivity }
+    };
+
+    const baseCounts = [9, 6, 11, 4];
+    const voted = false;
+    const opts = [['Tue', 'Nov 3', '3:45 pm'], ['Wed', 'Nov 4', '3:45 pm'], ['Thu', 'Nov 5', '3:45 pm'], ['Thu', 'Nov 5', '7:00 pm Zoom']];
+    const counts = baseCounts.map((c, n) => c + (voted && n === 2 ? 1 : 0));
+    const poll = opts.map((o, n) => {
+      const mine = voted && n === 2;
+      return { dow: o[0], date: o[1], time: o[2], count: counts[n], top: n === 2, border: mine ? '#04454D' : (n === 2 ? '#B9D88A' : '#DDE2E2'), bg: mine ? '#E6F2F0' : (n === 2 ? '#F7FBEA' : '#fff'), dot: at(7) && n === 2, cls: at(7) && n === 2 ? '' : '', tap: at(7) && n === 2 ? () => {} : () => {} };
+    });
+
+    const collDefs = [['Unit 2 favourites', 'Just me', I.stickies], ['Discourse routines', 'Shared in Grades 6–8 Math', I.boards], ['Lakeview Guidance', 'Leaders add here', I.pd]];
+    const added = false;
+    const colls = collDefs.map((c, n) => {
+      const on = added && n === 1;
+      return { name: c[0], sub: c[1], cover: c[2], on, rowBg: on ? '#F1F7F6' : (at(4) && n === 1 ? '#F7FBEA' : '#fff'), box: on ? '#1B4A50' : '#9AA6A7', fill: on ? '#1B4A50' : '#fff', dot: at(4) && n === 1, cls: at(4) && n === 1 ? '' : '', tap: at(4) && n === 1 ? () => {} : () => {} };
+    });
+    const saved = false;
+
+    const people = [
+      { img: P.tomas, name: 'Tomás Rivera', role: 'Instructional coach', org: 'Northfield SD', other: true, why: 'Ran Year 1 of your curriculum' },
+      { img: P.elena, name: 'Elena Ortiz', role: 'Grade 8 Math teacher', org: 'Westbrook MS', other: false, why: 'Also using whiteboards' },
+      { img: P.nadia, name: 'Nadia Okafor', role: 'CTE Director', org: 'Cedar Valley USD', other: true, why: 'Drafting AI lab guidance' },
+      { img: P.layla, name: 'Layla Haddad', role: 'Grade 7 Math teacher', org: 'Hillcrest MS', other: false, why: 'Same pacing questions' },
+      { img: P.marcus, name: 'Marcus Bell', role: 'Construction Trades teacher', org: 'Lakeview HS', other: false, why: 'Seeking math co-designers' },
+      { img: P.grace, name: 'Grace Chen', role: 'Principal', org: 'Hillcrest MS', other: false, why: 'Leading her school\'s rollout' }
+    ].map((p, n) => Object.assign(p, { orgBg: p.other ? '#FFF6E6' : '#F2F5F3', orgFg: p.other ? '#6B4E00' : '#1B4A50', ring: p.other ? '#F5E6C6' : '#EFF1ED', dot: at(10) && n === 0, cls: at(10) && n === 0 ? '' : '', tap: at(10) && n === 0 ? () => {} : () => {} }));
+
+    // feed typing
+    const full = "Tried a gallery walk for ratio reasoning today. Every group defended a different strategy!";
+    const nType = step === 1 ? clamp(Math.floor((t - 5200) / 55), 0, full.length) : 0;
+    const posted = step === 1 && t >= 10900;
+    const doneType = nType >= full.length;
+    const picked = step !== 1 || t >= 4800;
+    const comp = { full, tag: picked, ph: picked ? 'What are you trying this week?' : 'Share something with Lakeview…', text: posted ? '' : full.slice(0, nType), empty: posted || nType === 0, typing: !posted,
+      postBg: doneType && !posted ? '#04454D' : '#EEF2F0', postFg: doneType && !posted ? '#fff' : '#8A9899', border: !posted && nType > 0 ? '#9FD1C4' : '#EFF1ED' };
+    // resource search
+    const qFull = 'routines that help Grade 7 students explain ratios';
+    const nq = step === 2 ? clamp(Math.floor((t - 900) / 80), 0, qFull.length) : qFull.length;
+    const qCount = Math.round(12 * nq / qFull.length);
+    const qv = { text: qFull.slice(0, nq), empty: nq === 0, typing: step === 2 && nq < qFull.length, count: nq === 0 ? '' : (step === 2 ? Math.round(1860 * (1 - 0.97 * nq / qFull.length)) : 48) + ' matches' };
+    // share to a Space
+    const share = {
+      open: step === 3 && t >= 6200 && t < 8900, added: step !== 3 || t >= 8900,
+      btnBg: step === 3 && t >= 6000 && t < 8900 ? '#E6F2F0' : '#fff', btnBorder: step === 3 && t >= 6000 && t < 8900 ? '#9FD1C4' : '#E3E7E4',
+      rows: [['Grades 6–8 Math', I.boards, true], ['New Teacher Circle', I.stickies, true], ['Multilingual Learners Network', I.lab, false], ['AI Leadership Cohort', I.pd, false]].map((r, n) => {
+        const on = r[2] || (n === 2 && t >= 7900);
+        return { name: r[0], img: r[1], on, bg: n === 2 && t >= 7100 ? '#F1F8F5' : 'transparent', box: on ? '#04454D' : '#B7C3C3', fill: on ? '#04454D' : '#fff' };
+      })
+    };
+    // find a time
+    const selT = [[0, 11600], [2, 12300], [5, 13000]];
+    const isSel = (i) => selT.some((x) => x[0] === i && t >= x[1]);
+    const nSel = selT.filter((x) => t >= x[1]).length;
+    const pick = {
+      menu: step === 5 && t >= 8600 && t < 10600, open: step === 5 && t >= 10600 && t < 14400, chip: step === 5 && t >= 14400,
+      days: [['Tue', 'Nov 3'], ['Wed', 'Nov 4'], ['Thu', 'Nov 5'], ['Fri', 'Nov 6']].map((d) => ({ dow: d[0], date: d[1] })),
+      slots: ['3:45 pm', '3:45 pm', '3:45 pm', '3:45 pm', '7:00 pm', '7:00 pm', '7:00 pm', '7:00 pm'].map((tm, i) => {
+        const on = isSel(i); const justNow = selT.some((x) => x[0] === i && t >= x[1] && t < x[1] + 300);
+        return { time: tm, bg: on ? '#04454D' : '#fff', fg: on ? '#fff' : '#3D4B4D', border: on ? '#04454D' : '#E3E7E4', sc: justNow ? 1.08 : 1 };
+      }),
+      count: nSel, btnBg: t >= 13700 ? '#04454D' : '#EEF2F0', btnFg: t >= 13700 ? '#fff' : '#8A9899'
+    };
+    // books
+    const books = { b3: step !== 6 || t >= 4700, b4: step !== 6 || t >= 5700 };
+    // insights
+    const pI = step === 7 ? clamp((t - 300) / 1200, 0, 1) : 1;
+    const ins = { e: 1 - Math.pow(1 - pI, 3) };
+    const shown = (at) => step !== 7 || t >= at;
+    const p2 = step === 7 ? clamp((t - 900) / 5000, 0, 1) : 1;
+    const insA = { c1: 112 + Math.floor(12 * p2), c2: 214 + Math.floor(27 * p2), c3: 14,
+      o1: shown(2700) ? 1 : 0, y1: shown(2700) ? '0px' : '10px', o2: shown(3500) ? 1 : 0, y2: shown(3500) ? '0px' : '10px',
+      o3: shown(4400) ? 1 : 0, y3: shown(4400) ? '0px' : '10px', s3: shown(4400) ? 1 : 0.96, top4: shown(8600) ? '' : 'pre2' };
+    const growthBase = [
+      { topic: 'Student discourse', n: 58, w: '100%', tip: '31 resources, 27 posts · 6 schools · fastest growing this month' },
+      { topic: 'AI for MLL scaffolds', n: 41, w: '71%', tip: '19 resources, 22 posts · led by Oak Ridge and Westbrook' },
+      { topic: 'CTE pathways', n: 33, w: '57%', tip: '12 resources, 21 posts · includes Cedar Valley and Northfield' },
+      { topic: 'Pacing Units 2 and 3', n: 27, w: '47%', tip: 'Mostly questions, few answers yet · a gap to support' },
+      { topic: 'Family math nights', n: 12, w: '21%', tip: '5 resources, 7 posts · 3 schools' }
+    ];
+    const conn = { workBg: step === 6 && t >= 2300 && t < 3500 ? '#FFF6E2' : '#FFFCF4', work: step === 6 && t >= 2300 && t < 3500 ? '3px solid #7FD893' : '0px solid transparent',
+      press: step === 6 && t >= 1400 && t < 1700 ? 0.92 : 1, notSent: !(step !== 6 || t >= 1700), sent: step !== 6 || t >= 1700, newCollab: step !== 6 || t >= 8400 };
+    // page 1 collage
+    const hid = (ms, v) => (step === 0 && t < ms ? (v || 'pre') : '');
+    const navT = [200, 450, 600, 800, 950, 1100, 1250, 1400, 1550, 1700, 1850, 2000, 2150, 2300, 2450, 2650];
+    const ap = { t0: hid(500, 'pre'), t1: hid(700, 'preS'), t2: hid(850, 'preS'), g: hid(900, 'pre2'), cc: hid(1600, 'pre'), rh: hid(3800, 'preL') };
+    navT.forEach((ms, n) => { ap['n' + n] = hid(ms, 'preL'); });
+    const toast = step === 0 && t >= 6600;
+    // page 6 composer tagging
+    const typed = (str, from, per) => str.slice(0, clamp(Math.floor((t - from) / per), 0, str.length));
+    const s5 = step === 5;
+    const A1 = 'Love these! ', M1 = '@Pri', B1 = " let's build Unit 3 together with ", R1 = '#sent', C1 = '.';
+    const cmp = {
+      a: s5 ? typed(A1, 900, 70) : A1,
+      mTyping: s5 && t < 3600 ? typed(M1, 1900, 110) : '',
+      mPop: s5 && t >= 2300 && t < 3600, mChip: !s5 || t >= 3600,
+      b: s5 ? typed(B1, 3800, 55) : B1,
+      rTyping: s5 && t < 7700 ? typed(R1, 5800, 110) : '',
+      rPop: s5 && t >= 6300 && t < 7700, rChip: !s5 || t >= 7700,
+      c: s5 ? typed(C1, 7900, 100) : C1,
+      plusRing: s5 && t >= 8300 && t < 8800 ? '0 0 0 4px #9BE3AE' : '0 0 0 0 transparent',
+      people: [[P.priya, 'Priya Shah', 'Grade 6, Oak Ridge MS'], [P.ruth, 'Ruth Miller', 'Grade 7, Pine Hill MS'], [P.sam, 'Sam Lee', 'Grade 6, Oak Ridge MS']].map((x, n) => ({ img: x[0], name: x[1], role: x[2], bg: n === 0 && t >= 2900 ? '#EEF3FA' : 'transparent' })),
+      res: [[I.video, 'Sentence frames for ratios', 'Priya Shah · v4'], [I.stickies, 'Sentence starters for Unit 2', 'Ruth Miller']].map((x, n) => ({ img: x[0], name: x[1], sub: x[2], bg: n === 0 && t >= 6900 ? '#EEF7F4' : 'transparent' }))
+    };
+    // page 5 tiles
+    const s4 = step === 4;
+    const sh = (ms) => (s4 && t < ms ? 'pre' : '');
+    const shuf = [[1700, 3], [2400, 1], [3100, 2], [3800, 3], [4500, 2]];
+    let upCard = 0; if (step === 1) shuf.forEach((x) => { if (t >= x[0]) upCard = x[1]; });
+    if (step === 1 && t >= 10900) upCard = 0;
+    const fc = (n) => (upCard === n ? (n === 2 && t >= 4500 ? 'up picked' : 'up') : '');
+    const fan = { c1: fc(1), c2: fc(2), c3: fc(3), press: step === 1 && t >= 1200 && t < 1450 ? 0.92 : 1, ring: step === 1 && t >= 1200 && t < 1700 ? '0 0 0 4px #9BE3AE' : '0 0 0 0 transparent' };
+    const fit = { s: this.state.fs || 1, x: (this.state.fx || 0) + 'px', y: (this.state.fy || 0) + 'px' };
+    return {
+      fit, note, share, conn, ap, toast, cmp, fan, pick, books, insA, back: go(step - 1), restart: () => this.setState({ step: 0, t: 0, done: false }), isFinal: step === LAST,
+      addMenu: [
+        ['Poll', 'M4 20V10M10 20V4M16 20v-7M22 20H2', '#EDDFF6', '#4B1B6A'],
+        ['Find a time', 'M3 5h18v16H3zM16 3v4M8 3v4M3 10h18', '#E6F2F0', '#04454D'],
+        ['Tag people', 'M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM16 12v1.5a2.5 2.5 0 0 0 5 0V12a9 9 0 1 0-3.5 7.1', '#E3ECF7', '#1E4E9A'],
+        ['Tag a resource', 'M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z', '#DDF0EC', '#0F6B5F'],
+        ['Mention an event', 'M3 5h18v16H3zM16 3v4M8 3v4M3 10h18M12 13l1 2 2 .3-1.5 1.4.4 2.1-1.9-1-1.9 1 .4-2.1L9 15.3l2-.3z', '#FFF1CC', '#8A5A12'],
+        ['Google Drive', 'M8 3h8l6 11-4 7H6l-4-7zM8 3l6 11M16 3l-6 11M2 14h20', '#E6F2E2', '#1E7A45'],
+        ['Upload a file', 'M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9', '#F1F4EF', '#3D4B4D']
+      ].map((m, n) => ({ label: m[0], d: m[1], bg: m[2], fg: m[3], hl: step === 5 && n === 1 && t >= 9800 ? '#E6F2F0' : 'transparent' })),
+      inputs: [
+        ['Peer feedback', 'M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z', '#E6F7EA', '#1E7A3C'],
+        ['District knowledge', 'M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4zM8 8h8M8 12h6', '#E3F0F1', '#04454D'],
+        ['Proven resources', 'M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z', '#E6F7EA', '#1E7A3C'],
+        ['Collaborators', 'M9 8a3 3 0 1 0 0-.1M3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-.1M15 20a5 5 0 0 1 7-4.5', '#E3F0F1', '#04454D'],
+        ['Ideas that worked', 'M12 3l1.8 4.6L18.5 9l-4.7 1.5L12 15l-1.8-4.5L5.5 9l4.7-1.4z', '#E6F7EA', '#1E7A3C']
+      ].map((c, n) => ({ label: c[0], d: c[1], bg: c[2], fg: c[3], y: [15, 95, 175, 255, 335][n] + 'px' })),
+      outcomes: [
+        { n: '1', t: 'Capacity that compounds', d: 'What one educator learns, the district keeps.', bg: '#EEF9F1', fg: '#2FA552' },
+        { n: '2', t: 'Stronger support for every educator and leader', d: 'Help when it\'s needed, not months later.', bg: '#EAF5F5', fg: '#1F7A80' },
+        { n: '3', t: 'Better outcomes for students', d: 'What works reaches more classrooms, faster.', bg: '#E6F0F1', fg: '#04454D' }
+      ],
+      ring: { iter: step === 3 && t < 5800 ? '3px solid #7FD893' : '0px solid transparent', iterBg: step === 3 && t < 5800 ? '#F2FBF4' : 'transparent', shared: step === 3 && t >= 5800 ? '3px solid #7FD893' : '0px solid transparent', sharedBg: step === 3 && t >= 5800 ? '#F2FBF4' : 'transparent', sum: false ? '3px solid #7FD893' : '0px solid transparent', tools: step === 5 && t >= 8600 && t < 14400 ? '3px solid #7FD893' : '0px solid transparent', toolsBg: step === 5 ? '#FBFDF4' : 'transparent' },
+      postTools: [['Poll', 'P', '#EDDFF6', '#4B1B6A'], ['Find a time', 'T', '#E6F2F0', '#04454D'], ['Tag people', '@', '#E3ECF7', '#1E4E9A'], ['Tag a resource', '#', '#DDF0EC', '#0F6B5F'], ['Mention an event', 'E', '#FFF1CC', '#8A5A12'], ['Google Drive', 'D', '#E6F2E2', '#1E7A45'], ['Upload a file', 'U', '#F1F4EF', '#3D4B4D']].map((t) => ({ label: t[0], ic: t[1], bg: t[2], fg: t[3] })), zoom: { s: z[0], o: z[1] },
+      nav, navW,
+      v: { home: view === 'home', feed: view === 'feed', res: view === 'res', space: view === 'space', net: view === 'net', ins: view === 'ins', sum: view === 'sum', resPanel: step === 3, thread: step === 5, person: step === 6 },
+      isCte: space === 'cte' && view === 'space',
+      anyPanel: step === 3 || step === 5 || step === 6,
+      dot: { feed: at(0), res: at(1), save: at(3), space: at(5), net: at(9), ins: at(11), cte: at(12) },
+      tap: { feed: tapIf(0), res: tapIf(1), save: tapIf(3), space: tapIf(5), lock: tapIf(8), net: tapIf(9), ins: tapIf(11), cte: tapIf(12) },
+      cls: { res: clsIf(1), save: clsIf(3), space: clsIf(5), net: clsIf(9), ins: clsIf(11), cte: clsIf(12) },
+      dashPosts: [
+        Object.assign({}, pMarcus, { short: 'Scale models presented to city planners!', thumb: I.models, ap: hid(2200, 'pre') }),
+        Object.assign({}, pElena, { short: 'Exit tickets sorted: got it, almost, help.', thumb: I.stickies, ap: hid(2700, 'pre2') }),
+        Object.assign({}, pAlan, { short: 'Save the date: Nov 10 math PD day.', thumb: I.pd, ap: hid(3200, 'pre') })
+      ],
+      recs: [
+        { isCollection: true, isVideo: false, isDoc: false, isSpace: false, isPerson: false, m1: I.boards, m2: I.stickies, m3: I.video, bg: '#EEF1EC', label: 'COLLECTION', labelFg: '#4B1B6A', title: 'Discourse routines that work', sub: 'Elena Ortiz · 12 resources' },
+        { isCollection: false, isVideo: true, isDoc: false, isSpace: false, isPerson: false, img: I.video, bg: '#1C2B2D', label: 'VIDEO', labelFg: '#04454D', title: 'Ratio talk routine: convince a skeptic', sub: 'Grades 6–8 Math · v3' },
+        { isCollection: false, isVideo: false, isDoc: true, isSpace: false, isPerson: false, bg: '#FFF4CC', badge: 'PDF', badgeBg: '#C8372D', label: 'RESOURCE', labelFg: '#8A5A12', title: 'Strong student explanations, Unit 2', sub: 'Elena Ortiz · 12 samples' },
+        { isCollection: false, isVideo: false, isDoc: false, isSpace: true, isPerson: false, img: I.shop, bg: '#F3EBDD', label: 'SPACE', labelFg: '#8A5A12', title: 'Regional CTE Pathways Council', sub: '16 members · 3 districts' },
+        { isCollection: false, isVideo: false, isDoc: false, isSpace: false, isPerson: true, img: P.tomas, bg: '#F7D9E0', label: 'PERSON', labelFg: '#8A2440', title: 'Tomás Rivera, Northfield SD', sub: 'Ran Year 1 of your curriculum' }
+      ].map((r, n) => Object.assign(r, { ap: hid(4300 + n * 400, n % 2 ? 'pre2' : 'pre') })),
+      feedCols: [{ share: true, compose: true, comp, newPost: posted, posts: [pElena] }, { share: false, compose: false, newPost: false, posts: [pMarcus, pPriya] }, { share: false, compose: false, newPost: false, posts: [pAlan, pJordan] }],
+      library: library.slice(0, step === 2 ? qCount : 12), resRecs, q: qv,
+      save: { label: saved ? 'Saved' : 'Save', bg: saved ? '#FCE9B0' : '#fff', border: saved ? '#F2D27A' : '#DDE2E2', fg: saved ? '#5C4300' : '#1C2B2D', count: 21 + (saved ? 1 : 0), open: false, added: false },
+      colls,
+      versions: [
+        { v: 'v3', tagBg: '#9BE3AE', tagFg: '#04454D', img: P.priya, name: 'Priya Shah', where: 'Oak Ridge MS · 3d', what: 'Added AI-drafted sentence frames at three levels' },
+        { v: 'v2', tagBg: '#E6F2F0', tagFg: '#04454D', img: P.elena, name: 'Elena Ortiz', where: 'Westbrook MS · 1w', what: 'Filmed it at the vertical whiteboards' },
+        { v: 'v1', tagBg: '#EEF1F1', tagFg: '#3D4B4D', img: P.jordan, name: 'Jordan Kim', where: 'Westbrook MS · 3w', what: 'Original turn-and-talk routine for Unit 2' }
+      ].map((x, n) => Object.assign(x, { ap: step === 3 && t < [3600, 2700, 1800][n] ? 'pre' : '' })),
+      sp: (() => { const o = spaces[space]; if (space !== 'math') return o;
+        const dNew = !s4 ? 4 : 2 + (t >= 1800 ? 1 : 0) + (t >= 5000 ? 1 : 0);
+        return Object.assign({}, o, {
+          discNew: dNew, resNew: !s4 || t >= 2600 ? 3 : 2,
+          discussions: o.discussions.map((d, n) => Object.assign({}, d, { ap: n === 2 ? sh(1800) : n === 3 ? sh(5000) : '' })),
+          resources: o.resources.map((r, n) => Object.assign({}, r, { ap: n === 3 ? sh(2600) : '' })),
+          events: o.events.map((e, n) => Object.assign({}, e, { ap: n === 1 ? sh(3400) : '' })),
+          cloud: o.cloud.map((m, n) => Object.assign({}, m, { ap: n === 6 ? (s4 && t < 4200 ? 'preS' : '') : n === 9 ? (s4 && t < 5600 ? 'preS' : '') : '' }))
+        }); })(),
+      poll, pollCount: 18 + (voted ? 1 : 0), canLock: step === 8,
+      requests: [
+        { isCo: true, isFb: false, bg: '#FFFCF4', border: '#F5E8C8', iconBg: '#FBE3A0', iconFg: '#3D2A00', label: 'CO-DESIGNERS WANTED', labelFg: '#6B4E00', title: 'Co-design a construction math unit with trades students', img: P.marcus, who: 'Marcus Bell · Lakeview HS', btn: "I'm interested" },
+        { isCo: false, isFb: true, bg: '#F5F9FD', border: '#DCE7F3', iconBg: '#DCE8F6', iconFg: '#2E5E9A', label: 'FEEDBACK WANTED', labelFg: '#1E4E9A', title: 'Rubric for responsible AI use in CTE labs', img: P.nadia, who: 'Nadia Okafor · Cedar Valley USD', btn: 'Give feedback' }
+      ],
+      people,
+      schools: [['Westbrook', '#5FB3A3'], ['Lakeview MS', '#5FB3A3'], ['Oak Ridge', '#E6EBE8'], ['Hillcrest', '#E6EBE8'], ['Pine Hill', '#5FB3A3'], ['Riverside', '#5FB3A3'], ['Maple Grove', '#5FB3A3']].map((x) => ({ name: x[0], c: x[1] })),
+      growth: growthBase.map((g) => { const nn = g.n + Math.floor(Math.round(g.n * 0.14) * p2); return Object.assign({}, g, { nn, w: (nn / 66 * 100 * ins.e).toFixed(1) + '%' }); }),
+      growthOld: [
+        { topic: 'Student discourse', n: 58, w: '100%', tip: '31 resources, 27 posts · 6 schools · fastest growing this month' },
+        { topic: 'AI for MLL scaffolds', n: 41, w: '71%', tip: '19 resources, 22 posts · led by Oak Ridge and Westbrook' },
+        { topic: 'CTE pathways', n: 33, w: '57%', tip: '12 resources, 21 posts · includes Cedar Valley and Northfield' },
+        { topic: 'Pacing Units 2 and 3', n: 27, w: '47%', tip: 'Mostly questions, few answers yet · a gap to support' },
+        { topic: 'Family math nights', n: 12, w: '21%', tip: '5 resources, 7 posts · 3 schools' }
+      ],
+      words: [
+        ['ratio tables', '22px', 700, '#0F6B5F'], ['sentence frames', '19px', 700, '#5E9A8F'], ['pacing', '17px', 600, '#1B4A50'], ['AI guidance', '20px', 700, '#0F6B5F'],
+        ['turn-and-talk', '15px', 600, '#3D4B4D'], ['whiteboards', '16px', 700, '#0F6B5F'], ['newcomers', '14px', 600, '#3D4B4D'], ['work-based learning', '15px', 700, '#1B4A50'],
+        ['cool-downs', '13px', 600, '#4A5A5C'], ['peer visits', '14px', 600, '#3D4B4D'], ['credentials', '13px', 600, '#4A5A5C'], ['explanations', '18px', 700, '#5E9A8F']
+      ].map((w) => ({ t: w[0], s: w[1], fw: w[2], c: w[3] })),
+      topIns: [
+        { img: P.jordan, text: 'Two minutes of talk before writing doubles how much students explain.', who: 'Jordan Kim', reach: 'Tried by 9 teachers', src: 'From Grades 6–8 Math · "can\'t explain why" thread · 11 replies · Oct 25' },
+        { img: P.priya, text: 'Cut any AI-drafted frame that gives away the answer.', who: 'Priya Shah', reach: 'Saved by 26', src: 'From the AI prompt pack resource · 3 versions · Oct 22' },
+        { img: P.tomas, text: 'Slow down in Lesson 2.6. It\'s where Year 1 schools fell behind.', who: 'Tomás Rivera', reach: 'Shared with 2 schools', src: 'From Connect · Northfield SD pacing guide · Oct 20' }
+      ].map((x, n) => Object.assign(x, { ap: shown(6200 + n * 800) ? '' : (n % 2 ? 'pre2' : 'pre') }))
+    };
+  }
+}
+</script>
+</body>
+</html>
