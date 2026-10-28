@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ask a question graphic</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&amp;display=swap">
+<style>
+body{margin:0;background:#fff;overflow:hidden}
+*{box-sizing:border-box}
+.ap{transition:opacity .55s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.pre{opacity:0;transform:translateY(14px)}
+.preS{opacity:0;transform:scale(.6)}
+.preL{opacity:0;transform:translateX(-14px)}
+.caret{display:inline-block;width:2px;height:1em;background:#0F6B5F;margin-left:2px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.pulse{animation:pulse 1.4s ease-out 3}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(94,204,117,.55)}100%{box-shadow:0 0 0 16px rgba(94,204,117,0)}}
+.dots span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9FD1C4;margin-right:5px;animation:dot 1s ease-in-out infinite}
+.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-4px);opacity:1}}
+@media (prefers-reduced-motion: reduce){.ap{transition:none}.pulse,.caret,.dots span{animation:none}}
+</style>
+</helmet>
+<div style="transform: translate({{ fit.x }}, {{ fit.y }}) scale({{ fit.s }}); transform-origin: 0 0; width: 1340px; height: 720px; padding: 20px; background: #fff; font-family: 'DM Sans', system-ui, sans-serif; color: #1C2B2D">
+<div style="width: 1300px; height: 680px; border-radius: 20px; background: #FCFCFA; border: 1px solid #EFF1ED; box-shadow: 0 18px 44px rgba(16,40,42,.08), 0 2px 6px rgba(16,40,42,.03); overflow: hidden; display: flex; flex-direction: column">
+<div style="flex: none; height: 60px; background: #fff; border-bottom: 1px solid #EFF1ED; display: flex; align-items: center; gap: 12px; padding: 0 26px"><svg width="28" height="28" viewBox="0 0 40 40" aria-hidden="true" style="flex: none; border-radius: 50%"><circle cx="20" cy="20" r="20" fill="#1F3A5F"></circle><circle cx="27" cy="14" r="5" fill="#F5C451"></circle><path d="M8 26 L14 14 L20 26 Z" fill="#6FB58A"></path><path d="M14 26 L19.5 17 L25 26 Z" fill="#4E9A6E"></path><path d="M5 29 q4-3 8 0 t8 0 t8 0 t8 0" stroke="#8EC5E8" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg><span style="font-size: 15px; font-weight: 700; color: #10474B">Lakeview School District</span><span style="color: #C3CCCA">/</span><img src="./assets/6d0259194b77048210e2378a1200bd9d.png" alt="" style="width: 26px; height: 26px; border-radius: 7px; object-fit: cover"><span style="font-size: 15px; font-weight: 600; color: #3D4B4D">AI Agents Leadership Cohort</span><span style="flex: 1"></span><span style="flex: none; font-size: 11.5px; font-weight: 700; letter-spacing: .8px; color: #7A8A8C; border: 1px solid #E3E7E4; border-radius: 999px; padding: 4px 12px">SAMPLE</span></div>
+<div style="flex: 1; padding: 24px 32px 28px; display: flex; flex-direction: column; gap: 18px">
+<div class="ap {{ a.qb }}" style="display: flex; align-items: center; gap: 14px">
+<img src="./assets/46be7b136788abe3da3421acd97bdcec.png" alt="" style="flex: none; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid #fff">
+<div style="flex: 1; display: flex; align-items: center; gap: 12px; height: 58px; background: #fff; border: 1.5px solid #9FD1C4; border-radius: 999px; padding: 0 22px 0 14px; box-shadow: 0 6px 18px rgba(15,107,95,.07)"><span style="width: 32px; height: 32px; border-radius: 9px; background: #E6F2F0; color: #04454D; display: flex; align-items: center; justify-content: center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.5L12 15l-1.8-4.5L5.5 9l4.7-1.4z"></path></svg></span><span style="flex: 1; font-size: 18px; font-weight: 500"><sc-if value="{{ a.qEmpty }}" hint-placeholder-val="{{ false }}"><span style="color: #94A3A4">Ask about your district…</span></sc-if>{{ a.qtext }}<sc-if value="{{ a.qTyping }}" hint-placeholder-val="{{ false }}"><span class="caret"></span></sc-if></span><span style="flex: none; height: 38px; padding: 0 18px; border-radius: 999px; background: {{ a.askBg }}; color: {{ a.askFg }}; font-size: 14px; font-weight: 700; display: flex; align-items: center; transition: background .3s ease, color .3s ease">Ask</span></div>
+</div>
+<sc-if value="{{ a.thinking }}" hint-placeholder-val="{{ false }}"><div class="dots" style="padding: 6px 0 0 60px; display: flex; align-items: center; gap: 10px; color: #7A8A8C; font-size: 14px"><span></span><span></span><span></span><b style="font-weight: 500; margin-left: 4px">Looking across 6 school teams</b></div></sc-if>
+<sc-if value="{{ a.answered }}" hint-placeholder-val="{{ true }}">
+<div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; min-height: 0">
+<div class="ap {{ a.ans }}" style="background: #fff; border: 1px solid #EFF1ED; border-radius: 18px; padding: 22px 24px; display: flex; flex-direction: column; gap: 18px">
+<span style="align-self: flex-start; font-size: 11px; font-weight: 800; letter-spacing: .8px; color: #0F6B5F; background: #EEF6F3; border-radius: 7px; padding: 4px 9px">ANSWER</span>
+<div style="font-size: 22px; line-height: 1.45; font-weight: 600; color: #10474B">2 school teams paused their walkthrough agents this week over questions about student data privacy.</div>
+<div class="ap {{ a.wa }}" style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 12px; font-weight: 800; letter-spacing: .8px; color: #7A8A8C">WHAT THEY'RE ASKING</div>
+<div style="display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; line-height: 1.45; color: #2C3A3C"><img src="./assets/406d0485abc69f931d90e471e7b2fae4.png" alt="" style="flex: none; width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 2px solid #fff"><span>“We paused until we know where the walkthrough notes are stored.”</span></div>
+<div style="display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; line-height: 1.45; color: #2C3A3C"><img src="./assets/7751af72dfc90e3961f9e4f4055bb633.png" alt="" style="flex: none; width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 2px solid #fff"><span>“Can the agent use student names, or only initials?”</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto">
+<div style="font-size: 12px; font-weight: 800; letter-spacing: .8px; color: #7A8A8C">SCHOOL TEAMS</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap"><span class="ap {{ a.t1 }}" style="display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #DCEEE9; border-radius: 999px; padding: 5px 16px 5px 5px"><img src="./assets/406d0485abc69f931d90e471e7b2fae4.png" alt="" style="flex: none; width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid #fff"><span style="line-height: 1.25"><b style="display: block; font-size: 14.5px; color: #04454D">Westbrook MS</b><span style="font-size: 12px; color: #7A8A8C">Jordan Kim, team lead</span></span></span><span class="ap {{ a.t2 }}" style="display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #DCEEE9; border-radius: 999px; padding: 5px 16px 5px 5px"><img src="./assets/7751af72dfc90e3961f9e4f4055bb633.png" alt="" style="flex: none; width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid #fff"><span style="line-height: 1.25"><b style="display: block; font-size: 14.5px; color: #04454D">Pine Hill ES</b><span style="font-size: 12px; color: #7A8A8C">Ruth Miller, team lead</span></span></span></div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div class="ap {{ a.wh }}" style="font-size: 16px; font-weight: 700">What helped elsewhere</div>
+<div class="ap {{ a.c1 }}" style="background: #fff; border: 1px solid #EFF1ED; border-radius: 16px; padding: 20px 20px; display: flex; gap: 14px; align-items: flex-start"><span style="flex: none; width: 40px; height: 40px; border-radius: 11px; background: #DDF0EC; color: #0F6B5F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"></path></svg></span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 11px; font-weight: 800; letter-spacing: .8px; color: #7A8A8C">RESOURCE</span><span style="font-size: 17px; font-weight: 700; line-height: 1.3">Privacy checklist for AI agents</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5B6B6D"><img src="./assets/263ac6dc49847b0eb7ab6fa0b295fe0a.png" alt="" style="flex: none; width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid #fff">Sam Lee, district tech office<span style="margin-left: auto; color: #94A3A4">Saved by 23</span></span></span></div>
+<div class="ap {{ a.c2 }}" style="background: #fff; border: 1px solid #EFF1ED; border-radius: 16px; padding: 20px 20px; display: flex; gap: 14px; align-items: flex-start"><span style="flex: none; width: 40px; height: 40px; border-radius: 11px; background: #E3ECF7; color: #1E4E9A; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h12a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"></path></svg></span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 11px; font-weight: 800; letter-spacing: .8px; color: #7A8A8C">DISCUSSION</span><span style="font-size: 17px; font-weight: 700; line-height: 1.3">Keeping student names out of prompts</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5B6B6D"><img src="./assets/fd916284edead50b84407fb251cf8d1a.png" alt="" style="flex: none; width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid #fff">Oak Ridge MS team<span style="margin-left: auto; color: #94A3A4">9 replies</span></span></span></div>
+<div class="ap {{ a.nx }} {{ a.pl }}" style="margin-top: auto; display: flex; align-items: center; gap: 14px; background: #E6F7EA; border: 1px solid #9BE3AE; border-radius: 16px; padding: 14px 16px"><img src="./assets/ed2d7db9912eb82f774e683d3a281b1f.png" alt="" style="flex: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #E6F7EA"><span style="flex: 1; line-height: 1.35"><b style="display: block; font-size: 11px; letter-spacing: .8px; color: #1E6B35">SUGGESTED NEXT STEP</b><span style="font-size: 15px">Book 30 minutes with Devon Price, who built the first agent</span></span><span style="flex: none; height: 38px; padding: 0 18px; border-radius: 999px; background: #04454D; color: #fff; font-size: 13.5px; font-weight: 700; display: flex; align-items: center">Find a time</span></div>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1340,"height":720}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { t: 0 }; }
+  componentDidMount() {
+    this._fit = () => { const w = window.innerWidth || 1340, h = window.innerHeight || 720; const sc = Math.min(w / 1340, h / 720); this.setState({ fs: sc, fx: (w - 1340 * sc) / 2, fy: (h - 720 * sc) / 2 }); };
+    this._fit(); window.addEventListener('resize', this._fit);
+    const reduce = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { this.setState({ t: 1e9 }); return; }
+    const start = () => {
+      if (this._iv) return;
+      this._iv = setInterval(() => { const nt = this.state.t + 50; this.setState({ t: nt }); if (nt >= 12500) { clearInterval(this._iv); } }, 50);
+    };
+    if (typeof IntersectionObserver !== 'undefined') {
+      this._io = new IntersectionObserver((es) => { if (es[0].intersectionRatio > 0.35) start(); }, { threshold: [0, 0.35, 0.7] });
+      this._io.observe(document.documentElement);
+    } else start();
+  }
+  componentWillUnmount() { clearInterval(this._iv); window.removeEventListener('resize', this._fit); if (this._io) this._io.disconnect(); }
+  renderVals() {
+    const t = this.state.t;
+    const cl = (x) => Math.max(0, Math.min(1, x));
+    const ease = (x) => 1 - Math.pow(1 - x, 3);
+    const sh = (ms, v) => (t < ms ? (v || 'pre') : '');
+    const typed = (s, from, per) => s.slice(0, Math.max(0, Math.min(s.length, Math.floor((t - from) / per))));
+    const Q = 'Which school teams are stuck building their agents?';
+    const qs = typed(Q, 700, 45);
+    const done = qs.length >= Q.length;
+    const a = { qb: sh(100), qtext: qs, qEmpty: qs.length === 0, qTyping: !done || t < 3300, askBg: done && t >= 3100 ? '#04454D' : '#EEF2F0', askFg: done && t >= 3100 ? '#fff' : '#8A9899',
+      thinking: t >= 3400 && t < 4600, answered: t >= 4600,
+      ans: sh(4700), wa: sh(5200), t1: sh(5700, 'preS'), t2: sh(6000, 'preS'), wh: sh(6400), c1: sh(6700), c2: sh(7200), nx: sh(7900), pl: t >= 8300 ? 'pulse' : '' };
+    return { a, fit: { s: this.state.fs || 1, x: (this.state.fx || 0) + 'px', y: (this.state.fy || 0) + 'px' } };
+  }
+}
+</script>
+</body>
+</html>
