@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Insights report graphic</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&amp;display=swap">
+<style>
+body{margin:0;background:#fff;overflow:hidden}
+*{box-sizing:border-box}
+.ap{transition:opacity .55s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.pre{opacity:0;transform:translateY(14px)}
+.preS{opacity:0;transform:scale(.6)}
+.preL{opacity:0;transform:translateX(-14px)}
+.caret{display:inline-block;width:2px;height:1em;background:#0F6B5F;margin-left:2px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.pulse{animation:pulse 1.4s ease-out 3}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(94,204,117,.55)}100%{box-shadow:0 0 0 16px rgba(94,204,117,0)}}
+.dots span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9FD1C4;margin-right:5px;animation:dot 1s ease-in-out infinite}
+.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-4px);opacity:1}}
+@media (prefers-reduced-motion: reduce){.ap{transition:none}.pulse,.caret,.dots span{animation:none}}
+</style>
+</helmet>
+<div style="transform: translate({{ fit.x }}, {{ fit.y }}) scale({{ fit.s }}); transform-origin: 0 0; width: 1340px; height: 720px; padding: 20px; background: #fff; font-family: 'DM Sans', system-ui, sans-serif; color: #1C2B2D">
+<div style="width: 1300px; height: 680px; border-radius: 20px; background: #FCFCFA; border: 1px solid #EFF1ED; box-shadow: 0 18px 44px rgba(16,40,42,.08), 0 2px 6px rgba(16,40,42,.03); overflow: hidden; display: flex; flex-direction: column">
+<div style="flex: none; height: 60px; background: #fff; border-bottom: 1px solid #EFF1ED; display: flex; align-items: center; gap: 12px; padding: 0 26px"><svg width="28" height="28" viewBox="0 0 40 40" aria-hidden="true" style="flex: none; border-radius: 50%"><circle cx="20" cy="20" r="20" fill="#1F3A5F"></circle><circle cx="27" cy="14" r="5" fill="#F5C451"></circle><path d="M8 26 L14 14 L20 26 Z" fill="#6FB58A"></path><path d="M14 26 L19.5 17 L25 26 Z" fill="#4E9A6E"></path><path d="M5 29 q4-3 8 0 t8 0 t8 0 t8 0" stroke="#8EC5E8" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg><span style="font-size: 15px; font-weight: 700; color: #10474B">Lakeview School District</span><span style="color: #C3CCCA">/</span><img src="./assets/6d0259194b77048210e2378a1200bd9d.png" alt="" style="width: 26px; height: 26px; border-radius: 7px; object-fit: cover"><span style="font-size: 15px; font-weight: 600; color: #3D4B4D">AI Agents Leadership Cohort</span><span style="flex: 1"></span><span style="flex: none; font-size: 11.5px; font-weight: 700; letter-spacing: .8px; color: #7A8A8C; border: 1px solid #E3E7E4; border-radius: 999px; padding: 4px 12px">SAMPLE</span></div>
+<div style="flex: 1; padding: 24px 32px 28px; display: flex; flex-direction: column; gap: 20px">
+<div class="ap {{ a.hd }}" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div><div style="font-size: 12px; font-weight: 800; letter-spacing: 1.3px; color: #5E9A8F">INSIGHTS REPORT · SPRING · YEAR 1</div><div style="font-size: 30px; font-weight: 700; color: #10474B; letter-spacing: -.4px; margin-top: 4px">Time back for classroom feedback</div></div>
+<span style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #5B6B6D; line-height: 1.3"><img src="./assets/46be7b136788abe3da3421acd97bdcec.png" alt="" style="flex: none; width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid #fff"><span><b style="display: block; color: #1C2B2D; font-size: 14px">For Dana Ruiz</b>Director, Teaching and Learning</span></span>
+</div>
+<div style="flex: 1; display: grid; grid-template-columns: 1fr 1.42fr; gap: 20px; min-height: 0">
+<div style="display: flex; flex-direction: column; gap: 20px; min-height: 0">
+<div class="ap {{ a.q }}" style="background: #fff; border: 1px solid #EFF1ED; border-radius: 18px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px">
+<span style="align-self: flex-start; font-size: 11px; font-weight: 800; letter-spacing: .8px; color: #1E6B35; background: #E6F7EA; border-radius: 999px; padding: 4px 11px">PRACTICE CHANGING</span>
+<div style="font-size: 21px; line-height: 1.45; font-weight: 500; min-height: 122px">“{{ a.quote }}<sc-if value="{{ a.qDone }}" hint-placeholder-val="{{ true }}">”</sc-if><sc-if value="{{ a.qTyping }}" hint-placeholder-val="{{ false }}"><span class="caret"></span></sc-if></div>
+<span class="ap {{ a.qa }}" style="display: flex; align-items: center; gap: 11px"><img src="./assets/3f037c428eab62703ac3084e8b27d94d.png" alt="" style="flex: none; width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid #fff"><span style="font-size: 13.5px; line-height: 1.3"><b style="display: block">Grace Chen</b><span style="color: #7A8A8C">Principal, Hillcrest MS team</span></span></span>
+</div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 10px">
+<div class="ap {{ a.mh }}" style="font-size: 15px; font-weight: 700">How we'll know it's working</div>
+<div style="flex: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+<div class="ap {{ a.m1 }}" style="background: #fff; border: 1px solid #EFF1ED; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column"><div style="font-size: 40px; font-weight: 700; color: #04454D; line-height: 1">{{ a.v1 }}<span style="font-size: 20px">x</span></div><div style="font-size: 14px; color: #3D4B4D; margin-top: 8px; line-height: 1.35">more classroom visits by leaders</div><div style="margin-top: auto; font-size: 12.5px; color: #1E6B35; background: #E6F7EA; border-radius: 8px; padding: 5px 9px; align-self: flex-start">From 1 a week in the fall</div></div>
+<div class="ap {{ a.m2 }}" style="background: #fff; border: 1px solid #EFF1ED; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column"><div style="font-size: 40px; font-weight: 700; color: #04454D; line-height: 1">{{ a.v2 }}<span style="font-size: 20px">%</span></div><div style="font-size: 14px; color: #3D4B4D; margin-top: 8px; line-height: 1.35">of educators get feedback within 24 hours</div><div style="margin-top: auto; font-size: 12.5px; color: #1E6B35; background: #E6F7EA; border-radius: 8px; padding: 5px 9px; align-self: flex-start">Up from 41% in the fall</div></div>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px; min-height: 0">
+<div class="ap {{ a.kb }}" style="background: #fff; border: 1px solid #EFF1ED; border-radius: 18px; padding: 18px 22px; display: flex; flex-direction: column; gap: 13px">
+<div><div style="font-size: 16px; font-weight: 700">Where knowledge is pooling</div><div style="font-size: 13px; color: #7A8A8C; margin-top: 2px">Resources and discussions by topic</div></div>
+<div style="display: flex; flex-direction: column; gap: 7px"><div style="display: flex; justify-content: space-between; font-size: 14.5px"><span style="font-weight: 600">Walkthrough feedback agents</span><b>{{ a.bn0 }}</b></div><div style="height: 11px; border-radius: 6px; background: #EEF2F0"><div style="height: 100%; width: {{ a.bw0 }}; border-radius: 0 6px 6px 0; background: #9FD1C4; transition: width .2s linear"></div></div></div><div style="display: flex; flex-direction: column; gap: 7px"><div style="display: flex; justify-content: space-between; font-size: 14.5px"><span style="font-weight: 600">Family update drafts</span><b>{{ a.bn1 }}</b></div><div style="height: 11px; border-radius: 6px; background: #EEF2F0"><div style="height: 100%; width: {{ a.bw1 }}; border-radius: 0 6px 6px 0; background: #9FD1C4; transition: width .2s linear"></div></div></div><div style="display: flex; flex-direction: column; gap: 7px"><div style="display: flex; justify-content: space-between; font-size: 14.5px"><span style="font-weight: 600">Student data privacy</span><b>{{ a.bn2 }}</b></div><div style="height: 11px; border-radius: 6px; background: #EEF2F0"><div style="height: 100%; width: {{ a.bw2 }}; border-radius: 0 6px 6px 0; background: #9FD1C4; transition: width .2s linear"></div></div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div class="ap {{ a.sh }}" style="font-size: 16px; font-weight: 700">How a practice is spreading</div>
+<div style="display: flex; align-items: stretch; gap: 8px">
+<div class="ap {{ a.s1 }}" style="flex: 1; min-width: 0; background: #fff; border: 1px solid #EFF1ED; border-radius: 16px; padding: 15px 17px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 11px; font-weight: 800; letter-spacing: .8px; color: #7A8A8C">TEAM PLAYBOOK</span><span style="font-size: 17px; font-weight: 700; line-height: 1.25">Walkthrough notes agent</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5B6B6D; margin-top: auto"><img src="./assets/ed2d7db9912eb82f774e683d3a281b1f.png" alt="" style="flex: none; width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid #fff">Devon Price</span></div>
+<span class="ap {{ a.r1 }}" style="flex: none; align-self: center; color: #9FD1C4; display: flex"><svg width="30" height="18" viewBox="0 0 26 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h21M17 2l6 6-6 6"></path></svg></span>
+<div class="ap {{ a.s2 }}" style="flex: 1; min-width: 0; background: #F2F8F6; border: 1px solid #DCEEE9; border-radius: 16px; padding: 15px 17px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 11px; font-weight: 800; letter-spacing: .8px; color: #0F6B5F">5 SCHOOL TEAMS</span><span style="font-size: 17px; font-weight: 700; line-height: 1.25">Built in tools they already have</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5B6B6D; margin-top: auto"><span style="display: flex"><img src="./assets/406d0485abc69f931d90e471e7b2fae4.png" alt="" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid #F2F8F6; margin-left: 0px"><img src="./assets/37f4df86b20bc4de46446e8fa970f5fe.png" alt="" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid #F2F8F6; margin-left: -9px"><img src="./assets/263ac6dc49847b0eb7ab6fa0b295fe0a.png" alt="" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid #F2F8F6; margin-left: -9px"></span>Gemini and Copilot</span></div>
+<span class="ap {{ a.r2 }}" style="flex: none; align-self: center; color: #9FD1C4; display: flex"><svg width="30" height="18" viewBox="0 0 26 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h21M17 2l6 6-6 6"></path></svg></span>
+<div class="ap {{ a.s3 }}" style="flex: 1; min-width: 0; background: #E6F7EA; border: 1px solid #9BE3AE; border-radius: 16px; padding: 15px 17px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 11px; font-weight: 800; letter-spacing: .8px; color: #1E6B35">STRONG PRACTICE</span><span style="font-size: 17px; font-weight: 700; line-height: 1.25">Added to the district toolkit</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5B6B6D; margin-top: auto"><span style="width: 22px; height: 22px; border-radius: 50%; background: #5ECC75; color: #fff; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg></span>Privacy-checked</span></div>
+</div>
+</div>
+<div class="ap {{ a.nx }} {{ a.pl }}" style="margin-top: auto; display: flex; align-items: center; gap: 12px; background: #04454D; color: #fff; border-radius: 14px; padding: 14px 18px"><span style="flex: none; font-size: 11.5px; font-weight: 800; letter-spacing: .7px; color: #04454D; background: #9BE3AE; border-radius: 7px; padding: 4px 9px">NEXT STEP</span><span style="flex: 1; font-size: 16px; font-weight: 600">Bring the walkthrough agent to every principal</span><svg width="22" height="16" viewBox="0 0 26 16" fill="none" stroke="#9BE3AE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h21M17 2l6 6-6 6"></path></svg></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1340,"height":720}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { t: 0 }; }
+  componentDidMount() {
+    this._fit = () => { const w = window.innerWidth || 1340, h = window.innerHeight || 720; const sc = Math.min(w / 1340, h / 720); this.setState({ fs: sc, fx: (w - 1340 * sc) / 2, fy: (h - 720 * sc) / 2 }); };
+    this._fit(); window.addEventListener('resize', this._fit);
+    const reduce = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { this.setState({ t: 1e9 }); return; }
+    const start = () => {
+      if (this._iv) return;
+      this._iv = setInterval(() => { const nt = this.state.t + 50; this.setState({ t: nt }); if (nt >= 11500) { clearInterval(this._iv); } }, 50);
+    };
+    if (typeof IntersectionObserver !== 'undefined') {
+      this._io = new IntersectionObserver((es) => { if (es[0].intersectionRatio > 0.35) start(); }, { threshold: [0, 0.35, 0.7] });
+      this._io.observe(document.documentElement);
+    } else start();
+  }
+  componentWillUnmount() { clearInterval(this._iv); window.removeEventListener('resize', this._fit); if (this._io) this._io.disconnect(); }
+  renderVals() {
+    const t = this.state.t;
+    const cl = (x) => Math.max(0, Math.min(1, x));
+    const ease = (x) => 1 - Math.pow(1 - x, 3);
+    const sh = (ms, v) => (t < ms ? (v || 'pre') : '');
+    const typed = (s, from, per) => s.slice(0, Math.max(0, Math.min(s.length, Math.floor((t - from) / per))));
+    const Q = 'My walkthrough agent drafts the notes and next steps. I\u2019m in classrooms three mornings a week now, not one.';
+    const qs = typed(Q, 900, 26);
+    const pb = ease(cl((t - 1500) / 1100));
+    const pm = ease(cl((t - 5000) / 1300));
+    const ns = [41, 29, 14], ws = [100, 71, 34];
+    const a = { hd: sh(150), q: sh(500), quote: qs, qTyping: t >= 600 && qs.length < Q.length, qDone: qs.length >= Q.length, qa: sh(3900, 'preL'),
+      kb: sh(1300), sh: sh(3000), s1: sh(3200), r1: sh(3800, 'preL'), s2: sh(3900), r2: sh(4500, 'preL'), s3: sh(4600, 'preS'),
+      mh: sh(4900), m1: sh(5000), m2: sh(5200), v1: (1 + 1.4 * pm).toFixed(1), v2: Math.round(82 * pm),
+      nx: sh(6500), pl: t >= 6900 ? 'pulse' : '' };
+    ns.forEach((n, i) => { a['bn' + i] = Math.round(n * pb); a['bw' + i] = (ws[i] * pb).toFixed(1) + '%'; });
+    return { a, fit: { s: this.state.fs || 1, x: (this.state.fx || 0) + 'px', y: (this.state.fy || 0) + 'px' } };
+  }
+}
+</script>
+</body>
+</html>
